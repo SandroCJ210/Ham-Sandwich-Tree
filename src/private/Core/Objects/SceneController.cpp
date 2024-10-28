@@ -1,6 +1,6 @@
 #include "Core/Objects/SceneController.h"
 
-SceneController::SceneController(){
+SceneController::SceneController():Singleton() {
 }
 
 void SceneController::Start(){

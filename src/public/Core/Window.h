@@ -3,7 +3,6 @@
 
 #include "Util/Singleton.h"
 
-template class Singleton<class Window>;
 class Window : public Singleton<Window>{
 
 public:
@@ -23,4 +22,4 @@ public:
 	void Draw();
 	void ProcessFrame(struct GLFWwindow* window);
 };
-
+template class Singleton<Window>;

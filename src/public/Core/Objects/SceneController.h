@@ -4,7 +4,6 @@
 #include "AObject.h"
 #include "Util/Singleton.h"
 
-template class Singleton<class SceneController>;
 class SceneController : public Singleton<SceneController> {
 	
 public:
@@ -16,3 +15,4 @@ public:
 	void Update();
 	void End();
 };
+template class Singleton<SceneController>;

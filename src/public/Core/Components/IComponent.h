@@ -4,6 +4,8 @@ class AObject;
 
 class IComponent {
 public:
-	//AObject* parent;
+	AObject* parent;
+	IComponent() = default;
+	virtual ~IComponent(){}
 	virtual void Update() {}
 };
