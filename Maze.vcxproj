@@ -691,6 +691,10 @@
     <ClCompile Include="src\private\Core\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="includes\glad\glad.h" />
+    <ClInclude Include="includes\GLFW\glfw3.h" />
+    <ClInclude Include="includes\GLFW\glfw3native.h" />
+    <ClInclude Include="includes\KHR\khrplatform.h" />
     <ClInclude Include="src\public\Core\Components\IComponent.h" />
     <ClInclude Include="src\public\Core\Components\RenderComponent.h" />
     <ClInclude Include="src\public\Core\Materials\AMaterial.h" />
