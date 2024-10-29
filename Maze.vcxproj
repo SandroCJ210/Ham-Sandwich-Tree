@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\private\Core\Components\RenderComponent.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -683,7 +684,6 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="src\private\Util\Singleton.cpp" />
-    <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\private\Maze.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\private\graph.cpp" />
@@ -699,11 +699,16 @@
     <ClInclude Include="src\public\Core\Objects\AObject.h" />
     <ClInclude Include="src\public\Core\Objects\SceneController.h" />
     <ClInclude Include="src\public\Core\Objects\TestObject.h" />
+    <ClInclude Include="src\public\graph.h" />
     <ClInclude Include="src\public\Math\Vector3.h" />
     <ClInclude Include="src\public\Util\Singleton.h" />
     <ClInclude Include="src\public\Maze.h" />
     <ClInclude Include="src\public\Utility.h" />
     <ClInclude Include="src\public\Core\Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Shaders\ColorRenderization\ColorRenderization.frag" />
+    <Content Include="Assets\Shaders\ColorRenderization\ColorRenderization.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
