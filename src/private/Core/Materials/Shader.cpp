@@ -1,7 +1,9 @@
 #include "Core/Materials/Shader.h"
 
+#include <glad/glad.h>
 #include <iostream>
 #include <fstream>
+#include <direct.h>
 
 Shader::Shader (const std::string vertexPath, const std::string fragmentPath){
 	// 1 Reading data from the path
@@ -12,6 +14,11 @@ Shader::Shader (const std::string vertexPath, const std::string fragmentPath){
 	//* ensure ifstream objects can throw exceptions:
     vShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
     fShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
+
+	const size_t size = 1024; 
+	// Allocate a character array to store the directory path
+	char buffer[size];        
+	
     try{
     	//opening files
     	vShaderFile.open(vertexPath);
@@ -32,6 +39,7 @@ Shader::Shader (const std::string vertexPath, const std::string fragmentPath){
     }
     catch(std::ifstream::failure e){
     	std::cout << "ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ\n";
+    	
     }
     //string to char pointer
     const char* vShaderCode = vertexCode.c_str();

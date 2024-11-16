@@ -44,7 +44,8 @@ public:
     }
 
 	void SetVec3(const std::string &name, Vector3 value) {
-		glUniform3f(glGetUniformLocation(ID, name.c_str()), value.x, value.y, value.z);
+		int location = glGetUniformLocation(ID, name.c_str());
+		glUniform3f(location, value.x, value.y, value.z);
 	}
 
     //agregar setTexture

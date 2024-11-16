@@ -4,10 +4,12 @@
 
 class BaseMaterial : public AMaterial {
 public:
-	Vector3 color;
+
+	Vector3 color = Vector3(1.0, 1.0, 1.0);
 	
 	BaseMaterial();
 	~BaseMaterial();
 
-	bool SetColor(Vector3 newColor);
+	void SetColorUniform();
+	void SetColor(Vector3 newColor);
 };

@@ -15,10 +15,11 @@ public:
 	std::vector<AObject*> children;
 	
 	AObject();
-	~AObject();
+	virtual ~AObject();
 	
 	virtual void Start();
 	virtual void Update();
+	virtual void LateUpdate();
 	virtual void End();
 
 	void addComponent(IComponent* component);

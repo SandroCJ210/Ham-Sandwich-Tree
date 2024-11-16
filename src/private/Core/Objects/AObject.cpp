@@ -16,6 +16,12 @@ void AObject::Update() {
 	}
 }
 
+void AObject::LateUpdate() {
+	for (auto element : components) {
+		element->LateUpdate();
+	}
+}
+
 void AObject::End() {
 }
 

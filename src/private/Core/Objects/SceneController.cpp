@@ -13,6 +13,9 @@ void SceneController::Update(){
 	for (auto element : objects){
 		element->Update();
 	}
+	for (auto element : objects) {
+		element->LateUpdate();
+	}
 }
 
 void SceneController::End(){
