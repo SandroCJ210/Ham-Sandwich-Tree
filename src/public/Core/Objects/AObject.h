@@ -14,13 +14,26 @@ public:
 	AObject* parent = nullptr;
 	std::vector<AObject*> children;
 	
-	AObject();
+	AObject(AObject* _parent);
 	virtual ~AObject();
-	
 	virtual void Start();
 	virtual void Update();
 	virtual void LateUpdate();
 	virtual void End();
 
-	void addComponent(IComponent* component);
+	IComponent* AddComponent(IComponent* component);
+
+	template<typename T> 
+	typename std::enable_if<std::is_base_of<IComponent, T>::value, T*>::type
+	GetComponent() {
+		for (IComponent* component : components) {
+			if (T* t = dynamic_cast<T*>(component)) {
+				return t;
+			}
+		}
+		return nullptr;
+	}
+
+
+	void AddChild(AObject* child);
 };

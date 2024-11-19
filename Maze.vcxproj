@@ -164,6 +164,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\glad.c" />
+    <ClCompile Include="src\private\Core\Components\InputComponent.cpp" />
+    <ClCompile Include="src\private\Core\Components\MazeGeneratorComponent.cpp" />
     <ClCompile Include="src\private\Core\Components\RenderComponent.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -461,7 +463,9 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="src\private\Core\Objects\SceneController.cpp">
+    <ClCompile Include="src\private\Core\Objects\Maze.cpp" />
+    <ClCompile Include="src\private\Core\Objects\Player.cpp" />
+    <ClCompile Include="src\private\Core\Scenes\ASceneController.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
@@ -535,7 +539,7 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="src\private\Core\Objects\TestObject.cpp">
+    <ClCompile Include="src\private\Core\Objects\SquareObject.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
@@ -609,7 +613,8 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="src\private\graph.cpp" />
+    <ClCompile Include="src\private\Core\Scenes\Maze2DScene.cpp" />
+    <ClCompile Include="src\private\Util\Graph.cpp" />
     <ClCompile Include="src\private\Math\Vector3.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -685,26 +690,29 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="src\private\Util\Singleton.cpp" />
-    <ClCompile Include="src\private\Maze.cpp" />
     <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\private\Utility.cpp" />
+    <ClCompile Include="src\private\Util\Utility.cpp" />
     <ClCompile Include="src\private\Core\Window.cpp" />
     <ClCompile Include="src\private\Core\Components\TestMovementComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\public\Core\Components\IComponent.h" />
+    <ClInclude Include="src\public\Core\Components\InputComponent.h" />
+    <ClInclude Include="src\public\Core\Components\MazeGeneratorComponent.h" />
     <ClInclude Include="src\public\Core\Components\RenderComponent.h" />
     <ClInclude Include="src\public\Core\Materials\AMaterial.h" />
     <ClInclude Include="src\public\Core\Materials\BaseMaterial.h" />
     <ClInclude Include="src\public\Core\Materials\Shader.h" />
     <ClInclude Include="src\public\Core\Objects\AObject.h" />
-    <ClInclude Include="src\public\Core\Objects\SceneController.h" />
+    <ClInclude Include="src\public\Core\Objects\Maze.h" />
+    <ClInclude Include="src\public\Core\Objects\Player.h" />
+    <ClInclude Include="src\public\Core\Scenes\Maze2DScene.h" />
+    <ClInclude Include="src\public\Core\Scenes\ASceneController.h" />
     <ClInclude Include="src\public\Core\Objects\SquareObject.h" />
-    <ClInclude Include="src\public\graph.h" />
+    <ClInclude Include="src\public\Util\Graph.h" />
     <ClInclude Include="src\public\Math\Vector3.h" />
     <ClInclude Include="src\public\Util\Singleton.h" />
-    <ClInclude Include="src\public\Maze.h" />
-    <ClInclude Include="src\public\Utility.h" />
+    <ClInclude Include="src\public\Util\Utility.h" />
     <ClInclude Include="src\public\Core\Window.h" />
     <ClInclude Include="src\public\Core\Components\TestMovementComponent.h" />
   </ItemGroup>

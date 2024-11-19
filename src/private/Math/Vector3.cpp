@@ -20,6 +20,12 @@ Vector3::Vector3(){
 	this->x = this->y = this->z = 0.0f;
 }
 
+Vector3::Vector3(double x) {
+	this->x = x;
+	this->y = x;
+	this->z = x;
+}
+
 Vector3::Vector3(double x, double y, double z){
 	this->x = x;
 	this->y = y;

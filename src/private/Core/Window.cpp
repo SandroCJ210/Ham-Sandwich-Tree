@@ -3,7 +3,7 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 
-#include "Core/Objects/SceneController.h"
+#include "Core/Scenes/Maze2DScene.h"
 #include "Core/Objects/SquareObject.h"
 #include "Core/Materials/BaseMaterial.h"
 #include "Core/Materials/Shader.h"
@@ -35,10 +35,8 @@ void Window::Start() {
 		std::cout<<"Failed to initialize GLAD"<<std::endl;
 	}
 
-	SquareObject* squareObject = new SquareObject();
-
-	SceneController::GetInstance().objects.push_back(squareObject);
-	
+	Window::GetInstance().actualScene = new Maze2DScene();
+	Window::GetInstance().actualScene->Start();
 }
 
 void Window::Update() {
@@ -67,5 +65,5 @@ void Window::ProcessFrame(GLFWwindow* window) {
 	glClearColor(0, 0, 0, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	
-	SceneController::GetInstance().Update();
+	Window::GetInstance().actualScene->Update();
 }

@@ -8,6 +8,8 @@ public:
 	IComponent() : parent(nullptr) {};
 	IComponent(AObject* parent) { this->parent = parent; };
 	virtual ~IComponent(){}
+	virtual void Start() {}
 	virtual void Update() {}
 	virtual void LateUpdate() {}
+	virtual void End() {}
 };

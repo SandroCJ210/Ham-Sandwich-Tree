@@ -11,7 +11,7 @@ public:
 	float height = 1;
 	float width = 1;
 
-	float scale = 0.25;
+	Vector3 scale = Vector3(2.0f/3.0f);
 
 private:
 	float vertices[12];
@@ -32,5 +32,5 @@ private:
 	void Draw();
 
 public:
-	void SetScale(float scale);
+	void SetScale(Vector3 scale);
 };

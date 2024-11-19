@@ -12,7 +12,7 @@ RenderComponent::RenderComponent(AObject* parent) : IComponent(parent){
 	material = new BaseMaterial();
 	
 	BaseMaterial* baseMaterial = dynamic_cast<BaseMaterial*>(material);
-	baseMaterial->SetColor(Vector3(1.0, 0.0, 0.0));
+	//baseMaterial->SetColor(Vector3(1.0, 0.0, 0.0));
 	
 	indices[0] = 0;
 	indices[1] = 1;
@@ -44,8 +44,8 @@ void RenderComponent::CalcVertex() {
 	Vector3 center = this->parent->position;
 	float screenFormat = (float)Window::GetInstance().WIDTH / (float)Window::GetInstance().HEIGHT;
 	
-	float scaledWidth = (width / screenFormat) * scale;
-	float scaledHeight = height * scale;
+	float scaledWidth = (width / screenFormat) * scale.x;
+	float scaledHeight = height * scale.y;
 
 	//bottom left
 	vertices[0] = center.x - scaledWidth / 2;
@@ -102,6 +102,6 @@ void RenderComponent::Draw() {
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
-void RenderComponent::SetScale(float scale) {
+void RenderComponent::SetScale(Vector3 scale) {
 	this->scale = scale;
 }

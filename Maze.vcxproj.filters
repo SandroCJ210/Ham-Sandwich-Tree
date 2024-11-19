@@ -18,13 +18,10 @@
     <ClCompile Include="src\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\private\graph.cpp">
+    <ClCompile Include="src\private\Util\Graph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\private\Maze.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\private\Utility.cpp">
+    <ClCompile Include="src\private\Util\Utility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\private\Core\Window.cpp">
@@ -51,10 +48,10 @@
     <ClCompile Include="src\private\Core\Objects\AObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\private\Core\Objects\SceneController.cpp">
+    <ClCompile Include="src\private\Core\Scenes\ASceneController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\private\Core\Objects\TestObject.cpp">
+    <ClCompile Include="src\private\Core\Objects\SquareObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\private\Math\Vector3.cpp">
@@ -63,12 +60,24 @@
     <ClCompile Include="src\private\Core\Components\TestMovementComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\private\Core\Scenes\Maze2DScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\private\Core\Objects\Maze.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\private\Core\Components\MazeGeneratorComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\private\Core\Objects\Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\private\Core\Components\InputComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\public\Maze.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\public\Utility.h">
+    <ClInclude Include="src\public\Util\Utility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\public\Core\Window.h">
@@ -95,19 +104,34 @@
     <ClInclude Include="src\public\Core\Objects\AObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\public\Core\Objects\SceneController.h">
+    <ClInclude Include="src\public\Core\Scenes\ASceneController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\public\Core\Objects\SquareObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\public\graph.h">
+    <ClInclude Include="src\public\Util\Graph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\public\Math\Vector3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\public\Core\Components\TestMovementComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\public\Core\Scenes\Maze2DScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\public\Core\Objects\Maze.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\public\Core\Components\MazeGeneratorComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\public\Core\Components\InputComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\public\Core\Objects\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

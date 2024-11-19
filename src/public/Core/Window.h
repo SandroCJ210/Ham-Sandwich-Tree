@@ -2,17 +2,16 @@
 #include <string>
 
 #include "Util/Singleton.h"
-#include "Materials/AMaterial.h"
+#include "Core/Scenes/ASceneController.h"
 
 class Window : public Singleton<Window>{
 
 public:
+	
 	static const  int WIDTH = 720;
 	static const int HEIGHT = 720;
 
-	std::string assetsFolder;
-
-	AMaterial* material;
+	ASceneController* actualScene;
 
 public:
 	Window();

@@ -26,6 +26,7 @@ private:
 
 public:
 	Vector3();
+	Vector3(double x);
 	Vector3(double x, double y, double z);
 	Vector3(const Vector3& v);
 	~Vector3();
