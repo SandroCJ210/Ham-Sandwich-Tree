@@ -6,6 +6,7 @@
 #include "Core/Materials/AMaterial.h"
 #include "Core/Materials/Shader.h"
 #include "Core/Objects/AObject.h"
+#include "Core/Render/Render.h"
 #include <Core/Window.h>
 
 RenderComponent::RenderComponent(AObject* parent) : IComponent(parent){
@@ -21,7 +22,7 @@ RenderComponent::RenderComponent(AObject* parent) : IComponent(parent){
 	indices[5] = 3;
 
 	CalcVertex();
-	GenBuffers();
+	//GenBuffers();
 }
 
 RenderComponent::~RenderComponent() {
@@ -64,37 +65,38 @@ void RenderComponent::CalcVertex() {
 }
 
 void RenderComponent::GenBuffers() {
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
-	glGenBuffers(1, &EBO);
-
-	glBindVertexArray(VAO);
 	
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+	//glGenBuffers(1, &VBO);
+	//glGenBuffers(1, &EBO);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
+	//UpdateBuffers();
+
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+	/*glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);*/
 }
 
 void RenderComponent::UpdateBuffers() {
-	CalcVertex();
-	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	//CalcVertex();
+	//
+	//glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	//glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
 }
 
 void RenderComponent::Draw() {
 	material->shader->Use();
 
 	BaseMaterial* baseMaterial = dynamic_cast<BaseMaterial*>(material);
+	baseMaterial->SetColor(Vector3(1.0, 1.0, 1.0));
 	baseMaterial->SetColorUniform();
 
-	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	Render::GetInstance().DrawQuad(vertices, sizeof(vertices), indices, sizeof(indices));
+	//glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
 void RenderComponent::SetScale(Vector3 scale) {

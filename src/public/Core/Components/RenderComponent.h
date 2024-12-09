@@ -17,8 +17,6 @@ private:
 	float vertices[12];
 	unsigned int indices[6];
 
-	unsigned int VAO, VBO, EBO;
-
 public:
 	RenderComponent(AObject* parent);
 	~RenderComponent() override;

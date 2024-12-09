@@ -125,7 +125,7 @@ void MazeGeneratorComponent::GenerateObjects() {
 			int ID = (i - 1) * (size - 2) + (j - 1);
 			if (i == 0 || i == size - 1 || j == 0 || j == size - 1) {
 				InstantiateWall(
-					ID,
+					std::to_string(i) + std::to_string(j),
 					Vector3(
 						-1 + (objectScale / 2) + objectScale * j, 
 						1 - (objectScale / 2) - objectScale * i,
@@ -143,7 +143,7 @@ void MazeGeneratorComponent::GenerateObjects() {
 			}
 
 			InstantiateWall(
-				ID,
+				std::to_string(i) + std::to_string(j),
 				Vector3(
 					-1 + (objectScale / 2) + objectScale * j,
 					1 - (objectScale / 2) - objectScale * i,
@@ -176,8 +176,8 @@ void MazeGeneratorComponent::PrintMaze() {
 	}
 };
 
-void MazeGeneratorComponent::InstantiateWall(int id, Vector3 objectPosition, Vector3 objectScale) {
-	std::string name = "Wall" + std::to_string(id);
+void MazeGeneratorComponent::InstantiateWall(std::string id, Vector3 objectPosition, Vector3 objectScale) {
+	std::string name = "Wall" + id;
 	SquareObject* wall = new SquareObject(parent, name);
 	wall->position = objectPosition;
 	wall->GetRenderComponent()->SetScale(objectScale*(1.0 + 0.25));

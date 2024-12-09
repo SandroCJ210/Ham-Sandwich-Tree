@@ -469,6 +469,7 @@
     <ClCompile Include="src\private\Core\Objects\Maze.cpp" />
     <ClCompile Include="src\private\Core\Objects\Player.cpp" />
     <ClCompile Include="src\private\Core\Physics\PhysicsEngine.cpp" />
+    <ClCompile Include="src\private\Core\Render\Render.cpp" />
     <ClCompile Include="src\private\Core\Scenes\ASceneController.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -618,6 +619,7 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="src\private\Core\Scenes\Maze2DScene.cpp" />
+    <ClCompile Include="src\private\Core\Scenes\TestScene.cpp" />
     <ClCompile Include="src\private\Util\Graph.cpp" />
     <ClCompile Include="src\private\Math\Vector3.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -716,9 +718,11 @@
     <ClInclude Include="src\public\Core\Objects\Maze.h" />
     <ClInclude Include="src\public\Core\Objects\Player.h" />
     <ClInclude Include="src\public\Core\Physics\PhysicsEngine.h" />
+    <ClInclude Include="src\public\Core\Render\Render.h" />
     <ClInclude Include="src\public\Core\Scenes\Maze2DScene.h" />
     <ClInclude Include="src\public\Core\Scenes\ASceneController.h" />
     <ClInclude Include="src\public\Core\Objects\SquareObject.h" />
+    <ClInclude Include="src\public\Core\Scenes\TestScene.h" />
     <ClInclude Include="src\public\Util\Graph.h" />
     <ClInclude Include="src\public\Math\Vector3.h" />
     <ClInclude Include="src\public\Util\Singleton.h" />

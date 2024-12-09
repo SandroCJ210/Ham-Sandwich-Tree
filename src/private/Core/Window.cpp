@@ -3,11 +3,12 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <thread>
-
 #include "Core/Scenes/Maze2DScene.h"
+#include "Core/Scenes/TestScene.h"
 #include "Core/Objects/SquareObject.h"
 #include "Core/Materials/BaseMaterial.h"
 #include "Core/Materials/Shader.h"
+#include "Core/Render/Render.h"
 
 const double Window::DELTA_TIME = 0.016;
 
@@ -38,9 +39,9 @@ void Window::Start() {
 	if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 		std::cout<<"Failed to initialize GLAD"<<std::endl;
 	}
-
-	Window::GetInstance().actualScene = new Maze2DScene();
-	Window::GetInstance().actualScene->Start();
+	actualScene = new Maze2DScene();
+	Render::GetInstance();
+	actualScene->Start();
 }
 
 void Window::Update() {
@@ -71,5 +72,5 @@ void Window::ProcessFrame(GLFWwindow* window) {
 	glClearColor(0, 0, 0, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	
-	Window::GetInstance().actualScene->Update(DELTA_TIME);
+	actualScene->Update(DELTA_TIME);
 }

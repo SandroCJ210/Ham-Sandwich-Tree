@@ -1,6 +1,7 @@
 #pragma once
 #include "Core/Components/IComponent.h"
 #include "Util/Graph.h"	
+#include <string>
 
 class Vector3;
 class MazeGeneratorComponent : public IComponent {
@@ -21,7 +22,7 @@ private:
 	void GenerateObjects();
 	void PrintMaze();
 
-	void InstantiateWall(int id, Vector3 objectPosition, Vector3 objectSize);
+	void InstantiateWall(std::string id, Vector3 objectPosition, Vector3 objectSize);
 
 public:
 	int GetSize() const { return size; }
