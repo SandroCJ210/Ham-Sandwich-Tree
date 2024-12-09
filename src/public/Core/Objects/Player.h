@@ -1,19 +1,25 @@
 #pragma once
 #include "Core/Objects/AObject.h"
 
+class Maze;
 class RenderComponent;
 class InputComponent;
+class MovementComponent;
+class RigidbodyComponent;
+class SquareColliderComponent;
 
 class Player : public AObject {
 public:
-	Player(AObject* parent);
+	Player(AObject* parent, std::string name, Maze* maze);
 	~Player() override;
 
 private:
-	RenderComponent* renderComponent;
-	InputComponent* inputComponent;
+	Maze* maze;
 
-public:
-	RenderComponent* GetRenderComponent() const { return renderComponent; };
-	InputComponent* GetInputComponent() const { return inputComponent; };
+	RenderComponent* renderComponent;
+	RigidbodyComponent* rigidbodyComponent;
+	InputComponent* inputComponent;
+	MovementComponent* movementComponent;
+	SquareColliderComponent* colliderComponent;
+	
 };

@@ -1,55 +1,40 @@
 #include "Math/Vector3.h"
-
+#include "Math/Vector2.h"
 #include <complex>
 
-double Vector3::treshold = 0.00005f;
+double Vector3::treshold = 0.00005;
 
 Vector3 Vector3::zero = Vector3(0, 0, 0);
 Vector3 Vector3::one = Vector3(1, 1, 1);
-
 Vector3 Vector3::right = Vector3(1, 0, 0);
 Vector3 Vector3::left = Vector3(-1, 0, 0);
-
 Vector3 Vector3::up = Vector3(0, 1, 0);
 Vector3 Vector3::down = Vector3(0, -1, 0);
-
 Vector3 Vector3::forward = Vector3(0, 0, 1);
 Vector3 Vector3::back = Vector3(0, 0, -1);
 
-Vector3::Vector3(){
-	this->x = this->y = this->z = 0.0f;
-}
+Vector3::Vector3() : x(0), y(0), z(0){}
 
-Vector3::Vector3(double x) {
-	this->x = x;
-	this->y = x;
-	this->z = x;
-}
+Vector3::Vector3(double c) : x(c), y(c), z(c) {}
 
-Vector3::Vector3(double x, double y, double z){
-	this->x = x;
-	this->y = y;
-	this->z = z;
-}
+Vector3::Vector3(double x, double y, double z) : x(x), y(y), z(z) {}
 
-Vector3::Vector3(const Vector3& v){
-	this->x = v.x;
-	this->y = v.y;
-	this->z = v.z;
-}
+Vector3::Vector3(const Vector3& v) : x(v.x), y(v.y), z(v.z) {}
+
+Vector3::Vector3(const Vector2& v) : x(v.x), y(v.y), z(0) {}
 
 Vector3::~Vector3() = default;
 
 double Vector3::Magnitude(){
 	if(magnitude == 0.0){
-		magnitude = sqrt(this->x * this->x + this->y * this->y + this->z * this->z);
+		magnitude = sqrt(SquaredMagnitude());
 	}
 	return magnitude;
 }
 
-double Vector3::MagnitudeSquared(){
+double Vector3::SquaredMagnitude(){
 	if(sqrMagnitude == 0.0){
-		sqrMagnitude = sqrt(this->x * this->x + this->y * this->y + this->z * this->z);
+		sqrMagnitude = this->x * this->x + this->y * this->y + this->z * this->z;
 	}
 	return sqrMagnitude;
 }
@@ -111,16 +96,16 @@ Vector3& Vector3::operator/=(const double a){
 
 bool Vector3::operator==(const Vector3& v) const{
 	return (
-		this->x - v.x < treshold &&
-		this->y - v.y < treshold &&
-		this->z - v.z < treshold);
+		std::abs(this->x - v.x) < treshold &&
+		std::abs(this->y - v.y) < treshold &&
+		std::abs(this->z - v.z) < treshold);
 }
 
 bool Vector3::operator!=(const Vector3& v) const{
 	return (
-		this->x - v.x > treshold ||
-		this->y - v.y > treshold ||
-		this->z - v.z > treshold);
+		std::abs(this->x - v.x) > treshold ||
+		std::abs(this->y - v.y) > treshold ||
+		std::abs(this->z - v.z) > treshold);
 }
 
 Vector3 Vector3::operator+(const Vector3& v) const {

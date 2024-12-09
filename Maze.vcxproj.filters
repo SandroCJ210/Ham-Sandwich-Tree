@@ -75,6 +75,27 @@
     <ClCompile Include="src\private\Core\Components\InputComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\private\Math\Vector2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\private\Core\Components\MovementComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\private\Core\Components\Physics\SquareColliderComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\private\Core\Components\Physics\RigidbodyComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\public\Core\Components\Physics\RigidbodyComponent.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\public\Core\Components\Physics\SquareColliderComponent.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\private\Core\Physics\PhysicsEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\public\Util\Utility.h">
@@ -132,6 +153,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\public\Core\Objects\Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\public\Math\Vector2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\public\Core\Components\MovementComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\public\Core\Physics\PhysicsEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\public\Core\Components\Physics\ColliderComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

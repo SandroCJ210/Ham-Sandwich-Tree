@@ -13,7 +13,7 @@
 MazeGeneratorComponent::MazeGeneratorComponent(AObject* parent) : IComponent(parent) {
 
 	size = 3; //Default size of Maze
-	seed = 12345; //Default seed
+	seed = 1111; //Default seed
 	startID = -1;
 	endID = -1;
 
@@ -117,22 +117,23 @@ void MazeGeneratorComponent::GenerateMaze() {
 }
 
 void MazeGeneratorComponent::GenerateObjects() {
-	Vector3 objectScale = Vector3(2.0f / size);
+	float objectScale = 2.0f / size;
 	//indicates row
 	for (int i = 0; i < size; i++) {
 		//indicates column
 		for (int j = 0; j < size; j++) {
+			int ID = (i - 1) * (size - 2) + (j - 1);
 			if (i == 0 || i == size - 1 || j == 0 || j == size - 1) {
 				InstantiateWall(
+					ID,
 					Vector3(
-						-1 + (objectScale.x / 2) + objectScale.x * j, 
-						1 - (objectScale.x / 2) - objectScale.y * i,
+						-1 + (objectScale / 2) + objectScale * j, 
+						1 - (objectScale / 2) - objectScale * i,
 						0.0f), 
-					objectScale);
+					Vector3(objectScale));
 				continue;
 			}
 
-			int ID = (i - 1) * (size - 2) + (j - 1);
 			if (mazeGraph.ExistNode(ID)) {
 				/*if (ID == startID)		std::cout << "A";
 				else if (ID == endID)	std::cout << "B";
@@ -140,12 +141,14 @@ void MazeGeneratorComponent::GenerateObjects() {
 
 				continue;
 			}
+
 			InstantiateWall(
+				ID,
 				Vector3(
-					-1 + (objectScale.x / 2) + objectScale.x * j,
-					1 - (objectScale.x / 2) - objectScale.y * i,
+					-1 + (objectScale / 2) + objectScale * j,
+					1 - (objectScale / 2) - objectScale * i,
 					0.0f),
-				objectScale);
+				Vector3(objectScale));
 		}
 	}
 
@@ -173,8 +176,9 @@ void MazeGeneratorComponent::PrintMaze() {
 	}
 };
 
-void MazeGeneratorComponent::InstantiateWall(Vector3 objectPosition, Vector3 objectScale) {
-	SquareObject* wall = new SquareObject(parent);
+void MazeGeneratorComponent::InstantiateWall(int id, Vector3 objectPosition, Vector3 objectScale) {
+	std::string name = "Wall" + std::to_string(id);
+	SquareObject* wall = new SquareObject(parent, name);
 	wall->position = objectPosition;
 	wall->GetRenderComponent()->SetScale(objectScale*(1.0 + 0.25));
 	BaseMaterial* baseMaterial = dynamic_cast<BaseMaterial*>(wall->GetRenderComponent()->material);

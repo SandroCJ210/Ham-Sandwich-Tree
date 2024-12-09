@@ -9,7 +9,8 @@ public:
 
 	TestMovementComponent(AObject* parent);
 	~TestMovementComponent() override;
-	void Update() override;
+	void Start() override;
+	void Update(float deltaTime) override;
 	void LateUpdate() override;
 };
 

@@ -21,7 +21,7 @@ private:
 	void GenerateObjects();
 	void PrintMaze();
 
-	void InstantiateWall(Vector3 objectPosition, Vector3 objectSize);
+	void InstantiateWall(int id, Vector3 objectPosition, Vector3 objectSize);
 
 public:
 	int GetSize() const { return size; }

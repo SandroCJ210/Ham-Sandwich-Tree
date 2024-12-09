@@ -9,7 +9,7 @@ public:
 	IComponent(AObject* parent) { this->parent = parent; };
 	virtual ~IComponent(){}
 	virtual void Start() {}
-	virtual void Update() {}
+	virtual void Update(float deltaTime) {}
 	virtual void LateUpdate() {}
 	virtual void End() {}
 };

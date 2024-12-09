@@ -1,5 +1,7 @@
 #pragma once
 
+class Vector2;
+
 class Vector3 {
 public:
 	double x;
@@ -26,13 +28,14 @@ private:
 
 public:
 	Vector3();
-	Vector3(double x);
+	Vector3(double c);
 	Vector3(double x, double y, double z);
 	Vector3(const Vector3& v);
+	Vector3(const Vector2& v);
 	~Vector3();
 
 	double Magnitude();
-	double MagnitudeSquared();
+	double SquaredMagnitude();
 	Vector3& Normalize();
 	
 	static double Dot(const Vector3& v, const Vector3& w);

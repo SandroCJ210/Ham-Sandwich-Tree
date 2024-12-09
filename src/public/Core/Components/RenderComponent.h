@@ -22,7 +22,6 @@ private:
 public:
 	RenderComponent(AObject* parent);
 	~RenderComponent() override;
-	void Update() override;
 	void LateUpdate() override;
 
 private:

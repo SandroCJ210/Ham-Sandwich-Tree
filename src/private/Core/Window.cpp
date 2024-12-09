@@ -2,13 +2,17 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include <thread>
 
 #include "Core/Scenes/Maze2DScene.h"
 #include "Core/Objects/SquareObject.h"
 #include "Core/Materials/BaseMaterial.h"
 #include "Core/Materials/Shader.h"
 
+const double Window::DELTA_TIME = 0.016;
+
 Window::Window():Singleton(){
+	actualScene = nullptr;
 }
 
 
@@ -44,6 +48,8 @@ void Window::Update() {
 		ProcessFrame(glfwGetCurrentContext());
 		glfwSwapBuffers(glfwGetCurrentContext());
 		glfwPollEvents();
+
+		std::this_thread::sleep_for(std::chrono::milliseconds((long)(DELTA_TIME * 1000)));
 	}
 }
 
@@ -65,5 +71,5 @@ void Window::ProcessFrame(GLFWwindow* window) {
 	glClearColor(0, 0, 0, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	
-	Window::GetInstance().actualScene->Update();
+	Window::GetInstance().actualScene->Update(DELTA_TIME);
 }

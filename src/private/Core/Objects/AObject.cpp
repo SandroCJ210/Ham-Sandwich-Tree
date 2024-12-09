@@ -1,7 +1,12 @@
+#include <string>
+
+#include "Core/Scenes/ASceneController.h"
+#include "Core/Window.h"
 #include "Core/Objects/AObject.h"
 
-AObject::AObject(AObject* _parent) {
+AObject::AObject(AObject* _parent, std::string name) {
 	this->parent = _parent;
+	this->name = name;
 	if (parent == nullptr) return;
 	_parent->children.push_back(this);
 }
@@ -18,12 +23,12 @@ void AObject::Start() {
 	}
 }
 
-void AObject::Update() {
+void AObject::Update(float deltaTime) {
 	for (auto element : components) {
-		element->Update();
+		element->Update(deltaTime);
 	}
 	for (auto element : children) {
-		element->Update();
+		element->Update(deltaTime);
 	}
 }
 
@@ -52,6 +57,17 @@ IComponent* AObject::AddComponent(IComponent* component) {
 
 void AObject::AddChild(AObject* child) {
 	children.push_back(child);
+}
+
+AObject* AObject::FindObjectByName(std::string name) {
+	
+	ASceneController* scene = Window::GetInstance().actualScene;
+
+	for (AObject* object : scene->objects) {
+		if (object->name == name) {
+			return object;
+		}
+	}
 }
 
 

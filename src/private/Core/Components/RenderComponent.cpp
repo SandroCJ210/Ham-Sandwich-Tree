@@ -12,7 +12,6 @@ RenderComponent::RenderComponent(AObject* parent) : IComponent(parent){
 	material = new BaseMaterial();
 	
 	BaseMaterial* baseMaterial = dynamic_cast<BaseMaterial*>(material);
-	//baseMaterial->SetColor(Vector3(1.0, 0.0, 0.0));
 	
 	indices[0] = 0;
 	indices[1] = 1;
@@ -27,10 +26,6 @@ RenderComponent::RenderComponent(AObject* parent) : IComponent(parent){
 
 RenderComponent::~RenderComponent() {
 	delete this->material;
-}
-
-void RenderComponent::Update() {
-	
 }
 
 void RenderComponent::LateUpdate() {
