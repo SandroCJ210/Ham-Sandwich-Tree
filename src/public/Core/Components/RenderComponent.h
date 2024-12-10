@@ -24,8 +24,6 @@ public:
 
 private:
 	void CalcVertex();
-	void GenBuffers();
-	void UpdateBuffers();
 	void Draw();
 
 public:

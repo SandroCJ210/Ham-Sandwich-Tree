@@ -18,8 +18,8 @@ private:
 	void InitLine();
 
 public:
-	void DrawQuad(float* vertices, int verticesSize, unsigned int* indices, int indicesSize);
-	void DrawLine(unsigned int *VBO);
+	void DrawQuad(float* vertices);
+	void DrawLine(float* vertices);
 };
 
 template class Singleton<Render>;
