@@ -5,17 +5,11 @@
 #include <thread>
 #include "Core/Scenes/Maze2DScene.h"
 #include "Core/Scenes/TestScene.h"
-#include "Core/Objects/SquareObject.h"
-#include "Core/Materials/BaseMaterial.h"
-#include "Core/Materials/Shader.h"
-#include "Core/Render/Render.h"
-
-const double Window::DELTA_TIME = 0.016;
+#include "Core/Global.h"
 
 Window::Window():Singleton(){
 	actualScene = nullptr;
 }
-
 
 void Window::Start() {
 	std::cout<< "Window Configuration \n";
@@ -25,8 +19,8 @@ void Window::Start() {
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	GLFWwindow* window = glfwCreateWindow(
-		WIDTH,
-		HEIGHT,
+		Global::SCREEN_WIDTH,
+		Global::SCREEN_HEIGHT,
 		"Maze",
 		nullptr,
 		nullptr);
@@ -40,7 +34,6 @@ void Window::Start() {
 		std::cout<<"Failed to initialize GLAD"<<std::endl;
 	}
 	actualScene = new Maze2DScene();
-	Render::GetInstance();
 	actualScene->Start();
 }
 
@@ -50,7 +43,7 @@ void Window::Update() {
 		glfwSwapBuffers(glfwGetCurrentContext());
 		glfwPollEvents();
 
-		std::this_thread::sleep_for(std::chrono::milliseconds((long)(DELTA_TIME * 1000)));
+		std::this_thread::sleep_for(std::chrono::milliseconds((long)(Global::DELTA_TIME * 1000)));
 	}
 }
 
@@ -72,5 +65,5 @@ void Window::ProcessFrame(GLFWwindow* window) {
 	glClearColor(0, 0, 0, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	
-	actualScene->Update(DELTA_TIME);
+	actualScene->Update(Global::DELTA_TIME);
 }

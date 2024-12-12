@@ -180,7 +180,7 @@ void MazeGeneratorComponent::InstantiateWall(std::string id, Vector3 objectPosit
 	std::string name = "Wall" + id;
 	SquareObject* wall = new SquareObject(parent, name);
 	wall->position = objectPosition;
-	wall->GetRenderComponent()->SetScale(objectScale*(1.0 + 0.25));
+	wall->scale = objectScale*(1.0 + 0.25);
 	BaseMaterial* baseMaterial = dynamic_cast<BaseMaterial*>(wall->GetRenderComponent()->material);
 	baseMaterial->SetColor(Vector3(
 		255.0/255.0,

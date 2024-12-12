@@ -1,5 +1,6 @@
 #include "Core/Components/MovementComponent.h"
 #include "Core/Components/Physics/RigidBodyComponent.h"
+#include "Math/Vector2.h"
 #include "Core/Objects/AObject.h"
 
 MovementComponent::MovementComponent(AObject* parent) : IComponent(parent) {

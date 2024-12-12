@@ -1,16 +1,25 @@
 #pragma once
 #include <vector>
 #include <string>
-
 #include "Core/Components/IComponent.h"
 #include "Math/Vector3.h"
+#include "Math/Vector4.h"
 
 class AObject {
 public:
 	std::string name;
 
-	Vector3 position = {0, 0, 0}; //this is the position from the center
-	Vector3 rotation = {0, 0, 0}; //this will change in the future
+public:
+	Vector3 position = {0, 0, 0};
+	Vector3 rotation = {0, 0, 0};
+	Vector3 scale = { 1, 1, 1 };
+
+protected:
+	Vector3 globalPosition = { 0, 0, 0 };
+	Vector3 globalRotation = { 0, 0, 0 };
+	Vector3 globalScale = { 1, 1, 1 };
+
+public:
 	std::vector<IComponent*> components;
 
 	AObject* parent = nullptr;
@@ -18,6 +27,7 @@ public:
 	
 	AObject(AObject* _parent, std::string name);
 	virtual ~AObject();
+
 	virtual void Start();
 	virtual void Update(float deltaTime);
 	virtual void LateUpdate();
@@ -37,6 +47,12 @@ public:
 	}
 
 	void AddChild(AObject* child);
+
+	// Getters and setters
+	Vector3 GetGlobalPosition() const { return globalPosition; }
+	Vector3 GetGlobalRotation() const { return globalRotation; }
+	Vector3 GetGlobalScale() const { return globalScale; }
+	Vector4 GetHomoPosition() const { return Vector4(position.x, position.y, position.z, 1); }
 
 	// Static functions
 

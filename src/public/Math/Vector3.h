@@ -1,6 +1,7 @@
 #pragma once
 
 class Vector2;
+class Vector4;
 
 class Vector3 {
 public:
@@ -30,6 +31,7 @@ public:
 	Vector3();
 	Vector3(double c);
 	Vector3(double x, double y, double z);
+	Vector3(const Vector4& v);
 	Vector3(const Vector3& v);
 	Vector3(const Vector2& v);
 	~Vector3();
@@ -39,7 +41,7 @@ public:
 	Vector3& Normalize();
 	
 	static double Dot(const Vector3& v, const Vector3& w);
-	static Vector3& Cross(const Vector3& v, const Vector3& w);
+	//static Vector3& Cross(const Vector3& v, const Vector3& w);
 	static double Distance(const Vector3& v, const Vector3& w);
 
 	Vector3& operator+=(const Vector3& v);

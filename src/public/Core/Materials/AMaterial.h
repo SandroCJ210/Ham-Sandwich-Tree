@@ -4,7 +4,7 @@ class Shader;
 
 class AMaterial {
 public:
-    Shader* shader;
+    Shader* shader = nullptr;
 	AMaterial() = default;
     virtual ~AMaterial() = default;
 };

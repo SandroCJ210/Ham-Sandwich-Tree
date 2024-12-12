@@ -7,9 +7,6 @@
 class Window : public Singleton<Window>{
 
 public:
-	static const double DELTA_TIME;
-	static const  int WIDTH = 720;
-	static const int HEIGHT = 720;
 
 	ASceneController* actualScene;
 

@@ -14,29 +14,36 @@ Player::Player(AObject* parent, std::string name, Maze* maze) : AObject(parent, 
 
 	MazeGeneratorComponent* mazeGenerator = maze->GetMazeGeneratorComponent();
 
-	renderComponent = dynamic_cast<RenderComponent*>(AddComponent(new RenderComponent(this)));
-	rigidbodyComponent = dynamic_cast<RigidbodyComponent*>(AddComponent(new RigidbodyComponent(this)));
-	colliderComponent = dynamic_cast<SquareColliderComponent*>(AddComponent(new SquareColliderComponent(this)));
-	inputComponent = dynamic_cast<InputComponent*>(AddComponent(new InputComponent(this)));
-	movementComponent = dynamic_cast<MovementComponent*>(AddComponent(new MovementComponent(this)));
+	renderComponent = dynamic_cast<RenderComponent*>(
+		AddComponent(new RenderComponent( this ))
+	);
+	rigidbodyComponent = dynamic_cast<RigidbodyComponent*>(
+		AddComponent(new RigidbodyComponent( this ))
+	);
+	colliderComponent = dynamic_cast<SquareColliderComponent*>(
+		AddComponent(new SquareColliderComponent( this, Vector2(0,0), Vector2(0.5, 0.5) ))
+	);
+	inputComponent = dynamic_cast<InputComponent*>(
+		AddComponent(new InputComponent(this))
+	);
+	movementComponent = dynamic_cast<MovementComponent*>(
+		AddComponent(new MovementComponent(this))
+	);
 
-	int objectQuantity = mazeGenerator->GetSize();
-	float objectScale = (2.0 / objectQuantity) / 2;
+	double objectQuantity = mazeGenerator->GetSize();
 
-	renderComponent->SetScale(Vector3(objectScale));
-
+	scale = Vector3(1.0/objectQuantity);
+	
 	BaseMaterial* baseMaterial = dynamic_cast<BaseMaterial*>(renderComponent->material);
 	baseMaterial->color = Vector3(63, 72, 204)/255;
 
 	position = Vector3(
-		-1 + objectScale + objectScale * 2,
-		1 - objectScale - objectScale * 2,
-		0.0f);
-	
-	colliderComponent->center = Vector2(0, 0);
-	colliderComponent->halfSize = Vector2(objectScale/2, objectScale/2);
+		-1 + scale.x + scale.x * 2,
+		1 - scale.x - scale.x * 2,
+		0.0f
+	);
 
-	movementComponent->SetSpeed(objectScale * 8);
+	movementComponent->SetSpeed(scale.x * 8);
 }	
 
 Player::~Player() {

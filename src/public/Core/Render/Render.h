@@ -1,25 +1,38 @@
 #pragma once
 #include "Util/Singleton.h"
+#include "Math/Vector3.h"
+#include <vector>
+#include <string>
+
+class Shader;
+class GizmosMaterial;
 
 class Render : public Singleton<Render> {
 private:
+	std::vector<Shader*> shaders;
 	unsigned int VAO_quad;
 	unsigned int VBO_quad;
 	unsigned int EBO_quad;
 	unsigned int VAO_line;
 	unsigned int VBO_line;
 
+	GizmosMaterial* gizmosMaterial;
+
 public:
-	int test;
 	Render();
 	~Render();
+
 private:
 	void InitQuad();
 	void InitLine();
 
+	Vector3 TransformWorldToScreen(Vector3 worldScale);
+
 public:
-	void DrawQuad(float* vertices);
-	void DrawLine(float* vertices);
+	Shader* CreateShader(const std::string vertexPath, const std::string fragmentPath);
+	void DrawQuad(Vector3 center, Vector3 size);
+	void DrawLineSegment(Vector3 start, Vector3 end);
+	void DrawQuadLine(Vector3 center, Vector3 size);
 };
 
 template class Singleton<Render>;

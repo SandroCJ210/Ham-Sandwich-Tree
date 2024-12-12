@@ -2,6 +2,7 @@
 #include "AObject.h"
 
 class RenderComponent;
+class SquareColliderComponent;
 
 class SquareObject : public AObject {
 public:
@@ -9,6 +10,7 @@ public:
 
 private:
 	RenderComponent* renderComponent;
+	SquareColliderComponent* colliderComponent;
 
 public:
 	RenderComponent* GetRenderComponent() const { return renderComponent; };

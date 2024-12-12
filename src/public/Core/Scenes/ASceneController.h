@@ -6,7 +6,6 @@
 class ASceneController {
 
 private:
-
 	PhysicsEngine* physicsEngine;
 	
 public:
@@ -17,4 +16,6 @@ public:
 	virtual void Start();
 	virtual void Update(float deltaTime);
 	virtual void End();
+
+	PhysicsEngine* GetPhysicsEngine() const { return physicsEngine; }
 };

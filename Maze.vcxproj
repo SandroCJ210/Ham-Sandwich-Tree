@@ -243,6 +243,7 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="src\private\Core\Global.cpp" />
     <ClCompile Include="src\private\Core\Materials\AMaterial.cpp" />
     <ClCompile Include="src\private\Core\Materials\BaseMaterial.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -318,7 +319,8 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="src\private\Core\Materials\Shader.cpp">
+    <ClCompile Include="src\private\Core\Materials\GizmosMaterial.cpp" />
+    <ClCompile Include="src\private\Core\Render\Shader.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
@@ -620,6 +622,9 @@
     </ClCompile>
     <ClCompile Include="src\private\Core\Scenes\Maze2DScene.cpp" />
     <ClCompile Include="src\private\Core\Scenes\TestScene.cpp" />
+    <ClCompile Include="src\private\Math\Matrtix4x4.cpp" />
+    <ClCompile Include="src\private\Math\Transformation.cpp" />
+    <ClCompile Include="src\private\Math\Vector4.cpp" />
     <ClCompile Include="src\private\Util\Graph.cpp" />
     <ClCompile Include="src\private\Math\Vector3.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -703,6 +708,7 @@
     <ClCompile Include="src\private\Math\Vector2.cpp" />
     <ClCompile Include="src\public\Core\Components\Physics\RigidbodyComponent.h" />
     <ClCompile Include="src\public\Core\Components\Physics\SquareColliderComponent.h" />
+    <ClCompile Include="src\public\Math\Transformation.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\public\Core\Components\IComponent.h" />
@@ -711,9 +717,11 @@
     <ClInclude Include="src\public\Core\Components\MovementComponent.h" />
     <ClInclude Include="src\public\Core\Components\Physics\ColliderComponent.h" />
     <ClInclude Include="src\public\Core\Components\RenderComponent.h" />
+    <ClInclude Include="src\public\Core\Global.h" />
     <ClInclude Include="src\public\Core\Materials\AMaterial.h" />
     <ClInclude Include="src\public\Core\Materials\BaseMaterial.h" />
-    <ClInclude Include="src\public\Core\Materials\Shader.h" />
+    <ClInclude Include="src\public\Core\Materials\GizmosMaterial.h" />
+    <ClInclude Include="src\public\Core\Render\Shader.h" />
     <ClInclude Include="src\public\Core\Objects\AObject.h" />
     <ClInclude Include="src\public\Core\Objects\Maze.h" />
     <ClInclude Include="src\public\Core\Objects\Player.h" />
@@ -723,6 +731,8 @@
     <ClInclude Include="src\public\Core\Scenes\ASceneController.h" />
     <ClInclude Include="src\public\Core\Objects\SquareObject.h" />
     <ClInclude Include="src\public\Core\Scenes\TestScene.h" />
+    <ClInclude Include="src\public\Math\Matrix4x4.h" />
+    <ClInclude Include="src\public\Math\Vector4.h" />
     <ClInclude Include="src\public\Util\Graph.h" />
     <ClInclude Include="src\public\Math\Vector3.h" />
     <ClInclude Include="src\public\Util\Singleton.h" />

@@ -3,7 +3,9 @@
 
 class RigidbodyComponent;
 class ColliderComponent;
+class SquareColliderComponent;
 class AObject;
+class Vector2;
 
 class PhysicsEngine {
 private:
@@ -19,4 +21,5 @@ public:
 	void AddRigidbody(RigidbodyComponent* rigidBody);
 	void AddCollider(ColliderComponent* collider);
 
+	bool PointIntersectsSquareCollider(Vector2 point, SquareColliderComponent* collider);
 };

@@ -1,8 +1,8 @@
 #include <string>
-
 #include "Core/Scenes/ASceneController.h"
 #include "Core/Window.h"
 #include "Core/Objects/AObject.h"
+#include "Math/Transformation.h"
 
 AObject::AObject(AObject* _parent, std::string name) {
 	this->parent = _parent;
@@ -24,9 +24,30 @@ void AObject::Start() {
 }
 
 void AObject::Update(float deltaTime) {
+	if (parent != nullptr) {
+
+		globalScale = Vector3(
+			scale.x * parent->globalScale.x,
+			scale.y * parent->globalScale.y,
+			scale.z * parent->globalScale.z
+		);
+
+		globalPosition = parent->globalPosition + Vector3(
+			position.x * parent->globalScale.x,
+			position.y * parent->globalScale.y,
+			position.z * parent->globalScale.z
+		);
+
+	}
+	else {
+		this->globalScale = scale;
+		this->globalPosition = position;
+	}
+
 	for (auto element : components) {
 		element->Update(deltaTime);
 	}
+
 	for (auto element : children) {
 		element->Update(deltaTime);
 	}
@@ -68,6 +89,7 @@ AObject* AObject::FindObjectByName(std::string name) {
 			return object;
 		}
 	}
+	return nullptr;
 }
 
 

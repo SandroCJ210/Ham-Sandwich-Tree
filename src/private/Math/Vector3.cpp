@@ -1,4 +1,5 @@
 #include "Math/Vector3.h"
+#include "Math/Vector4.h"
 #include "Math/Vector2.h"
 #include <complex>
 
@@ -19,7 +20,16 @@ Vector3::Vector3(double c) : x(c), y(c), z(c) {}
 
 Vector3::Vector3(double x, double y, double z) : x(x), y(y), z(z) {}
 
-Vector3::Vector3(const Vector3& v) : x(v.x), y(v.y), z(v.z) {}
+Vector3::Vector3(const Vector4& v) : x(v.x), y(v.y), z(v.z) {}
+
+Vector3::Vector3(const Vector3& v) {
+	this->x = v.x;
+	this->y = v.y;
+	this->z = v.z;
+	this->magnitude = v.magnitude;
+	this->sqrMagnitude = v.sqrMagnitude;
+	this->normalize = v.normalize;
+}
 
 Vector3::Vector3(const Vector2& v) : x(v.x), y(v.y), z(0) {}
 
@@ -54,12 +64,12 @@ double Vector3::Dot(const Vector3& v, const Vector3& w){
 	return v.x * w.x + v.y * w.y + v.z * w.z;
 }
 
-Vector3& Vector3::Cross(const Vector3& v, const Vector3& w){
-	//TODO
-	//no me acuerdo como hacer esto XD
-	Vector3 cross = Vector3();
-	return cross;
-}
+//Vector3& Vector3::Cross(const Vector3& v, const Vector3& w){
+//	//TODO
+//	//no me acuerdo como hacer esto XD
+//	Vector3 cross = Vector3();
+//	return cross;
+//}
 
 double Vector3::Distance(const Vector3& v, const Vector3& w){
 	Vector3 distance = (v - w);
