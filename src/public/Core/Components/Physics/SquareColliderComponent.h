@@ -1,10 +1,8 @@
 #pragma once
-#include "Core/Components/Physics/ColliderComponent.h"
+#include "ColliderComponent.h"
 #include "Math/Vector2.h"
 
-class AObject;
-
-class SquareColliderComponent : public ColliderComponent {
+class SquareColliderComponent : public ColliderComponent{
 public:
 	Vector2 center;
 	Vector2 halfSize;
@@ -17,11 +15,12 @@ public:
 
 	SquareColliderComponent(AObject* parent);
 	SquareColliderComponent(AObject* parent, Vector2 center, Vector2 halfSize);
-	~SquareColliderComponent();
+	~SquareColliderComponent() override;
 
 	void Update(float deltatime) override;
 	void LateUpdate() override;
 
 	Vector2 GetMin();
 	Vector2 GetMax();
+
 };

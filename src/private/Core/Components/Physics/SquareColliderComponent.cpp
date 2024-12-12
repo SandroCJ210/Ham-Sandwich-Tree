@@ -1,15 +1,17 @@
 #include "Core/Components/Physics/SquareColliderComponent.h"
-#include "Core/Render/Render.h"
-#include "Core/Objects/AObject.h"
-#include "Math/Vector2.h"
+
 #include "Core/Global.h"
+#include "Core/Objects/AObject.h"
+#include "Core/Render/Render.h"
+#include "Math/Vector2.h"
 
 SquareColliderComponent::SquareColliderComponent(AObject* parent) : ColliderComponent(parent) {
 	center = Vector2(0, 0);
 	halfSize = Vector2(0, 0);
 }
 
-SquareColliderComponent::SquareColliderComponent(AObject* parent, Vector2 center, Vector2 halfSize) : SquareColliderComponent(parent) {
+SquareColliderComponent::SquareColliderComponent(AObject* parent, Vector2 center,
+												Vector2 halfSize) : SquareColliderComponent(parent) {
 	this->center = center;
 	this->halfSize = halfSize;
 }

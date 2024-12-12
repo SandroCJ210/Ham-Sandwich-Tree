@@ -84,8 +84,8 @@ void Render::DrawLineSegment(Vector3 start, Vector3 end) {
 	gizmosMaterial->SetColorUniform();
 
 	float vertices[] = {
-		start.x, start.y, start.z,
-		end.x, end.y, end.z
+		(float)start.x, (float)start.y, (float)start.z,
+		(float)end.x, (float)end.y, (float)end.z
 	};
 
 	glLineWidth(1.5);
@@ -107,23 +107,23 @@ void Render::DrawQuad(Vector3 center, Vector3 scale) {
 
 	float vertices[] = {
 		//bottom left
-		positionScreen.x - scaleScreen.x / 2,
-		positionScreen.y - scaleScreen.y / 2,
+		(float)(positionScreen.x - scaleScreen.x / 2),
+		(float)(positionScreen.y - scaleScreen.y / 2),
 		0,
 
 		//bottom right
-		positionScreen.x + scaleScreen.x / 2,
-		positionScreen.y - scaleScreen.y / 2,
+		(float)(positionScreen.x + scaleScreen.x / 2),
+		(float)(positionScreen.y - scaleScreen.y / 2),
 		0,
 
 		//top right
-		positionScreen.x + scaleScreen.x / 2,
-		positionScreen.y + scaleScreen.y / 2,
+		(float)(positionScreen.x + scaleScreen.x / 2),
+		(float)(positionScreen.y + scaleScreen.y / 2),
 		0,
 
 		//top left
-		positionScreen.x - scaleScreen.x / 2,
-		positionScreen.y + scaleScreen.y / 2,
+		(float)(positionScreen.x - scaleScreen.x / 2),
+		(float)(positionScreen.y + scaleScreen.y / 2),
 		0,
 	};
 

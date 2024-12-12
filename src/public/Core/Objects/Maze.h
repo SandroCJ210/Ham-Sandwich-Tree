@@ -9,10 +9,7 @@ class Maze : public AObject {
 public:
 	Maze(AObject* parent, std::string name);
 	~Maze();
-	//void Start() override;
-	//void Update() override;
-	//void LateUpdate() override;
-	//void End() override;
+	
 private:
 	MazeGeneratorComponent* mazeGeneratorComponent;
 

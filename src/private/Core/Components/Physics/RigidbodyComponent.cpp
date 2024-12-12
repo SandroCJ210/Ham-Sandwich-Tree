@@ -1,7 +1,7 @@
 #include "Core/Components/Physics/RigidbodyComponent.h"
+
 #include "Core/Components/Physics/ColliderComponent.h"
 #include "Core/Objects/AObject.h"
-#include "Core/Components/IComponent.h"
 
 RigidbodyComponent::RigidbodyComponent(AObject* parent) : IComponent(parent) {
 	velocity = Vector2(0, 0);

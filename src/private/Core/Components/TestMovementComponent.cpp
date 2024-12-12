@@ -12,21 +12,21 @@ TestMovementComponent::~TestMovementComponent() {
 }
 
 void TestMovementComponent::Start() {
-	/*int size = AObject::FindObjectByName("Maze")->GetComponent<MazeGeneratorComponent>()->GetSize();*/
+	int size = AObject::FindObjectByName("Maze")->GetComponent<MazeGeneratorComponent>()->GetSize();
 
-	velocity = Vector3(0.5, 0.5, 0.0);
+	// velocity = Vector3(0.5, 0.5, 0.0);
 }
 
 void TestMovementComponent::Update(float deltaTime) {
 	
-	/*this->parent->scale += velocity * deltaTime;
-
-	if (this->parent->scale.x > 1.2) {
-		velocity = velocity * -1;
-	}
-	else if (this->parent->scale.x < 0.001) {
-		velocity = velocity * -1;
-	}*/
+	// this->parent->scale += velocity * deltaTime;
+	//
+	// if (this->parent->scale.x > 1.2) {
+	// 	velocity = velocity * -1;
+	// }
+	// else if (this->parent->scale.x < 0.001) {
+	// 	velocity = velocity * -1;
+	// }
 
 	SquareColliderComponent* collider = this->parent->GetComponent<SquareColliderComponent>();
 	AObject* player = AObject::FindObjectByName("Player");

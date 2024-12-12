@@ -1,11 +1,12 @@
 #pragma once
+#include <vector>
+
 #include "Core/Components/IComponent.h"
 #include "Math/Vector2.h"
-#include <vector>
 
 class ColliderComponent;
 
-class RigidbodyComponent : public IComponent {
+class RigidbodyComponent : public IComponent{
 private:
 	std::vector<ColliderComponent*> colliders;
 
@@ -21,7 +22,7 @@ public:
 	//bool isKinematic;
 
 	RigidbodyComponent(AObject* parent);
-	~RigidbodyComponent();
+	~RigidbodyComponent() override;
 
 	void Start() override;
 	void End() override;

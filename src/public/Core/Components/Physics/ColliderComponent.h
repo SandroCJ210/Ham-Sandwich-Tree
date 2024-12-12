@@ -6,5 +6,5 @@ class ColliderComponent : public IComponent {
 public:
 	bool isTrigger = false;
 
-	ColliderComponent(AObject* parent) : IComponent(parent) {};
+	ColliderComponent(AObject* parent);
 };
