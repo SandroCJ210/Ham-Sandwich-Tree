@@ -17,10 +17,10 @@ public:
 	SquareColliderComponent(AObject* parent, Vector2 center, Vector2 halfSize);
 	~SquareColliderComponent() override;
 
-	void Update(float deltatime) override;
+	void FixedUpdate() override;
+	void Update(double deltatime) override;
 	void LateUpdate() override;
 
-	Vector2 GetMin();
-	Vector2 GetMax();
-
+	Vector2 GetWorldCenter() const { return worldCenter; }
+	Vector2 GetWorldHalfSize() const { return worldHalfSize; }
 };

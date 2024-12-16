@@ -13,5 +13,6 @@ private:
 	SquareColliderComponent* colliderComponent;
 
 public:
-	RenderComponent* GetRenderComponent() const { return renderComponent; };
+	RenderComponent* GetRenderComponent() const { return renderComponent; }
+	SquareColliderComponent* GetColliderComponent() const { return colliderComponent; }
 };

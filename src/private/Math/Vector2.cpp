@@ -107,3 +107,12 @@ Vector2 Vector2::operator*(const double d) const {
 Vector2 Vector2::operator/(const double d) const {
 	return Vector2(this->x / d, this->y / d);
 }
+
+double Vector2::operator[](const int i) {
+	switch (i) {
+		case 0: return this->x;
+		case 1: return this->y;
+		default: return 0;
+	}
+}
+

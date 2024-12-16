@@ -73,12 +73,12 @@ Shader* Render::CreateShader(const std::string vertexPath, const std::string fra
 	return newShader;
 }
 
-void Render::DrawLineSegment(Vector3 start, Vector3 end) {
+void Render::DrawLineSegment(Vector3 start, Vector3 end, Vector3 color) {
 
-	gizmosMaterial->SetColor(Vector3(
-		9	/255.0, 
-		186	/255.0, 
-		21	/255.0));
+	start = TransformWorldToScreen(start);
+	end = TransformWorldToScreen(end);
+
+	gizmosMaterial->SetColor(color);
 
 	gizmosMaterial->shader->Use();
 	gizmosMaterial->SetColorUniform();
@@ -88,7 +88,7 @@ void Render::DrawLineSegment(Vector3 start, Vector3 end) {
 		(float)end.x, (float)end.y, (float)end.z
 	};
 
-	glLineWidth(1.5);
+	glLineWidth(1);
 
 	glBindVertexArray(VAO_line);
 
@@ -137,21 +137,18 @@ void Render::DrawQuad(Vector3 center, Vector3 scale) {
 	glBindVertexArray(0);
 }
 
-void Render::DrawQuadLine(Vector3 center, Vector3 scale) {
-
-	Vector3 scaleScreen = TransformWorldToScreen(scale);
-	Vector3 positionScreen = TransformWorldToScreen(center);
+void Render::DrawQuadLine(Vector3 center, Vector3 scale, Vector3 color) {
 
 	Vector3 points[] = {
-		Vector3(positionScreen.x - scaleScreen.x / 2, positionScreen.y - scaleScreen.y / 2, 0), //bottom left
-		Vector3(positionScreen.x + scaleScreen.x / 2, positionScreen.y - scaleScreen.y / 2, 0), //bottom right
-		Vector3(positionScreen.x + scaleScreen.x / 2, positionScreen.y + scaleScreen.y / 2, 0), //top right
-		Vector3(positionScreen.x - scaleScreen.x / 2, positionScreen.y + scaleScreen.y / 2, 0), //top left
+		Vector3(center.x - scale.x / 2, center.y - scale.y / 2, 0), //bottom left
+		Vector3(center.x + scale.x / 2, center.y - scale.y / 2, 0), //bottom right
+		Vector3(center.x + scale.x / 2, center.y + scale.y / 2, 0), //top right
+		Vector3(center.x - scale.x / 2, center.y + scale.y / 2, 0), //top left
 	};
 
-	DrawLineSegment(points[0], points[1]);
-	DrawLineSegment(points[1], points[2]);
-	DrawLineSegment(points[2], points[3]);
-	DrawLineSegment(points[3], points[0]);
+	DrawLineSegment(points[0], points[1], color);
+	DrawLineSegment(points[1], points[2], color);
+	DrawLineSegment(points[2], points[3], color);
+	DrawLineSegment(points[3], points[0], color);
 
 }

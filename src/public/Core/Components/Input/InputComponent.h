@@ -18,7 +18,7 @@ public:
 	InputComponent(AObject* parent);
 	~InputComponent() override;
 
-	void Update(float deltaTime) override;
+	void Update(double deltaTime) override;
 
 private:
 	void SetMovementDirection();

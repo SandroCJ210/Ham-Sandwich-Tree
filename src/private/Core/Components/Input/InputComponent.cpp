@@ -1,5 +1,6 @@
-#include "Core/Components/InputComponent.h"
-#include "Core/Components/MovementComponent.h"
+#include "Core/Components/Input/InputComponent.h"
+
+#include "Core/Components/Maze2D/MovementComponent.h"
 #include "Core/Objects/AObject.h"
 
 InputComponent::InputComponent(AObject* parent) : IComponent(parent) {
@@ -8,7 +9,7 @@ InputComponent::InputComponent(AObject* parent) : IComponent(parent) {
 InputComponent::~InputComponent() {
 }
 
-void InputComponent::Update(float deltaTime) {
+void InputComponent::Update(double deltaTime) {
 	SetMovementDirection();
 }
 
@@ -28,5 +29,8 @@ void InputComponent::SetMovementDirection() {
 		direction.x = 1;
 	}
 
-	parent->GetComponent<MovementComponent>()->SetDirection(direction);
+	MovementComponent* movement = parent->GetComponent<MovementComponent>();
+
+	if (movement != nullptr)
+		movement->SetDirection(direction);
 }

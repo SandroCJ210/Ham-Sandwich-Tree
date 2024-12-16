@@ -1,10 +1,9 @@
-#include "Core/Components/RenderComponent.h"
+#include "Core/Components/Render/RenderComponent.h"
+
 #include "Core/Materials/BaseMaterial.h"
-#include "Core/Materials/AMaterial.h"
 #include "Core/Render/Shader.h"
 #include "Core/Objects/AObject.h"
 #include "Core/Render/Render.h"
-#include "Core/Global.h"
 
 RenderComponent::RenderComponent(AObject* parent) : IComponent(parent){
 	material = new BaseMaterial();
@@ -21,6 +20,7 @@ void RenderComponent::LateUpdate() {
 }
 
 void RenderComponent::Draw() {
+	if (!enableRender) return;
 
 	Vector3 center = this->parent->GetGlobalPosition();
 	Vector3 scale = this->parent->GetGlobalScale();

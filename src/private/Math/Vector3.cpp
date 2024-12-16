@@ -133,5 +133,9 @@ Vector3 Vector3::operator/(const double d) const {
 	return {this->x / d, this->y / d, this->z / d};
 }
 
-
-
+double Vector3::operator[](const int i){
+	if(i == 0) return this->x;
+	if(i == 1) return this->y;
+	if(i == 2) return this->z;
+	return 0;
+}

@@ -1,11 +1,14 @@
 #include "Core/Window.h"
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <thread>
+
 #include "Core/Scenes/Maze2DScene.h"
 #include "Core/Scenes/TestScene.h"
 #include "Core/Global.h"
+#include "Core/Scenes/TestColisionScene.h"
 
 Window::Window():Singleton(){
 	actualScene = nullptr;
@@ -31,9 +34,9 @@ void Window::Start() {
 	});
 	
 	if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-		std::cout<<"Failed to initialize GLAD"<<std::endl;
+		std::cout<<"Failed to initialize GLAD"<< '\n';
 	}
-	actualScene = new Maze2DScene();
+	actualScene = new TestColisionScene();
 	actualScene->Start();
 }
 
@@ -42,8 +45,6 @@ void Window::Update() {
 		ProcessFrame(glfwGetCurrentContext());
 		glfwSwapBuffers(glfwGetCurrentContext());
 		glfwPollEvents();
-
-		std::this_thread::sleep_for(std::chrono::milliseconds((long)(Global::DELTA_TIME * 1000)));
 	}
 }
 
@@ -65,5 +66,9 @@ void Window::ProcessFrame(GLFWwindow* window) {
 	glClearColor(0, 0, 0, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	
-	actualScene->Update(Global::DELTA_TIME);
+	actualScene->SceneUpdate();
+}
+
+void Window::AddObjectToScene(AObject* object) {
+	actualScene->AddObject(object);
 }

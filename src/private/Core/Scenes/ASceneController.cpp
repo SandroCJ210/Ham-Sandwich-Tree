@@ -1,4 +1,9 @@
 #include "Core/Scenes/ASceneController.h"
+
+#include <iostream>
+#include <GLFW/glfw3.h>
+
+#include "Core/Global.h"
 #include "Core/Physics/PhysicsEngine.h"
 
 
@@ -6,22 +11,59 @@ ASceneController::ASceneController(){
 	physicsEngine = new PhysicsEngine();
 }
 
-void ASceneController::Start(){
-	physicsEngine->Start(objects);
+ASceneController::~ASceneController(){
+	delete physicsEngine;
+}
 
+void ASceneController::AddObject(AObject* object){
+	objects.push_back(object);
+}
+
+void ASceneController::Start(){
+	previous = glfwGetTime();
+	
 	for (auto element : objects){
 		element->Start();
 	}
+	physicsEngine->Start(objects);
+
 }
 
-void ASceneController::Update(float deltaTime){
+void ASceneController::SceneUpdate(){
+	current = glfwGetTime();
+	double deltaTime = current - previous;
+	previous = current;
+	physicsTimeOffset += deltaTime;
+
+	// double fps = 1.0 / deltaTime;
+	// std::cout<<"FPS: "<<fps<<std::endl;
+	
+	while (physicsTimeOffset >= Global::FIXED_DELTA_TIME){
+		FixedUpdate();
+		physicsTimeOffset -= Global::FIXED_DELTA_TIME;
+		if (Global::DEBUG)
+			physicsTimeOffset = 0;
+	}
+
+	Update(deltaTime);
+	LateUpdate();
+}
+
+void ASceneController::FixedUpdate() {
+	for (auto element : objects) {
+		element->FixedUpdate();
+	}
+	physicsEngine->Update();
+}
+
+void ASceneController::Update(double deltaTime){
 	for (auto element : objects){
 		element->Update(deltaTime);
 	}
+}
 
-	physicsEngine->Update(deltaTime);
-
-	for (auto element : objects) {
+void ASceneController::LateUpdate(){
+	for (auto element : objects){
 		element->LateUpdate();
 	}
 }

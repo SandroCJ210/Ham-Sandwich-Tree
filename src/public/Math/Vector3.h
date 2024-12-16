@@ -54,5 +54,6 @@ public:
 	Vector3 operator-(const Vector3& v) const;
 	Vector3 operator*(const double d) const;
 	Vector3 operator/(const double d) const;
+	double operator[](const int i);
 	
 };

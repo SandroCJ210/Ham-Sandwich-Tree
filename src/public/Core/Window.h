@@ -6,18 +6,23 @@
 
 class Window : public Singleton<Window>{
 
-public:
-
+private:
 	ASceneController* actualScene;
 
 public:
 	Window();
+	void Excecute();
+	void AddObjectToScene(AObject* object);
 
+private:
 	void Start();
 	void Update();
 	void End();
-	void Excecute();
-
 	void ProcessFrame(struct GLFWwindow* window);
+
+public:
+	void SetActualScene(ASceneController* scene) { actualScene = scene; }
+	
+	ASceneController* GetActualScene() const { return actualScene; }
 };
 template class Singleton<Window>;

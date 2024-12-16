@@ -2,16 +2,17 @@
 #include <vector>
 
 #include "Core/Components/IComponent.h"
-#include "Math/Vector2.h"
+#include "Math/Vector3.h"
 
 class ColliderComponent;
 
 class RigidbodyComponent : public IComponent{
 private:
+	
 	std::vector<ColliderComponent*> colliders;
-
+	
 public:
-	Vector2 velocity;
+	Vector3 velocity;
 	float mass = 1;
 	//float drag;
 	//float angularVelocity;
@@ -27,7 +28,7 @@ public:
 	void Start() override;
 	void End() override;
 
-	void PhysicsUpdate(float deltaTime);
+	void PhysicsUpdate(float fixedDeltaTime, std::vector<ColliderComponent*> nearColliders);
 
 	void AddCollider(ColliderComponent* collider);
 	void RemoveCollider(ColliderComponent* collider);

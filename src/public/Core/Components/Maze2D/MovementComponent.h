@@ -1,5 +1,5 @@
 #pragma once
-#include "IComponent.h"
+#include "Core/Components/IComponent.h"
 #include "Math/Vector2.h"
 
 class MovementComponent : public IComponent {
@@ -11,7 +11,7 @@ public:
 	MovementComponent(AObject* parent);
 	~MovementComponent() override;
 
-	void Update(float deltaTime) override;
+	void Update(double deltaTime) override;
 
 	Vector2 GetDirection() const { return direction; };
 	double GetSpeed() const { return speed; };

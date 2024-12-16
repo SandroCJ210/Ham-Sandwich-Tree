@@ -2,13 +2,16 @@
 #include "Core/Scenes/ASceneController.h"
 #include "Core/Window.h"
 #include "Core/Objects/AObject.h"
+
+#include <iostream>
+
 #include "Math/Transformation.h"
 
 AObject::AObject(AObject* _parent, std::string name) {
 	this->parent = _parent;
 	this->name = name;
 	if (parent == nullptr) return;
-	_parent->children.push_back(this);
+	parent->AddChild(this);
 }
 
 AObject::~AObject() {
@@ -23,7 +26,7 @@ void AObject::Start() {
 	}
 }
 
-void AObject::Update(float deltaTime) {
+void AObject::FixedUpdate() {
 	if (parent != nullptr) {
 
 		globalScale = Vector3(
@@ -43,6 +46,18 @@ void AObject::Update(float deltaTime) {
 		this->globalScale = scale;
 		this->globalPosition = position;
 	}
+
+	for (auto element : components) {
+		element->FixedUpdate();
+	}
+
+	for (auto element : children) {
+		element->FixedUpdate();
+	}
+}
+
+
+void AObject::Update(double deltaTime) {
 
 	for (auto element : components) {
 		element->Update(deltaTime);
@@ -82,7 +97,7 @@ void AObject::AddChild(AObject* child) {
 
 AObject* AObject::FindObjectByName(std::string name) {
 	
-	ASceneController* scene = Window::GetInstance().actualScene;
+	ASceneController* scene = Window::GetInstance().GetActualScene();
 
 	for (AObject* object : scene->objects) {
 		if (object->name == name) {
@@ -92,5 +107,33 @@ AObject* AObject::FindObjectByName(std::string name) {
 	return nullptr;
 }
 
+void AObject::SetGlobalPosition(Vector3 position) {
+	if (parent != nullptr) {
+		this->position = Vector3(
+			(position.x - parent->globalPosition.x) / parent->globalScale.x,
+			(position.y - parent->globalPosition.y) / parent->globalScale.y,
+			(position.z - parent->globalPosition.z) / parent->globalScale.z
+		);
+	}
+	else {
+		this->position = position;
+	}
+}
+
+void AObject::SetGlobalRotation(Vector3 rotation) {
+}
+
+void AObject::SetGlobalScale(Vector3 scale) {
+	if (parent != nullptr) {
+		this->scale = Vector3(
+			scale.x / parent->globalScale.x,
+			scale.y / parent->globalScale.y,
+			scale.z / parent->globalScale.z
+		);
+	}
+	else {
+		this->scale = scale;
+	}
+}
 
 

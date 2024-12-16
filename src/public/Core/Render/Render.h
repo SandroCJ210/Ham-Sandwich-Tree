@@ -31,8 +31,8 @@ private:
 public:
 	Shader* CreateShader(const std::string vertexPath, const std::string fragmentPath);
 	void DrawQuad(Vector3 center, Vector3 size);
-	void DrawLineSegment(Vector3 start, Vector3 end);
-	void DrawQuadLine(Vector3 center, Vector3 size);
+	void DrawLineSegment(Vector3 start, Vector3 end, Vector3 color);
+	void DrawQuadLine(Vector3 center, Vector3 size, Vector3 color);
 };
 
 template class Singleton<Render>;

@@ -1,14 +1,14 @@
-#include <iostream>
-#include <random>
-#include <vector>
+#include "Core/Components/Maze2D/MazeGeneratorComponent.h"
 
-#include "Core/Components/MazeGeneratorComponent.h"
 #include "Core/Objects/SquareObject.h"
-#include "Core/Components/RenderComponent.h"
+#include "Core/Components//Render/RenderComponent.h"
 #include "Core/Materials/BaseMaterial.h"
 #include "Math/Vector3.h"
 #include "Util/Utility.h"
 
+#include <iostream>
+#include <random>
+#include <vector>
 
 MazeGeneratorComponent::MazeGeneratorComponent(AObject* parent) : IComponent(parent) {
 
@@ -182,8 +182,5 @@ void MazeGeneratorComponent::InstantiateWall(std::string id, Vector3 objectPosit
 	wall->position = objectPosition;
 	wall->scale = objectScale*(1.0 + 0.25);
 	BaseMaterial* baseMaterial = dynamic_cast<BaseMaterial*>(wall->GetRenderComponent()->material);
-	baseMaterial->SetColor(Vector3(
-		255.0/255.0,
-		127/255.0,
-		39/255.0));
+	baseMaterial->SetColor(Vector3(255, 127, 39) / 255.0);
 }

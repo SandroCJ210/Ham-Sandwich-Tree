@@ -2,6 +2,8 @@
 #include "Core/Render/Shader.h"
 #include <string>
 
+#include "Core/Render/Render.h"
+
 GizmosMaterial::GizmosMaterial() {
 	std::string vertexPath = "Assets/Shaders/ColorRenderization/ColorRenderization.vert";
 	std::string fragmentPath = "Assets/Shaders/ColorRenderization/ColorRenderization.frag";

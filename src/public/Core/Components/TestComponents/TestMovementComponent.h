@@ -10,7 +10,7 @@ public:
 	TestMovementComponent(AObject* parent);
 	~TestMovementComponent() override;
 	void Start() override;
-	void Update(float deltaTime) override;
+	void Update(double deltaTime) override;
 	void LateUpdate() override;
 };
 

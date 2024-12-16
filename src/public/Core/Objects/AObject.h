@@ -29,7 +29,8 @@ public:
 	virtual ~AObject();
 
 	virtual void Start();
-	virtual void Update(float deltaTime);
+	virtual	void FixedUpdate();
+	virtual void Update(double deltaTime);
 	virtual void LateUpdate();
 	virtual void End();
 
@@ -49,6 +50,10 @@ public:
 	void AddChild(AObject* child);
 
 	// Getters and setters
+	void SetGlobalPosition(Vector3 position);
+	void SetGlobalRotation(Vector3 rotation);
+	void SetGlobalScale(Vector3 scale);
+	
 	Vector3 GetGlobalPosition() const { return globalPosition; }
 	Vector3 GetGlobalRotation() const { return globalRotation; }
 	Vector3 GetGlobalScale() const { return globalScale; }

@@ -1,6 +1,5 @@
 #include "Core/Objects/SquareObject.h"
-#include "Core/Components/RenderComponent.h"
-#include "Core/Components/TestMovementComponent.h"
+#include "Core/Components/Render/RenderComponent.h"
 #include "Core/Components/Physics/SquareColliderComponent.h"
 #include "Core/Objects/AObject.h"
 
@@ -15,6 +14,4 @@ SquareObject::SquareObject(AObject* parent, std::string name) : AObject(parent, 
 			Vector2(0.5, 0.5)
 			))
 	);
-
-	AddComponent(new TestMovementComponent(this));
 }
