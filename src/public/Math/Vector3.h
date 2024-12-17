@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 class Vector2;
 class Vector4;
@@ -39,6 +40,8 @@ public:
 	double Magnitude();
 	double SquaredMagnitude();
 	Vector3& Normalize();
+
+	std::string ToString();
 	
 	static double Dot(const Vector3& v, const Vector3& w);
 	//static Vector3& Cross(const Vector3& v, const Vector3& w);

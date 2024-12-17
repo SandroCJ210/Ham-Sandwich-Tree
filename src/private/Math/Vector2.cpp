@@ -24,27 +24,22 @@ Vector2::Vector2(const Vector3& v) : x(v.x), y(v.y) {}
 Vector2::~Vector2() {}
 
 double Vector2::Magnitude() {
-	if (magnitude == 0.0) {
-		magnitude = sqrt(SquaredMagnitude());
-	}
+	double magnitude = sqrt(SquaredMagnitude());
 	return magnitude;
 }
 
 double Vector2::SquaredMagnitude() {
-	if (sqrMagnitude == 0.0) {
-		sqrMagnitude = this->x * this->x + this->y * this->y;
-	}
+	double sqrMagnitude = this->x * this->x + this->y * this->y;
 	return sqrMagnitude;
 }
 
-Vector2& Vector2::Normalize() {
-	if (this->normalize == nullptr) {
-		Vector2 nVec = Vector2(
-			this->x / this->Magnitude(),
-			this->y / this->Magnitude());
-		this->normalize = &nVec;
-	}
-	return *this->normalize;
+Vector2 Vector2::Normalize() {
+	double magnitude = this->Magnitude();
+	if (magnitude == 0.0) return Vector2::zero;
+		Vector2 normalize = Vector2(
+			this->x / magnitude,
+			this->y / magnitude);
+	return normalize;
 }
 
 double Vector2::Dot(const Vector2& v, const Vector2& w) {

@@ -64,6 +64,10 @@ double Vector3::Dot(const Vector3& v, const Vector3& w){
 	return v.x * w.x + v.y * w.y + v.z * w.z;
 }
 
+std::string Vector3::ToString(){
+	return "(" + std::to_string(this->x) + ", " + std::to_string(this->y) + ", " + std::to_string(this->z) + ")";
+}
+
 //Vector3& Vector3::Cross(const Vector3& v, const Vector3& w){
 //	//TODO
 //	//no me acuerdo como hacer esto XD

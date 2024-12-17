@@ -7,6 +7,7 @@
 #include "Core/Components/Physics/SquareColliderComponent.h"
 #include "Core/Objects/AObject.h"
 #include "Core/Render/Render.h"
+#include "Util/Logger.h"
 
 RigidbodyComponent::RigidbodyComponent(AObject* parent) : IComponent(parent) {
 	velocity = Vector2(0, 0);
@@ -48,12 +49,10 @@ void RigidbodyComponent::PhysicsUpdate(float fixedDeltaTime, std::vector<Collide
 				rbSquareCollider->GetWorldHalfSize()
 				);
 			
-			if (velocity != Vector2::zero) {
-				//Vector2 magnitude = (normalizedVelocity * fixedDeltaTime);
-				
+			if (velocity.x != 0) {
 				PhysicsEngine::Hit hit = physics->RaycastSquareCollider(
 					rbSquareCollider->GetWorldCenter(),
-					velocity.Normalize(),
+					velocity.x > 0 ? Vector2::right : Vector2::left,
 					velocity.Magnitude() * fixedDeltaTime,
 					sumCenter,
 					sumHalfSize
@@ -61,7 +60,22 @@ void RigidbodyComponent::PhysicsUpdate(float fixedDeltaTime, std::vector<Collide
 				
 				if (hit.hit) {
 					parent->SetGlobalPosition(hit.position);
-					velocity = Vector2::zero;
+					velocity.x = 0;
+				}
+			}
+
+			if (velocity.y != 0) {
+				PhysicsEngine::Hit hit = physics->RaycastSquareCollider(
+					rbSquareCollider->GetWorldCenter(),
+					velocity.y > 0 ? Vector2::up : Vector2::down,
+					velocity.Magnitude() * fixedDeltaTime,
+					sumCenter,
+					sumHalfSize
+				);
+				
+				if (hit.hit) {
+					parent->SetGlobalPosition(hit.position);
+					velocity.y = 0;
 				}
 			}
 			

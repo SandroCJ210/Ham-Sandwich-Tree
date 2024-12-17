@@ -10,6 +10,7 @@
 #include "Core/Objects/AObject.h"
 #include "Core/Render/Color.h"
 #include "Core/Render/Render.h"
+#include "Util/Logger.h"
 
 PhysicsEngine::PhysicsEngine() {
 	rigidbodies = std::vector<RigidbodyComponent*>();
@@ -157,8 +158,10 @@ PhysicsEngine::Hit PhysicsEngine::RaycastSquareCollider(
 	
 	Hit hit;
 	
-	// if (direction.SquaredMagnitude() != 1.0) return hit;
-
+	if (std::abs(direction.SquaredMagnitude()-1) > 1e-10) {
+		direction = direction.Normalize();
+	}
+	
 	Vector2 magnitude = direction * distance;
 	
 	Vector2 min, max;
@@ -181,6 +184,7 @@ PhysicsEngine::Hit PhysicsEngine::RaycastSquareCollider(
 	}
 
 	if (firstExit > lastEntry && firstExit > 0 && lastEntry < 1) {
+		lastEntry = std::max(lastEntry, 0.0f);
 		hit.hit = true;
 		hit.time = lastEntry;
 		hit.position = position + magnitude * lastEntry;

@@ -1,5 +1,7 @@
 #include "Core/Components/Maze2D/MovementComponent.h"
 
+#include <iostream>
+
 #include "Core/Components/Physics/RigidBodyComponent.h"
 #include "Math/Vector2.h"
 #include "Core/Objects/AObject.h"
@@ -13,7 +15,8 @@ MovementComponent::~MovementComponent() {
 }
 
 void MovementComponent::Update(double deltaTime) {
-	parent->GetComponent<RigidbodyComponent>()->velocity = direction * speed;
+	Vector2 normalizeDirection =  direction.Normalize();
+	parent->GetComponent<RigidbodyComponent>()->velocity = normalizeDirection * speed;
 }
 
 void MovementComponent::SetSpeed(double speed) {

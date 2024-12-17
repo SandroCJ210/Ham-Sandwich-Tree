@@ -118,6 +118,7 @@ void AObject::SetGlobalPosition(Vector3 position) {
 	else {
 		this->position = position;
 	}
+	this->globalPosition = position;
 }
 
 void AObject::SetGlobalRotation(Vector3 rotation) {
@@ -134,6 +135,7 @@ void AObject::SetGlobalScale(Vector3 scale) {
 	else {
 		this->scale = scale;
 	}
+	this->scale = scale;
 }
 
 

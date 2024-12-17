@@ -23,10 +23,10 @@ TestColisionScene::TestColisionScene() {
 	MovementComponent* movement =  dynamic_cast<MovementComponent*>(
 		testSquare->AddComponent(new MovementComponent(testSquare))
 		);
-	testSquare->position = Vector3(-0.5, 0, 0);
+	testSquare->position = Vector3(-0.5, 0.5, 0);
 	testSquare->scale = Vector3(0.3);
-	movement->SetSpeed(3);
-	// movement->SetDirection(Vector2(1, 0));
+	movement->SetSpeed(1);
+	movement->SetDirection(Vector2(1, -1));
 	AddObject(testSquare);
 
 	SquareObject* staticSquare = new SquareObject(nullptr, "staticSquare");
