@@ -6,11 +6,8 @@
 #include "Core/Components/Physics/RigidbodyComponent.h"
 #include "Core/Components/Physics/ColliderComponent.h"
 #include "Core/Components/Physics/SquareColliderComponent.h"
-#include "Math/Vector2.h"
 #include "Core/Objects/AObject.h"
 #include "Core/Render/Color.h"
-#include "Core/Render/Render.h"
-#include "Util/Logger.h"
 
 PhysicsEngine::PhysicsEngine() {
 	rigidbodies = std::vector<RigidbodyComponent*>();
@@ -65,15 +62,15 @@ void PhysicsEngine::AddCollider(ColliderComponent* collider) {
 std::vector<ColliderComponent*> PhysicsEngine::GetNearColliders(RigidbodyComponent* rigidbody) {
 	std::vector<ColliderComponent*> nearColliders = std::vector<ColliderComponent*>();
 
-	Vector3 maxDistance = rigidbody->velocity != Vector3(0) ?
+	glm::vec3 maxDistance = rigidbody->velocity != glm::vec3(0) ?
 		rigidbody->velocity : rigidbody->parent->GetGlobalScale();
 	
 	for (ColliderComponent* collider : colliders) {
 		if (rigidbody->parent == collider->parent) continue;
 
-		Vector3 distance = rigidbody->parent->GetGlobalPosition() - collider->parent->GetGlobalPosition();
+		glm::vec3 distance = rigidbody->parent->GetGlobalPosition() - collider->parent->GetGlobalPosition();
 		
-		if (distance.SquaredMagnitude() <= maxDistance.SquaredMagnitude()) {
+		if (glm::length(distance) <= glm::length(maxDistance)) {
 			nearColliders.push_back(collider);
 		}
 	}
@@ -81,13 +78,13 @@ std::vector<ColliderComponent*> PhysicsEngine::GetNearColliders(RigidbodyCompone
 	return nearColliders;
 }
 
-void PhysicsEngine::CalcMinAndMax(Vector2& min, Vector2& max, Vector2 center, Vector2 halfSize) {
+void PhysicsEngine::CalcMinAndMax(glm::vec2& min, glm::vec2& max, glm::vec2 center, glm::vec2 halfSize) {
 	min = center - halfSize;
 	max = center + halfSize;
 }
 
-bool PhysicsEngine::PointIntersectsSquareCollider(Vector2 point, SquareColliderComponent* collider) {
-	Vector2 min, max;
+bool PhysicsEngine::PointIntersectsSquareCollider(glm::vec2 point, SquareColliderComponent* collider) {
+	glm::vec2 min, max;
 	CalcMinAndMax(min, max, collider->GetWorldCenter(), collider->GetWorldHalfSize());
 
 	return (
@@ -102,10 +99,10 @@ bool PhysicsEngine::SquareColliderIntesectsSquareCollider(
 	SquareColliderComponent* collider1,
 	SquareColliderComponent* collider2
 ) {
-	Vector2 resultPosition = collider1->GetWorldCenter() - collider2->GetWorldCenter();
-	Vector2 resultHalfSize = collider1->GetWorldHalfSize() + collider2->GetWorldHalfSize();
+	glm::vec2 resultPosition = collider1->GetWorldCenter() - collider2->GetWorldCenter();
+	glm::vec2 resultHalfSize = collider1->GetWorldHalfSize() + collider2->GetWorldHalfSize();
 
-	Vector2 min, max;
+	glm::vec2 min, max;
 	CalcMinAndMax(min, max, resultPosition, resultHalfSize);
 
 	return (
@@ -116,17 +113,17 @@ bool PhysicsEngine::SquareColliderIntesectsSquareCollider(
 	);
 }
 
-Vector2 PhysicsEngine::SquareColliderPenetration(
+glm::vec2 PhysicsEngine::SquareColliderPenetration(
 	SquareColliderComponent* collider1,
 	SquareColliderComponent* collider2
 ) {
-	Vector2 resultPosition = collider1->GetWorldCenter() - collider2->GetWorldCenter();
-	Vector2 resultHalfSize = collider1->GetWorldHalfSize() + collider2->GetWorldHalfSize();
+	glm::vec2 resultPosition = collider1->GetWorldCenter() - collider2->GetWorldCenter();
+	glm::vec2 resultHalfSize = collider1->GetWorldHalfSize() + collider2->GetWorldHalfSize();
 
-	Vector2 min, max;
+	glm::vec2 min, max;
 	CalcMinAndMax(min, max, resultPosition, resultHalfSize);
 
-	Vector2 penetration = Vector2(min.x, 0);
+	glm::vec2 penetration = glm::vec2(min.x, 0);
 	
 	float minDistance = std::abs(min.x);
 
@@ -150,21 +147,20 @@ Vector2 PhysicsEngine::SquareColliderPenetration(
 }
 
 PhysicsEngine::Hit PhysicsEngine::RaycastSquareCollider(
-	Vector2 position,
-	Vector2 direction,
+	glm::vec2 position,
+	glm::vec2 direction,
 	double distance,
-	Vector2 colliderPosition,
-	Vector2 colliderHalfSize) {
+	glm::vec2 colliderPosition,
+	glm::vec2 colliderHalfSize) {
 	
 	Hit hit;
 	
-	if (std::abs(direction.SquaredMagnitude()-1) > 1e-10) {
-		direction = direction.Normalize();
-	}
+	direction = glm::normalize(direction);
 	
-	Vector2 magnitude = direction * distance;
+	glm::vec2 magnitude = direction;
+	magnitude *= distance;
 	
-	Vector2 min, max;
+	glm::vec2 min, max;
 	CalcMinAndMax(min, max, colliderPosition, colliderHalfSize);
 
 	float lastEntry = -INFINITY;

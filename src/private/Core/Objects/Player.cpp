@@ -1,4 +1,5 @@
 #include "Core/Objects/Player.h"
+
 #include "Core/Components/Render/RenderComponent.h"
 #include "Core/Components/Input/InputComponent.h"
 #include "Core/Components/Maze2D/MazeGeneratorComponent.h"
@@ -18,7 +19,7 @@ Player::Player(AObject* parent, std::string name) : AObject(parent, name) {
 		AddComponent(new RigidbodyComponent( this ))
 	);
 	colliderComponent = dynamic_cast<SquareColliderComponent*>(
-		AddComponent(new SquareColliderComponent( this, Vector2(0,0), Vector2(0.5, 0.5) ))
+		AddComponent(new SquareColliderComponent( this, glm::vec2(0, 0), glm::vec2(0.5, 0.5) ))
 	);
 	inputComponent = dynamic_cast<InputComponent*>(
 		AddComponent(new InputComponent(this))
@@ -28,7 +29,7 @@ Player::Player(AObject* parent, std::string name) : AObject(parent, name) {
 	);
 	
 	BaseMaterial* baseMaterial = dynamic_cast<BaseMaterial*>(renderComponent->material);
-	baseMaterial->color = Vector3(63, 72, 204)/255;
+	baseMaterial->color = glm::vec3(63, 72, 204) / 255.0f;
 	
 }
 
@@ -37,11 +38,11 @@ void Player::Awake() {
 		AObject::FindObjectByName("Maze")
 		->GetComponent<MazeGeneratorComponent>();
 	
-	double objectQuantity = mazeGenerator->GetSize();
+	float objectQuantity = (float)mazeGenerator->GetSize();
 	
-	scale = Vector3(1.0/objectQuantity);
+	scale = glm::vec3(1.0f / objectQuantity);
 
-	position = Vector3(
+	position = glm::vec3(
 		-1 + scale.x + scale.x * 2,
 		1 - scale.x - scale.x * 2,
 		0.0f

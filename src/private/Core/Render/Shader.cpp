@@ -3,6 +3,7 @@
 #include <glad/glad.h>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <direct.h>
 
 Shader::Shader (const std::string vertexPath, const std::string fragmentPath){

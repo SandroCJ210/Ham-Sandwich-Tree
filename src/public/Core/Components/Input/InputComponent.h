@@ -1,13 +1,14 @@
 #pragma once
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+
 #include "Core/Components/IComponent.h"
-#include "Math/Vector2.h"
 
 class MovementComponent;
 class InputComponent : public IComponent {
 
 private:
-	Vector2 direction;
+	glm::vec2 direction;
 
 private:
 	const int UP = GLFW_KEY_W;

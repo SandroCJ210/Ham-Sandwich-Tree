@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
+#include <glm/glm.hpp>
 
 #include "Core/Components/IComponent.h"
-#include "Math/Vector3.h"
 
 class PhysicsEngine;
 class ColliderComponent;
@@ -15,7 +15,7 @@ private:
 	std::vector<ColliderComponent*> colliders;
 	
 public:
-	Vector3 velocity;
+	glm::vec3 velocity;
 	float mass = 1;
 	//float drag;
 	//float angularVelocity;

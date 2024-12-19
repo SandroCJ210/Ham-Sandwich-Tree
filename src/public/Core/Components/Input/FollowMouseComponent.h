@@ -1,14 +1,12 @@
 #pragma once
-#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
 
 #include "Core/Components/IComponent.h"
-
-class Vector2;
 
 class FollowMouseComponent : public IComponent {
 
 private:
-	Vector2* mousePosition;
+	glm::vec2 mousePosition;
 
 public:
 	FollowMouseComponent(AObject* parent);

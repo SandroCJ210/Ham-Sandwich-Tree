@@ -10,8 +10,8 @@ SquareObject::SquareObject(AObject* parent, std::string name) : AObject(parent, 
 	colliderComponent = dynamic_cast<SquareColliderComponent*>(
 		AddComponent(new SquareColliderComponent(
 			this,
-			Vector2(0, 0),
-			Vector2(0.5, 0.5)
+			glm::vec2(0, 0),
+			glm::vec2(0.5, 0.5)
 			))
 	);
 }

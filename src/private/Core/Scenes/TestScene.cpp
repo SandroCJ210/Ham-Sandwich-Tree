@@ -1,7 +1,6 @@
 #include "Core/Scenes/TestScene.h"
 #include "Core/Objects/SquareObject.h"
 #include "Core/Objects/Player.h"
-#include "Core/Components/Render/RenderComponent.h"
 #include "Core/Materials/BaseMaterial.h"
 
 TestScene::TestScene() {
@@ -12,6 +11,6 @@ TestScene::TestScene() {
 	objects.push_back(square);
 
 	SquareObject* square2 = new SquareObject(nullptr, "Square2");
-	square2->position = Vector3(1, 1, 0);
+	square2->position = glm::vec3(1, 1, 0);
 	objects.push_back(square2);
 }

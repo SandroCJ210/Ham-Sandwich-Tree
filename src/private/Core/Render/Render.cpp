@@ -1,9 +1,11 @@
 #include "Core/Render/Render.h"
+
+#include <glad/glad.h>
+#include <iostream>
+
 #include "Core/Render/Shader.h"
 #include "Core/Materials/GizmosMaterial.h"
 #include "Core/Global.h"
-#include <glad/glad.h>
-#include <iostream>
 
 Render::Render() {
 
@@ -17,8 +19,8 @@ Render::~Render() {
 
 }
 
-Vector3 Render::TransformWorldToScreen(Vector3 worldScale) {
-	return Vector3(
+glm::vec3 Render::TransformWorldToScreen(glm::vec3 worldScale) {
+	return glm::vec3(
 		(Global::METER / Global::SCREEN_FORMAT) * worldScale.x,
 		Global::METER * worldScale.y, 0);
 }
@@ -73,7 +75,7 @@ Shader* Render::CreateShader(const std::string vertexPath, const std::string fra
 	return newShader;
 }
 
-void Render::DrawLineSegment(Vector3 start, Vector3 end, Vector3 color) {
+void Render::DrawLineSegment(glm::vec3 start, glm::vec3 end, glm::vec3 color) {
 
 	start = TransformWorldToScreen(start);
 	end = TransformWorldToScreen(end);
@@ -100,10 +102,10 @@ void Render::DrawLineSegment(Vector3 start, Vector3 end, Vector3 color) {
 	glBindVertexArray(0);
 }
 
-void Render::DrawQuad(Vector3 center, Vector3 scale) {
+void Render::DrawQuad(glm::vec3 center, glm::vec3 scale) {
 
-	Vector3 scaleScreen = TransformWorldToScreen(scale);
-	Vector3 positionScreen = TransformWorldToScreen(center);
+	glm::vec3 scaleScreen = TransformWorldToScreen(scale);
+	glm::vec3 positionScreen = TransformWorldToScreen(center);
 
 	float vertices[] = {
 		//bottom left
@@ -137,13 +139,13 @@ void Render::DrawQuad(Vector3 center, Vector3 scale) {
 	glBindVertexArray(0);
 }
 
-void Render::DrawQuadLine(Vector3 center, Vector3 scale, Vector3 color) {
+void Render::DrawQuadLine(glm::vec3 center, glm::vec3 scale, glm::vec3 color) {
 
-	Vector3 points[] = {
-		Vector3(center.x - scale.x / 2, center.y - scale.y / 2, 0), //bottom left
-		Vector3(center.x + scale.x / 2, center.y - scale.y / 2, 0), //bottom right
-		Vector3(center.x + scale.x / 2, center.y + scale.y / 2, 0), //top right
-		Vector3(center.x - scale.x / 2, center.y + scale.y / 2, 0), //top left
+	glm::vec3 points[] = {
+		glm::vec3(center.x - scale.x / 2, center.y - scale.y / 2, 0), //bottom left
+		glm::vec3(center.x + scale.x / 2, center.y - scale.y / 2, 0), //bottom right
+		glm::vec3(center.x + scale.x / 2, center.y + scale.y / 2, 0), //top right
+		glm::vec3(center.x - scale.x / 2, center.y + scale.y / 2, 0), //top left
 	};
 
 	DrawLineSegment(points[0], points[1], color);

@@ -1,9 +1,9 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <glm/glm.hpp>
 #include "Core/Components/IComponent.h"
-#include "Math/Vector3.h"
-#include "Math/Vector4.h"
+#include "Core/Render/Color.h"
 
 class AObject {
 public:
@@ -12,14 +12,14 @@ public:
 public:
 	bool isEnabled = true;
 	
-	Vector3 position = {0, 0, 0};
-	Vector3 rotation = {0, 0, 0};
-	Vector3 scale = { 1, 1, 1 };
+	glm::vec3 position = {0, 0, 0};
+	glm::vec3 rotation = {0, 0, 0};
+	glm::vec3 scale = { 1, 1, 1 };
 
 protected:
-	Vector3 globalPosition = { 0, 0, 0 };
-	Vector3 globalRotation = { 0, 0, 0 };
-	Vector3 globalScale = { 1, 1, 1 };
+	glm::vec3 globalPosition = { 0, 0, 0 };
+	glm::vec3 globalRotation = { 0, 0, 0 };
+	glm::vec3 globalScale = { 1, 1, 1 };
 
 public:
 	std::vector<IComponent*> components;
@@ -53,14 +53,14 @@ public:
 	void AddChild(AObject* child);
 
 	// Getters and setters
-	void SetGlobalPosition(Vector3 position);
-	void SetGlobalRotation(Vector3 rotation);
-	void SetGlobalScale(Vector3 scale);
+	void SetGlobalPosition(glm::vec3 position);
+	void SetGlobalRotation(glm::vec3 rotation);
+	void SetGlobalScale(glm::vec3 scale);
 	
-	Vector3 GetGlobalPosition() const { return globalPosition; }
-	Vector3 GetGlobalRotation() const { return globalRotation; }
-	Vector3 GetGlobalScale() const { return globalScale; }
-	Vector4 GetHomoPosition() const { return Vector4(position.x, position.y, position.z, 1); }
+	glm::vec3 GetGlobalPosition() const { return globalPosition; }
+	glm::vec3 GetGlobalRotation() const { return globalRotation; }
+	glm::vec3 GetGlobalScale() const { return globalScale; }
+	glm::vec4 GetHomoPosition() const { return glm::vec4(position.x, position.y, position.z, 1); }
 
 	// Static functions
 

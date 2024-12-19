@@ -5,8 +5,6 @@
 
 #include <iostream>
 
-#include "Math/Transformation.h"
-
 AObject::AObject(AObject* _parent, std::string name) {
 	this->parent = _parent;
 	this->name = name;
@@ -42,13 +40,13 @@ void AObject::Start() {
 void AObject::FixedUpdate() {
 	if (parent != nullptr) {
 
-		globalScale = Vector3(
+		globalScale = glm::vec3(
 			scale.x * parent->globalScale.x,
 			scale.y * parent->globalScale.y,
 			scale.z * parent->globalScale.z
 		);
 
-		globalPosition = parent->globalPosition + Vector3(
+		globalPosition = parent->globalPosition + glm::vec3(
 			position.x * parent->globalScale.x,
 			position.y * parent->globalScale.y,
 			position.z * parent->globalScale.z
@@ -126,9 +124,9 @@ AObject* AObject::FindObjectByName(std::string name) {
 	return nullptr;
 }
 
-void AObject::SetGlobalPosition(Vector3 position) {
+void AObject::SetGlobalPosition(glm::vec3 position) {
 	if (parent != nullptr) {
-		this->position = Vector3(
+		this->position = glm::vec3(
 			(position.x - parent->globalPosition.x) / parent->globalScale.x,
 			(position.y - parent->globalPosition.y) / parent->globalScale.y,
 			(position.z - parent->globalPosition.z) / parent->globalScale.z
@@ -140,12 +138,12 @@ void AObject::SetGlobalPosition(Vector3 position) {
 	this->globalPosition = position;
 }
 
-void AObject::SetGlobalRotation(Vector3 rotation) {
+void AObject::SetGlobalRotation(glm::vec3 rotation) {
 }
 
-void AObject::SetGlobalScale(Vector3 scale) {
+void AObject::SetGlobalScale(glm::vec3 scale) {
 	if (parent != nullptr) {
-		this->scale = Vector3(
+		this->scale = glm::vec3(
 			scale.x / parent->globalScale.x,
 			scale.y / parent->globalScale.y,
 			scale.z / parent->globalScale.z

@@ -1,16 +1,16 @@
 #pragma once
+#include <glm/glm.hpp>
 #include "AMaterial.h"
-#include "Math/Vector3.h"
 
 class BaseMaterial : public AMaterial {
 public:
 
-	Vector3 color = Vector3(1.0, 1.0, 1.0);
+	glm::vec3 color = glm::vec3(1.0, 1.0, 1.0);
 	
 	BaseMaterial();
 	~BaseMaterial();
 
 	void SetColor(float r, float g, float b);
-	void SetColor(Vector3 newColor);
+	void SetColor(glm::vec3 newColor);
 	void SetColorUniform();
 };

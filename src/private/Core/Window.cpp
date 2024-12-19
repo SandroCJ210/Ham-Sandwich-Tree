@@ -38,7 +38,7 @@ void Window::Start() {
 	if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 		Logger::Error("Failed to initialize GLAD");
 	}
-	actualScene = new Maze2DScene();
+	actualScene = new TestColisionScene();
 	actualScene->Awake();
 	actualScene->Start();
 }

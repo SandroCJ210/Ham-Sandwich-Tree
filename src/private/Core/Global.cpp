@@ -1,5 +1,5 @@
 #include "Core/Global.h"
 
-const double Global::FIXED_DELTA_TIME = 0.016;
-const double Global::SCREEN_FORMAT = (double)Global::SCREEN_WIDTH / (double)Global::SCREEN_HEIGHT;
-const double Global::METER = 1;
+const float Global::FIXED_DELTA_TIME = 0.016f;
+const float Global::SCREEN_FORMAT = (float)Global::SCREEN_WIDTH / (float)Global::SCREEN_HEIGHT;
+const float Global::METER = 1;

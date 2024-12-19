@@ -1,6 +1,5 @@
 #pragma once
 #include "Core/Components/IComponent.h"
-#include "Math/Vector3.h"
 
 class AMaterial;
 

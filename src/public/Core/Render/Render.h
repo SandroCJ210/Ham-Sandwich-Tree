@@ -1,8 +1,9 @@
 #pragma once
-#include "Util/Singleton.h"
-#include "Math/Vector3.h"
 #include <vector>
 #include <string>
+#include <glm/glm.hpp>
+
+#include "Util/Singleton.h"
 
 class Shader;
 class GizmosMaterial;
@@ -26,13 +27,13 @@ private:
 	void InitQuad();
 	void InitLine();
 
-	Vector3 TransformWorldToScreen(Vector3 worldScale);
+	glm::vec3 TransformWorldToScreen(glm::vec3 worldScale);
 
 public:
 	Shader* CreateShader(const std::string vertexPath, const std::string fragmentPath);
-	void DrawQuad(Vector3 center, Vector3 size);
-	void DrawLineSegment(Vector3 start, Vector3 end, Vector3 color);
-	void DrawQuadLine(Vector3 center, Vector3 size, Vector3 color);
+	void DrawQuad(glm::vec3 center, glm::vec3 size);
+	void DrawLineSegment(glm::vec3 start, glm::vec3 end, glm::vec3 color);
+	void DrawQuadLine(glm::vec3 center, glm::vec3 size, glm::vec3 color);
 };
 
 template class Singleton<Render>;

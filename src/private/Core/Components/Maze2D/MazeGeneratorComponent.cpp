@@ -1,14 +1,14 @@
 #include "Core/Components/Maze2D/MazeGeneratorComponent.h"
 
-#include "Core/Objects/SquareObject.h"
-#include "Core/Components//Render/RenderComponent.h"
-#include "Core/Materials/BaseMaterial.h"
-#include "Math/Vector3.h"
-#include "Util/Utility.h"
-
 #include <iostream>
 #include <random>
 #include <vector>
+#include <glm/glm.hpp>
+
+#include "Core/Objects/SquareObject.h"
+#include "Core/Components//Render/RenderComponent.h"
+#include "Core/Materials/BaseMaterial.h"
+#include "Util/Utility.h"
 
 #include "Core/Global.h"
 
@@ -129,11 +129,11 @@ void MazeGeneratorComponent::GenerateObjects() {
 			if (i == 0 || i == size - 1 || j == 0 || j == size - 1) {
 				InstantiateWall(
 					std::to_string(i) + std::to_string(j),
-					Vector3(
+					glm::vec3(
 						-1 + (objectScale / 2) + objectScale * j, 
 						1 - (objectScale / 2) - objectScale * i,
 						0.0f), 
-					Vector3(objectScale));
+					glm::vec3(objectScale));
 				continue;
 			}
 
@@ -147,11 +147,11 @@ void MazeGeneratorComponent::GenerateObjects() {
 
 			InstantiateWall(
 				std::to_string(i) + std::to_string(j),
-				Vector3(
+				glm::vec3(
 					-1 + (objectScale / 2) + objectScale * j,
 					1 - (objectScale / 2) - objectScale * i,
 					0.0f),
-				Vector3(objectScale));
+				glm::vec3(objectScale));
 		}
 	}
 
@@ -179,11 +179,13 @@ void MazeGeneratorComponent::PrintMaze() {
 	}
 };
 
-void MazeGeneratorComponent::InstantiateWall(std::string id, Vector3 objectPosition, Vector3 objectScale) {
+void MazeGeneratorComponent::InstantiateWall(std::string id, glm::vec3 objectPosition, glm::vec3 objectScale) {
 	std::string name = "Wall" + id;
+	
 	SquareObject* wall = new SquareObject(parent, name);
 	wall->position = objectPosition;
-	wall->scale = objectScale*(1.0 + 0.25);
+	wall->scale = objectScale * (1.0f + 0.25f);
+	
 	BaseMaterial* baseMaterial = dynamic_cast<BaseMaterial*>(wall->GetRenderComponent()->material);
-	baseMaterial->SetColor(Vector3(255, 127, 39) / 255.0);
+	baseMaterial->SetColor(glm::vec3(255, 127, 39) / 255.0f);
 }

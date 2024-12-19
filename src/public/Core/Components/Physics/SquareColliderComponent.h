@@ -1,26 +1,26 @@
 #pragma once
+#include <glm/glm.hpp>
 #include "ColliderComponent.h"
-#include "Math/Vector2.h"
 
 class SquareColliderComponent : public ColliderComponent{
 public:
-	Vector2 center;
-	Vector2 halfSize;
+	glm::vec2 center;
+	glm::vec2 halfSize;
 
 private:
-	Vector2 worldCenter;
-	Vector2 worldHalfSize;
+	glm::vec2 worldCenter;
+	glm::vec2 worldHalfSize;
 
 public:
 
 	SquareColliderComponent(AObject* parent);
-	SquareColliderComponent(AObject* parent, Vector2 center, Vector2 halfSize);
+	SquareColliderComponent(AObject* parent, glm::vec2 center, glm::vec2 halfSize);
 	~SquareColliderComponent() override;
 
 	void FixedUpdate() override;
 	void Update(double deltatime) override;
 	void LateUpdate() override;
 
-	Vector2 GetWorldCenter() const { return worldCenter; }
-	Vector2 GetWorldHalfSize() const { return worldHalfSize; }
+	glm::vec2 GetWorldCenter() const { return worldCenter; }
+	glm::vec2 GetWorldHalfSize() const { return worldHalfSize; }
 };

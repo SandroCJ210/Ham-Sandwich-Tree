@@ -1,11 +1,12 @@
 #pragma once
+#include <glm/glm.hpp>
+
 #include "Core/Components/IComponent.h"
-#include "Math/Vector3.h"
 
 class TestMovementComponent: public IComponent{
 public:
 	
-	Vector3 velocity = Vector3(0.01, 0.02, 0.0);
+	glm::vec3 velocity = glm::vec3(0.01, 0.02, 0.0);
 
 	TestMovementComponent(AObject* parent);
 	~TestMovementComponent() override;

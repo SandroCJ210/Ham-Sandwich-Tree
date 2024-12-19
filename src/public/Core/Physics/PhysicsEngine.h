@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
-
-#include "Math/Vector2.h"
+#include <glm/glm.hpp>
 
 class RigidbodyComponent;
 class ColliderComponent;
@@ -14,7 +13,7 @@ public:
 	public:
 		bool hit = false;
 		float time;
-		Vector2 position;
+		glm::vec2 position;
 	};
 	
 private:
@@ -35,21 +34,21 @@ private:
 	std::vector<ColliderComponent*> GetNearColliders(RigidbodyComponent* rigidbody);
 
 public:
-	void CalcMinAndMax(Vector2& min, Vector2& max, Vector2 center, Vector2 halfSize);
+	void CalcMinAndMax(glm::vec2& min, glm::vec2& max, glm::vec2 center, glm::vec2 halfSize);
 	
-	bool PointIntersectsSquareCollider(Vector2 point, SquareColliderComponent* collider);
+	bool PointIntersectsSquareCollider(glm::vec2 point, SquareColliderComponent* collider);
 	bool SquareColliderIntesectsSquareCollider(
 		SquareColliderComponent* collider1,
 		SquareColliderComponent* collider2);
 
-	Vector2 SquareColliderPenetration(
+	glm::vec2 SquareColliderPenetration(
 		SquareColliderComponent* collider1,
 		SquareColliderComponent* collider2);
 
 	Hit RaycastSquareCollider(
-		Vector2 position,
-		Vector2 direction,
+		glm::vec2 position,
+		glm::vec2 direction,
 		double distance,
-		Vector2 colliderPosition,
-		Vector2 colliderHalfSize);
+		glm::vec2 colliderPosition,
+		glm::vec2 colliderHalfSize);
 };

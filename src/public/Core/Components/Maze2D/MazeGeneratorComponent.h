@@ -1,9 +1,10 @@
 #pragma once
+#include <string>
+#include <glm/glm.hpp>
+
 #include "Core/Components/IComponent.h"
 #include "Util/Graph.h"	
-#include <string>
 
-class Vector3;
 class MazeGeneratorComponent : public IComponent {
 private:
 	Graph mazeGraph;
@@ -22,7 +23,7 @@ private:
 	void GenerateObjects();
 	void PrintMaze();
 
-	void InstantiateWall(std::string id, Vector3 objectPosition, Vector3 objectSize);
+	void InstantiateWall(std::string id, glm::vec3 objectPosition, glm::vec3 objectSize);
 
 public:
 	int GetSize() const { return size; }

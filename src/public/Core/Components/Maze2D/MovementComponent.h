@@ -1,21 +1,28 @@
 #pragma once
+#include <glm/glm.hpp>
+
 #include "Core/Components/IComponent.h"
-#include "Math/Vector2.h"
+
+
+class RigidbodyComponent;
 
 class MovementComponent : public IComponent {
 private:
-	Vector2 direction;
-	double speed;
+	glm::vec2 direction;
+	float speed;
+
+	RigidbodyComponent* rb;
 	
 public:
 	MovementComponent(AObject* parent);
 	~MovementComponent() override;
 
+	void Start() override;
 	void Update(double deltaTime) override;
 
-	Vector2 GetDirection() const { return direction; };
+	glm::vec2 GetDirection() const { return direction; };
 	double GetSpeed() const { return speed; };
 
-	void SetSpeed(double speed);
-	void SetDirection(Vector2 direction);
+	void SetSpeed(float speed);
+	void SetDirection(glm::vec2 direction);
 };

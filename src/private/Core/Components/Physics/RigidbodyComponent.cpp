@@ -1,7 +1,6 @@
 #include "Core/Components/Physics/RigidbodyComponent.h"
 
-#include <iostream>
-
+#include <vector>
 #include "Core/Window.h"
 #include "Core/Components/Physics/ColliderComponent.h"
 #include "Core/Components/Physics/SquareColliderComponent.h"
@@ -9,13 +8,15 @@
 #include "Core/Render/Render.h"
 
 RigidbodyComponent::RigidbodyComponent(AObject* parent) : IComponent(parent) {
-	velocity = Vector2(0, 0);
+	velocity = glm::vec3(0.0f);
+	physics = nullptr;
 }
 
 RigidbodyComponent::~RigidbodyComponent() {
 }
 
 void RigidbodyComponent::Awake() {
+	physics = Window::GetInstance().GetActualScene()->GetPhysicsEngine();
 	for (IComponent* component : parent->components) {
 		ColliderComponent* collider = dynamic_cast<ColliderComponent*>(component);
 		if (collider != nullptr) {
@@ -29,7 +30,6 @@ void RigidbodyComponent::End() {
 }
 
 void RigidbodyComponent::PhysicsUpdate(float fixedDeltaTime, std::vector<ColliderComponent*> nearColliders) {
-	physics = Window::GetInstance().GetActualScene()->GetPhysicsEngine();
 	
 	for (ColliderComponent* externalCollider : nearColliders) {
 		for (ColliderComponent* rbCollider: colliders) {
@@ -37,7 +37,7 @@ void RigidbodyComponent::PhysicsUpdate(float fixedDeltaTime, std::vector<Collide
 		}
 	}
 	
-	if (velocity != Vector3::zero)
+	if (velocity != glm::vec3(0))
 		parent->SetGlobalPosition(parent->GetGlobalPosition() + velocity * fixedDeltaTime);
 }
 
@@ -54,8 +54,8 @@ void RigidbodyComponent::DetectCollision(
 	if (externalSquareCollider == nullptr || rbSquareCollider == nullptr) return;
 
 	//simulated collider for the collision detection
-	Vector2 sumCenter = externalSquareCollider->GetWorldCenter();
-	Vector2 sumHalfSize = (
+	glm::vec2 sumCenter = externalSquareCollider->GetWorldCenter();
+	glm::vec2 sumHalfSize = (
 		externalSquareCollider->GetWorldHalfSize() +
 		rbSquareCollider->GetWorldHalfSize()
 		);
@@ -63,14 +63,14 @@ void RigidbodyComponent::DetectCollision(
 	if (velocity.x != 0) {
 		PhysicsEngine::Hit hit = physics->RaycastSquareCollider(
 			rbSquareCollider->GetWorldCenter(),
-			velocity.x > 0 ? Vector2::right : Vector2::left,
-			velocity.Magnitude() * fixedDeltaTime,
+			velocity.x > 0 ? glm::vec2(1, 0) : glm::vec2(-1, 0),
+			glm::length(velocity) * fixedDeltaTime,
 			sumCenter,
 			sumHalfSize
 		);
 		
 		if (hit.hit) {
-			parent->SetGlobalPosition(hit.position);
+			parent->SetGlobalPosition(glm::vec3(hit.position, 0));
 			velocity.x = 0;
 		}
 	}
@@ -78,24 +78,24 @@ void RigidbodyComponent::DetectCollision(
 	if (velocity.y != 0) {
 		PhysicsEngine::Hit hit = physics->RaycastSquareCollider(
 			rbSquareCollider->GetWorldCenter(),
-			velocity.y > 0 ? Vector2::up : Vector2::down,
-			velocity.Magnitude() * fixedDeltaTime,
+			velocity.y > 0 ? glm::vec2(0, 1) : glm::vec2(0, -1),
+			glm::length(velocity) * fixedDeltaTime,
 			sumCenter,
 			sumHalfSize
 		);
 		
 		if (hit.hit) {
-			parent->SetGlobalPosition(hit.position);
+			parent->SetGlobalPosition(glm::vec3(hit.position, 0));
 			velocity.y = 0;
 		}
 	}
 	
-	if (velocity == Vector2::zero) {
+	if (velocity == glm::vec3(0)) {
 		if (physics->SquareColliderIntesectsSquareCollider(externalSquareCollider, rbSquareCollider)) {
-			Vector2 penetration = physics->SquareColliderPenetration(externalSquareCollider, rbSquareCollider);
-			parent->SetGlobalPosition(parent->GetGlobalPosition() + penetration * 1.01f);
 			
-			velocity = Vector2::zero;
+			glm::vec2 penetration = physics->SquareColliderPenetration(externalSquareCollider, rbSquareCollider);
+			
+			parent->SetGlobalPosition(parent->GetGlobalPosition() + glm::vec3(penetration, 0) * 1.01f);
 		}
 	}
 }

@@ -15,10 +15,10 @@ GizmosMaterial::~GizmosMaterial() {
 }
 
 void GizmosMaterial::SetColor(float r, float g, float b) {
-	this->color = Vector3(r, g, b);
+	this->color = glm::vec3(r, g, b);
 }
 
-void GizmosMaterial::SetColor(Vector3 color) {
+void GizmosMaterial::SetColor(glm::vec3 color) {
 	this->color = color;
 }
 

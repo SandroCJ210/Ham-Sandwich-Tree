@@ -23,23 +23,23 @@ TestColisionScene::TestColisionScene() {
 	MovementComponent* movement =  dynamic_cast<MovementComponent*>(
 		testSquare->AddComponent(new MovementComponent(testSquare))
 		);
-	testSquare->position = Vector3(-0.5, 0.5, 0);
-	testSquare->scale = Vector3(0.3);
+	testSquare->position = glm::vec3(-0.5, 0.5, 0);
+	testSquare->scale = glm::vec3(0.3f);
 	movement->SetSpeed(1);
-	movement->SetDirection(Vector2(1, -1));
+	// movement->SetDirection(glm::vec2(1, -1));
 	AddObject(testSquare);
 
 	SquareObject* staticSquare = new SquareObject(nullptr, "staticSquare");
 	staticSquare->GetRenderComponent()->enableRender = false;
 	// staticSquare->GetColliderComponent()->isTrigger = true;
 	// staticSquare->AddComponent(new FollowMouseComponent(staticSquare));
-	staticSquare->scale = Vector3(0.5);
+	staticSquare->scale = glm::vec3(0.5f);
 	AddObject(staticSquare);
 
 	SquareObject* sumSquare = new SquareObject(nullptr, "sumSquare");
 	sumSquare->GetRenderComponent()->enableRender = false;
 	sumSquare->GetColliderComponent()->isTrigger = true;
-	sumSquare->position = Vector3(staticSquare->GetGlobalPosition());
+	sumSquare->position = glm::vec3(staticSquare->GetGlobalPosition());
 	sumSquare->scale = staticSquare->scale + testSquare->scale ;
 	AddObject(sumSquare);
 
@@ -68,11 +68,11 @@ void TestColisionScene::Update(double deltaTime) {
 		}
 	}
 	
-	Render::GetInstance().DrawLineSegment(
-		testSquare->GetGlobalPosition(),
-		testSquare->GetGlobalPosition() + rbTestSquare->velocity * Global::FIXED_DELTA_TIME,
-		Color::RED
-		);
+	// Render::GetInstance().DrawLineSegment(
+	// 	testSquare->GetGlobalPosition(),
+	// 	testSquare->GetGlobalPosition() + rbTestSquare->velocity * Global::FIXED_DELTA_TIME,
+	// 	Color::RED
+	// 	);
 	
 	ASceneController::Update(deltaTime);
 

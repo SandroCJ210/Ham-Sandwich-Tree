@@ -18,19 +18,19 @@ void InputComponent::Start() {
 }
 
 void InputComponent::SetMovementDirection() {
-	Vector2 direction = Vector2::zero;
+	glm::vec2 direction = glm::vec2(0);
 
 	if (glfwGetKey(glfwGetCurrentContext(), UP) == GLFW_PRESS) {
-		direction += Vector2(0, 1);
+		direction += glm::vec2(0, 1);
 	}
 	if (glfwGetKey(glfwGetCurrentContext(), DOWN) == GLFW_PRESS) {
-		direction += Vector2(0, -1);
+		direction += glm::vec2(0, -1);
 	}
 	if (glfwGetKey(glfwGetCurrentContext(), LEFT) == GLFW_PRESS) {
-		direction += Vector2(-1, 0);
+		direction += glm::vec2(-1, 0);
 	}
 	if (glfwGetKey(glfwGetCurrentContext(), RIGHT) == GLFW_PRESS) {
-		direction += Vector2(1, 0);
+		direction += glm::vec2(1, 0);
 	}
 
 	if (movementComponent != nullptr)

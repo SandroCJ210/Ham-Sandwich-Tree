@@ -846,11 +846,7 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="src\private\Core\Scenes\TestScene.cpp" />
-    <ClCompile Include="src\private\Math\Matrtix4x4.cpp" />
-    <ClCompile Include="src\private\Math\Transformation.cpp" />
-    <ClCompile Include="src\private\Math\Vector4.cpp" />
     <ClCompile Include="src\private\Util\Graph.cpp" />
-    <ClCompile Include="src\private\Math\Vector3.cpp" />
     <ClCompile Include="src\private\Util\Logger.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -929,8 +925,6 @@
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\private\Util\Utility.cpp" />
     <ClCompile Include="src\private\Core\Window.cpp" />
-    <ClCompile Include="src\private\Math\Vector2.cpp" />
-    <ClCompile Include="src\public\Math\Transformation.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\public\Core\Components\IComponent.h" />
@@ -959,15 +953,11 @@
     <ClInclude Include="src\public\Core\Objects\SquareObject.h" />
     <ClInclude Include="src\public\Core\Scenes\TestColisionScene.h" />
     <ClInclude Include="src\public\Core\Scenes\TestScene.h" />
-    <ClInclude Include="src\public\Math\Matrix4x4.h" />
-    <ClInclude Include="src\public\Math\Vector4.h" />
     <ClInclude Include="src\public\Util\Graph.h" />
-    <ClInclude Include="src\public\Math\Vector3.h" />
     <ClInclude Include="src\public\Util\Logger.h" />
     <ClInclude Include="src\public\Util\Singleton.h" />
     <ClInclude Include="src\public\Util\Utility.h" />
     <ClInclude Include="src\public\Core\Window.h" />
-    <ClInclude Include="src\public\Math\Vector2.h" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Shaders\ColorRenderization\ColorRenderization.frag" />

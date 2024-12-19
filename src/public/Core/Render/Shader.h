@@ -1,13 +1,11 @@
 #pragma once
 
 #include <glad/glad.h>
+#include <glm/glm.hpp>
 
 #include <string>
-#include <fstream>
-#include <sstream>
 #include <iostream>
 
-#include "Math/Vector3.h"
 
 class Shader {
 public:
@@ -48,7 +46,7 @@ public:
     	glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
     }
 
-	void SetVector3(const std::string &name, Vector3 value) {
+	void SetVector3(const std::string &name, glm::vec3 value) {
 		int location = glGetUniformLocation(ID, name.c_str());
 		glUniform3f(location, value.x, value.y, value.z);
 	}

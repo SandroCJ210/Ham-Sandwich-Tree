@@ -13,12 +13,12 @@ BaseMaterial::~BaseMaterial() {
 	delete this->shader;
 }
 
-void BaseMaterial::SetColor(Vector3 newColor) {
+void BaseMaterial::SetColor(glm::vec3 newColor) {
 	this->color = newColor;
 }
 
 void BaseMaterial::SetColor(float r, float g, float b) {
-	this->color = Vector3(r, g, b);
+	this->color = glm::vec3(r, g, b);
 }
 
 void BaseMaterial::SetColorUniform() {

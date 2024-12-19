@@ -1,20 +1,20 @@
 #pragma once
 
-class Vector3;
+#include <glm/glm.hpp>
 
 class Color {
 public:
-	static const Vector3 WHITE;
-	static const Vector3 BLACK;
-	static const Vector3 RED;
-	static const Vector3 GREEN;
-	static const Vector3 BLUE;
-	static const Vector3 YELLOW;
-	static const Vector3 CYAN;
-	static const Vector3 MAGENTA;
-	static const Vector3 ORANGE;
-	static const Vector3 GRAY;
-	static const Vector3 LIGHT_GRAY;
-	static const Vector3 DARK_GRAY;
-	static const Vector3 PINK;
+	static const glm::vec3 WHITE;
+	static const glm::vec3 BLACK;
+	static const glm::vec3 RED;
+	static const glm::vec3 GREEN;
+	static const glm::vec3 BLUE;
+	static const glm::vec3 YELLOW;
+	static const glm::vec3 CYAN;
+	static const glm::vec3 MAGENTA;
+	static const glm::vec3 ORANGE;
+	static const glm::vec3 GRAY;
+	static const glm::vec3 LIGHT_GRAY;
+	static const glm::vec3 DARK_GRAY;
+	static const glm::vec3 PINK;
 };
