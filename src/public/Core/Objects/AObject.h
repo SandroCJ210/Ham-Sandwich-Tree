@@ -10,6 +10,8 @@ public:
 	std::string name;
 
 public:
+	bool isEnabled = true;
+	
 	Vector3 position = {0, 0, 0};
 	Vector3 rotation = {0, 0, 0};
 	Vector3 scale = { 1, 1, 1 };
@@ -28,6 +30,7 @@ public:
 	AObject(AObject* _parent, std::string name);
 	virtual ~AObject();
 
+	virtual void Awake();
 	virtual void Start();
 	virtual	void FixedUpdate();
 	virtual void Update(double deltaTime);

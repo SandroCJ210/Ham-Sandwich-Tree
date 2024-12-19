@@ -10,11 +10,12 @@ class SquareColliderComponent;
 
 class Player : public AObject {
 public:
-	Player(AObject* parent, std::string name, Maze* maze);
+	Player(AObject* parent, std::string name);
 	~Player() override;
 
+	void Awake() override;
+	
 private:
-	Maze* maze;
 
 	RenderComponent* renderComponent;
 	RigidbodyComponent* rigidbodyComponent;

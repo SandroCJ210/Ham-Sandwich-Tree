@@ -13,24 +13,26 @@ void InputComponent::Update(double deltaTime) {
 	SetMovementDirection();
 }
 
+void InputComponent::Start() {
+	movementComponent = parent->GetComponent<MovementComponent>();
+}
+
 void InputComponent::SetMovementDirection() {
 	Vector2 direction = Vector2::zero;
 
 	if (glfwGetKey(glfwGetCurrentContext(), UP) == GLFW_PRESS) {
-		direction.y = 1;
+		direction += Vector2(0, 1);
 	}
 	if (glfwGetKey(glfwGetCurrentContext(), DOWN) == GLFW_PRESS) {
-		direction.y = -1;
+		direction += Vector2(0, -1);
 	}
 	if (glfwGetKey(glfwGetCurrentContext(), LEFT) == GLFW_PRESS) {
-		direction.x = -1;
+		direction += Vector2(-1, 0);
 	}
 	if (glfwGetKey(glfwGetCurrentContext(), RIGHT) == GLFW_PRESS) {
-		direction.x = 1;
+		direction += Vector2(1, 0);
 	}
 
-	MovementComponent* movement = parent->GetComponent<MovementComponent>();
-
-	if (movement != nullptr)
-		movement->SetDirection(direction);
+	if (movementComponent != nullptr)
+		movementComponent->SetDirection(direction);
 }

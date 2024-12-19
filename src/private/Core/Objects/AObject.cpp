@@ -17,11 +17,24 @@ AObject::AObject(AObject* _parent, std::string name) {
 AObject::~AObject() {
 }
 
+void AObject::Awake() {
+	for (auto element : components) {
+		if (!element->isEnabled) continue;
+		element->Awake();
+	}
+	for (auto element : children) {
+		if (!element->isEnabled) continue;
+		element->Awake();
+	}
+}
+
 void AObject::Start() {
 	for (auto element : components) {
+		if (!element->isEnabled) continue;
 		element->Start();
 	}
 	for (auto element : children) {
+		if (!element->isEnabled) continue;
 		element->Start();
 	}
 }
@@ -48,10 +61,12 @@ void AObject::FixedUpdate() {
 	}
 
 	for (auto element : components) {
+		if (!element->isEnabled) continue;
 		element->FixedUpdate();
 	}
 
 	for (auto element : children) {
+		if (!element->isEnabled) continue;
 		element->FixedUpdate();
 	}
 }
@@ -60,19 +75,23 @@ void AObject::FixedUpdate() {
 void AObject::Update(double deltaTime) {
 
 	for (auto element : components) {
+		if (!element->isEnabled) continue;
 		element->Update(deltaTime);
 	}
 
 	for (auto element : children) {
+		if (!element->isEnabled) continue;
 		element->Update(deltaTime);
 	}
 }
 
 void AObject::LateUpdate() {
 	for (auto element : components) {
+		if (!element->isEnabled) continue;
 		element->LateUpdate();
 	}
 	for (auto element : children) {
+		if (!element->isEnabled) continue;
 		element->LateUpdate();
 	}
 }

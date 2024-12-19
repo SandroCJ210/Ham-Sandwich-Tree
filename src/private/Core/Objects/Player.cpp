@@ -9,10 +9,7 @@
 #include "Core/Materials/BaseMaterial.h"
 
 
-Player::Player(AObject* parent, std::string name, Maze* maze) : AObject(parent, name) {
-	this->maze = maze;
-
-	MazeGeneratorComponent* mazeGenerator = maze->GetMazeGeneratorComponent();
+Player::Player(AObject* parent, std::string name) : AObject(parent, name) {
 
 	renderComponent = dynamic_cast<RenderComponent*>(
 		AddComponent(new RenderComponent( this ))
@@ -29,13 +26,20 @@ Player::Player(AObject* parent, std::string name, Maze* maze) : AObject(parent, 
 	movementComponent = dynamic_cast<MovementComponent*>(
 		AddComponent(new MovementComponent(this))
 	);
-
-	double objectQuantity = mazeGenerator->GetSize();
-
-	scale = Vector3(1.0/objectQuantity);
 	
 	BaseMaterial* baseMaterial = dynamic_cast<BaseMaterial*>(renderComponent->material);
 	baseMaterial->color = Vector3(63, 72, 204)/255;
+	
+}
+
+void Player::Awake() {
+	MazeGeneratorComponent* mazeGenerator =
+		AObject::FindObjectByName("Maze")
+		->GetComponent<MazeGeneratorComponent>();
+	
+	double objectQuantity = mazeGenerator->GetSize();
+	
+	scale = Vector3(1.0/objectQuantity);
 
 	position = Vector3(
 		-1 + scale.x + scale.x * 2,
@@ -44,7 +48,7 @@ Player::Player(AObject* parent, std::string name, Maze* maze) : AObject(parent, 
 	);
 
 	movementComponent->SetSpeed(scale.x * 8);
-}	
+}
 
 Player::~Player() {
 	delete renderComponent;

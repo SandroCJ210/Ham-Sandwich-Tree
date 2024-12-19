@@ -5,7 +5,7 @@
 #include "Core/Materials/BaseMaterial.h"
 
 TestScene::TestScene() {
-	Player* square = new Player(nullptr, "Square", nullptr);
+	Player* square = new Player(nullptr, "Square");
 	/*square->scale =Vector3(0.5, 0.5, 0.5);
 	square->position = Vector3(-1, -1, 0);*/
 	

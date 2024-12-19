@@ -8,6 +8,6 @@ Maze2DScene::Maze2DScene() {
 	Maze* maze = new Maze(nullptr, "Maze");
 	objects.push_back(maze);
 
-	Player* player = new Player(nullptr, "Player", maze);
+	Player* player = new Player(nullptr, "Player");
 	objects.push_back(player);
 }

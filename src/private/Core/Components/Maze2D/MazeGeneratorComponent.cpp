@@ -10,6 +10,8 @@
 #include <random>
 #include <vector>
 
+#include "Core/Global.h"
+
 MazeGeneratorComponent::MazeGeneratorComponent(AObject* parent) : IComponent(parent) {
 
 	size = 3; //Default size of Maze
@@ -41,6 +43,7 @@ void MazeGeneratorComponent::Start() {
 }
 
 void MazeGeneratorComponent::GenerateMaze() {
+	if (!Global::DEBUG) seed = time(0);
 	srand(seed);
 	std::vector<int> posibleNextNodes;
 	std::vector<int> notPosibleNextNodes;

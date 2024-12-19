@@ -10,13 +10,14 @@
 #include "Core/Global.h"
 #include "Core/Objects/Maze.h"
 #include "Core/Scenes/TestColisionScene.h"
+#include "Util/Logger.h"
 
 Window::Window():Singleton(){
 	actualScene = nullptr;
 }
 
 void Window::Start() {
-	std::cout<< "Window Configuration" << std::endl;
+	Logger::Log("Window Configuration");
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -35,9 +36,10 @@ void Window::Start() {
 	});
 	
 	if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-		std::cout<<"Failed to initialize GLAD"<< std::endl;
+		Logger::Error("Failed to initialize GLAD");
 	}
-	actualScene = new TestColisionScene();
+	actualScene = new Maze2DScene();
+	actualScene->Awake();
 	actualScene->Start();
 }
 

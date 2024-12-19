@@ -21,6 +21,7 @@ public:
 
 	virtual void SceneUpdate();
 
+	virtual void Awake();
 	virtual void Start();
 	virtual void FixedUpdate();
 	virtual void Update(double deltaTime);

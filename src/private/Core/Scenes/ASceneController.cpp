@@ -19,10 +19,18 @@ void ASceneController::AddObject(AObject* object){
 	objects.push_back(object);
 }
 
-void ASceneController::Start(){
+void ASceneController::Awake(){
 	previous = glfwGetTime();
 	
 	for (auto element : objects){
+		if (!element->isEnabled) continue;
+		element->Awake();
+	}
+}
+
+void ASceneController::Start(){
+	for (auto element : objects){
+		if (!element->isEnabled) continue;
 		element->Start();
 	}
 	physicsEngine->Start(objects);
@@ -51,6 +59,7 @@ void ASceneController::SceneUpdate(){
 
 void ASceneController::FixedUpdate() {
 	for (auto element : objects) {
+		if (!element->isEnabled) continue;
 		element->FixedUpdate();
 	}
 	physicsEngine->Update();
@@ -58,12 +67,14 @@ void ASceneController::FixedUpdate() {
 
 void ASceneController::Update(double deltaTime){
 	for (auto element : objects){
+		if (!element->isEnabled) continue;
 		element->Update(deltaTime);
 	}
 }
 
 void ASceneController::LateUpdate(){
 	for (auto element : objects){
+		if (!element->isEnabled) continue;
 		element->LateUpdate();
 	}
 }
