@@ -7,11 +7,14 @@
 
 SquareColliderComponent::SquareColliderComponent(AObject* parent) : ColliderComponent(parent) {
 	center = glm::vec2(0.0);
-	halfSize = glm::vec2(0.0);
+	halfSize = glm::vec2(0.5);
 }
 
-SquareColliderComponent::SquareColliderComponent(AObject* parent, glm::vec2 center,
-												glm::vec2 halfSize) : SquareColliderComponent(parent) {
+SquareColliderComponent::SquareColliderComponent(
+	AObject* parent,
+	glm::vec2 center,
+	glm::vec2 halfSize) : SquareColliderComponent(parent) {
+
 	this->center = center;
 	this->halfSize = halfSize;
 }

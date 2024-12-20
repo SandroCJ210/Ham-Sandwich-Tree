@@ -36,7 +36,7 @@ MazeGeneratorComponent::~MazeGeneratorComponent() {
 	mazeGraph.~Graph();
 }
 
-void MazeGeneratorComponent::Start() {
+void MazeGeneratorComponent::Awake() {
 	GenerateMaze();
 	PrintMaze();
 	GenerateObjects();

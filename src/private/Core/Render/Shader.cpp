@@ -1,10 +1,10 @@
 #include "Core/Render/Shader.h"
 
 #include <glad/glad.h>
-#include <iostream>
 #include <fstream>
 #include <sstream>
-#include <direct.h>
+
+#include "Util/Logger.h"
 
 Shader::Shader (const std::string vertexPath, const std::string fragmentPath){
 
@@ -42,7 +42,7 @@ Shader::Shader (const std::string vertexPath, const std::string fragmentPath){
     	fragmentCode = fShaderStream.str();
     }
     catch(std::ifstream::failure e){
-    	std::cout << "ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ\n";
+    	Logger::Error("ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ");
     	
     }
     //string to char pointer
@@ -61,7 +61,7 @@ Shader::Shader (const std::string vertexPath, const std::string fragmentPath){
     glGetShaderiv(vertex, GL_COMPILE_STATUS, &sucess);
     if(!sucess){
     	glGetShaderInfoLog(vertex, 512, NULL, infoLog);
-    	std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog <<"\n";
+    	Logger::Error("ERROR::SHADER::VERTEX::COMPILATION_FAILED");
     }
 
     //fragment shader
@@ -71,7 +71,7 @@ Shader::Shader (const std::string vertexPath, const std::string fragmentPath){
     glGetShaderiv(fragment, GL_COMPILE_STATUS, &sucess);
     if(!sucess){
     	glGetShaderInfoLog(fragment, 512, NULL, infoLog);
-    	std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << "\n";
+    	Logger::Error("ERROR::SHADER::FRAGMENT::COMPILATION_FAILED");
     }
 
     //shader program
@@ -82,7 +82,7 @@ Shader::Shader (const std::string vertexPath, const std::string fragmentPath){
     glGetProgramiv(ID, GL_LINK_STATUS, &sucess);
     if(!sucess){
     	glGetProgramInfoLog(ID, 512, NULL, infoLog);
-    	std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << "\n";
+    	Logger::Error("ERROR::SHADER::PROGRAM::LINKING_FAILED");
     }
 
     //delete shaders

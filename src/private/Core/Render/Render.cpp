@@ -2,6 +2,7 @@
 
 #include <glad/glad.h>
 #include <iostream>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include "Core/Render/Shader.h"
 #include "Core/Materials/GizmosMaterial.h"
@@ -17,6 +18,19 @@ Render::Render() {
 
 Render::~Render() {
 
+}
+
+Shader* Render::CreateShader(const std::string vertexPath, const std::string fragmentPath) {
+
+	for (Shader* shader : shaders) {
+		if (shader->CompareFiles(vertexPath, fragmentPath)) {
+			return shader;
+		}
+	}
+
+	Shader* newShader = new Shader(vertexPath, fragmentPath);
+	shaders.push_back(newShader);
+	return newShader;
 }
 
 glm::vec3 Render::TransformWorldToScreen(glm::vec3 worldScale) {
@@ -45,13 +59,20 @@ void Render::InitQuad() {
 		1, 2, 3
 	};
 
+	float vertices[] = {
+		-0.5f, -0.5f, 0.0f,
+		0.5f, -0.5f, 0.0f,
+		0.5f, 0.5f, 0.0f,
+		-0.5f, 0.5f, 0.0f
+	};
+
 	glGenVertexArrays(1, &VAO_quad);
 
 	glBindVertexArray(VAO_quad);
 
 	glGenBuffers(1, &VBO_quad);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO_quad);
-	glBufferData(GL_ARRAY_BUFFER, 12 * sizeof(float), nullptr, GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 12 * sizeof(float), vertices, GL_DYNAMIC_DRAW);
 
 	glGenBuffers(1, &EBO_quad);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO_quad);
@@ -60,19 +81,6 @@ void Render::InitQuad() {
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
-}
-
-Shader* Render::CreateShader(const std::string vertexPath, const std::string fragmentPath) {
-
-	for (Shader* shader : shaders) {
-		if (shader->CompareFiles(vertexPath, fragmentPath)) {
-			return shader;
-		}
-	}
-
-	Shader* newShader = new Shader(vertexPath, fragmentPath);
-	shaders.push_back(newShader);
-	return newShader;
 }
 
 void Render::DrawLineSegment(glm::vec3 start, glm::vec3 end, glm::vec3 color) {
@@ -84,6 +92,7 @@ void Render::DrawLineSegment(glm::vec3 start, glm::vec3 end, glm::vec3 color) {
 
 	gizmosMaterial->shader->Use();
 	gizmosMaterial->SetColorUniform();
+	gizmosMaterial->shader->SetMatrix4("_transform", glm::mat4(1.0f));
 
 	float vertices[] = {
 		(float)start.x, (float)start.y, (float)start.z,
@@ -102,38 +111,21 @@ void Render::DrawLineSegment(glm::vec3 start, glm::vec3 end, glm::vec3 color) {
 	glBindVertexArray(0);
 }
 
-void Render::DrawQuad(glm::vec3 center, glm::vec3 scale) {
-
+void Render::DrawQuad(glm::vec3 center, glm::vec3 scale, Shader* shader, glm::vec3 color) {
+	
 	glm::vec3 scaleScreen = TransformWorldToScreen(scale);
-	glm::vec3 positionScreen = TransformWorldToScreen(center);
+	glm::vec3 centerScreen = TransformWorldToScreen(center);
+	
+	glm::mat4 trans = glm::mat4(1.0f);
+	trans = glm::translate(trans, centerScreen);
+	trans = glm::scale(trans, scaleScreen);
 
-	float vertices[] = {
-		//bottom left
-		(float)(positionScreen.x - scaleScreen.x / 2),
-		(float)(positionScreen.y - scaleScreen.y / 2),
-		0,
-
-		//bottom right
-		(float)(positionScreen.x + scaleScreen.x / 2),
-		(float)(positionScreen.y - scaleScreen.y / 2),
-		0,
-
-		//top right
-		(float)(positionScreen.x + scaleScreen.x / 2),
-		(float)(positionScreen.y + scaleScreen.y / 2),
-		0,
-
-		//top left
-		(float)(positionScreen.x - scaleScreen.x / 2),
-		(float)(positionScreen.y + scaleScreen.y / 2),
-		0,
-	};
+	shader->Use();
+	shader->SetVector3("_color", color);
+	shader->SetMatrix4("_transform", trans);
 
 	glBindVertexArray(VAO_quad);
-
-	glBindBuffer(GL_ARRAY_BUFFER, VBO_quad);
-	glBufferSubData(GL_ARRAY_BUFFER, 0, 12 * sizeof(float), vertices);
-
+	
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 	glBindVertexArray(0);

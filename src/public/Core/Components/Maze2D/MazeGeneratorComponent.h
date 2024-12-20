@@ -16,7 +16,7 @@ private:
 public:
 	MazeGeneratorComponent(AObject* parent);
 	~MazeGeneratorComponent() override;
-	void Start() override;
+	void Awake() override;
 
 private:
 	void GenerateMaze();

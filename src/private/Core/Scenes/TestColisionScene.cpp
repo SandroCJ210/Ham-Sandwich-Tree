@@ -16,7 +16,7 @@
 TestColisionScene::TestColisionScene() {
 	
 	SquareObject* testSquare = new SquareObject(nullptr, "squareMouse");
-	testSquare->GetRenderComponent()->enableRender = false;
+	testSquare->GetRenderComponent()->enableRender = true;
 	// testSquare->AddComponent(new FollowMouseComponent(testSquare));
 	testSquare->AddComponent(new RigidbodyComponent(testSquare));
 	testSquare->AddComponent(new InputComponent(testSquare));

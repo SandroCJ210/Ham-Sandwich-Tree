@@ -49,6 +49,8 @@ void Player::Awake() {
 	);
 
 	movementComponent->SetSpeed(scale.x * 8);
+
+	AObject::Awake();
 }
 
 Player::~Player() {

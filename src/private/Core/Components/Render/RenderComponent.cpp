@@ -25,10 +25,7 @@ void RenderComponent::Draw() {
 	glm::vec3 center = this->parent->GetGlobalPosition();
 	glm::vec3 scale = this->parent->GetGlobalScale();
 
-	material->shader->Use();
-
 	BaseMaterial* baseMaterial = dynamic_cast<BaseMaterial*>(material);
-	baseMaterial->SetColorUniform();
 
-	Render::GetInstance().DrawQuad(center, scale);
+	Render::GetInstance().DrawQuad(center, scale, material->shader, baseMaterial->color);
 }
