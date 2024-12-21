@@ -39,7 +39,6 @@ void AObject::Start() {
 
 void AObject::FixedUpdate() {
 	if (parent != nullptr) {
-
 		globalScale = glm::vec3(
 			scale.x * parent->globalScale.x,
 			scale.y * parent->globalScale.y,
