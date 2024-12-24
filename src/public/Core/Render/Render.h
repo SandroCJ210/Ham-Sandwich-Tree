@@ -43,6 +43,7 @@ private:
 
 public:
 	Shader* CreateShader(const std::string vertexPath, const std::string fragmentPath);
+	unsigned int GenerateTexture(const std::string texturePath);
 	void DrawQuad(glm::vec3 center, glm::vec3 size, Shader* shader, glm::vec3 color = glm::vec3(1.0f));
 	void DrawLineSegment(glm::vec3 start, glm::vec3 end, glm::vec3 color);
 	void DrawQuadLine(glm::vec3 center, glm::vec3 size, glm::vec3 color);

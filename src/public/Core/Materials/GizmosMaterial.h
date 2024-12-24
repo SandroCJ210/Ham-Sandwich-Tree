@@ -13,5 +13,4 @@ public:
 
 	void SetColor(float r, float g, float b);
 	void SetColor(glm::vec3 color);
-	void SetColorUniform();
 };

@@ -1260,12 +1260,11 @@
     <ClInclude Include="src\public\Core\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Shaders\BaseShader\BaseFrag.glsl" />
+    <Content Include="Assets\Shaders\BaseShader\BaseVert.glsl" />
     <Content Include="Assets\Shaders\ColorShader\ColorFrag.glsl" />
     <Content Include="Assets\Shaders\ColorShader\ColorVert.glsl" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Shaders\ColorShader\ColorRenderization.frag" />
-    <None Include="Assets\Shaders\ColorShader\ColorRenderization.vert" />
+    <Content Include="Assets\Textures\HL.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

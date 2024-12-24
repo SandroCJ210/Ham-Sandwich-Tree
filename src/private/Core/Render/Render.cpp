@@ -1,13 +1,18 @@
 #include "Core/Render/Render.h"
 
+#define STB_IMAGE_IMPLEMENTATION
+
 #include <glad/glad.h>
 #include <iostream>
 #include <glm/gtc/matrix_transform.hpp>
+#include <stb_image.h>
 
 #include "Core/Render/Shader.h"
 #include "Core/Materials/GizmosMaterial.h"
 #include "Core/Global.h"
 #include "Core/Components/Render/CameraComponent.h"
+#include "Util/Logger.h"
+
 
 Render::Render() {
 
@@ -33,6 +38,34 @@ Shader* Render::CreateShader(const std::string vertexPath, const std::string fra
 	Shader* newShader = new Shader(vertexPath, fragmentPath);
 	shaders.push_back(newShader);
 	return newShader;
+}
+
+unsigned int Render::GenerateTexture(const std::string texturePath) {
+	unsigned int generatedTexture;
+
+	glGenTextures(1, &generatedTexture);
+	glBindTexture(GL_TEXTURE_2D, generatedTexture);
+	
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	int width, height, nrChannels;
+	stbi_set_flip_vertically_on_load(true);
+	unsigned char *data = stbi_load(texturePath.c_str(), &width, &height, &nrChannels, 0);
+	if (data)
+	{
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else {
+		Logger::Error("Failed to load texture");
+	}
+	stbi_image_free(data);
+	
+	return generatedTexture;
 }
 
 glm::vec3 Render::TransformWorldToScreen(glm::vec3 worldScale) {
@@ -62,10 +95,10 @@ void Render::InitQuad() {
 	};
 
 	float vertices[] = {
-		-0.5f, -0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-		0.5f, 0.5f, 0.0f,
-		-0.5f, 0.5f, 0.0f
+		-0.5f,	-0.5f,	0.0f,	0.0f,	0.0f,
+		0.5f,	-0.5f,	0.0f,	1.0f,	0.0f,
+		0.5f,	0.5f,	0.0f,	1.0f,	1.0f,
+		-0.5f,	0.5f,	0.0f,	0.0f,	1.0f,
 	};
 
 	glGenVertexArrays(1, &VAO_quad);
@@ -74,14 +107,17 @@ void Render::InitQuad() {
 
 	glGenBuffers(1, &VBO_quad);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO_quad);
-	glBufferData(GL_ARRAY_BUFFER, 12 * sizeof(float), vertices, GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 20 * sizeof(float), vertices, GL_DYNAMIC_DRAW);
 
 	glGenBuffers(1, &EBO_quad);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO_quad);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
+
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
 
 }
 
@@ -143,8 +179,8 @@ void Render::DrawLineSegment(glm::vec3 start, glm::vec3 end, glm::vec3 color) {
 	gizmosMaterial->SetColor(color);
 
 	gizmosMaterial->shader->Use();
-	gizmosMaterial->SetColorUniform();
-	
+
+	gizmosMaterial->shader->SetVector3("_color", color);
 	gizmosMaterial->shader->SetMatrix4("_model", glm::mat4(1.0f));
 	gizmosMaterial->shader->SetMatrix4("_view", currentCamera->GetViewMatrix());
 	gizmosMaterial->shader->SetMatrix4("_projection", currentCamera->GetProjectionMatrix());
@@ -184,8 +220,6 @@ void Render::DrawQuadLine(glm::vec3 center, glm::vec3 scale, glm::vec3 color) {
 
 void Render::DrawQuad(glm::vec3 center, glm::vec3 scale, Shader* shader, glm::vec3 color) {
 	if (currentCamera == nullptr) return;
-	// glm::vec3 scaleScreen = TransformWorldToScreen(scale);
-	// glm::vec3 centerScreen = TransformWorldToScreen(center);
 
 	//Model matrix generation
 	glm::mat4 model = glm::mat4(1.0f);
@@ -224,7 +258,6 @@ void Render::DrawCube(glm::vec3 center, glm::vec3 size, Shader* shader, glm::vec
 
 	glBindVertexArray(0);
 }
-
 
 void Render::SetCurrentCamera(CameraComponent* camera) {
 	currentCamera = camera;

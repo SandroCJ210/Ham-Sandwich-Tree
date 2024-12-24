@@ -22,8 +22,3 @@ void GizmosMaterial::SetColor(glm::vec3 color) {
 	this->color = color;
 }
 
-void GizmosMaterial::SetColorUniform() {
-	this->shader->Use();
-	this->shader->SetVector3("_color", this->color);
-}
-

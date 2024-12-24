@@ -9,7 +9,6 @@
 #include "Core/Scenes/TestScene.h"
 #include "Core/Global.h"
 #include "Core/Objects/Maze.h"
-#include "Core/Scenes/TestColisionScene.h"
 #include "Util/Logger.h"
 
 Window::Window():Singleton(){

@@ -4,5 +4,4 @@
 class TestScene : public ASceneController {
 public:
 	TestScene();
-	void LateUpdate() override;
 };

@@ -7,6 +7,7 @@
 #include "Core/Objects/Player.h"
 #include "Core/Materials/BaseMaterial.h"
 #include "Core/Materials/GizmosMaterial.h"
+#include "Core/Objects/CubeObject.h"
 #include "Core/Objects/EmptyObject.h"
 #include "Core/Render/Render.h"
 
@@ -17,20 +18,28 @@ TestScene::TestScene() {
 	
 	// objects.push_back(square);
 
-	// SquareObject* square2 = new SquareObject(nullptr, "Square2");
-	// square2->scale = glm::vec3(1, 1, 1);
-	// square2->position = glm::vec3(0, 0, 0);
-	// AddObject(square2);
+	SquareObject* square2 = new SquareObject(nullptr, "Square2");
+	square2->scale = glm::vec3(1, 1, 1);
+	square2->position = glm::vec3(0, 0, 0);
+	dynamic_cast<BaseMaterial*>(square2->GetRenderComponent()->material)
+		->SetTexture("Assets/Textures/HL.jpg");
+	
+	AddObject(square2);
 
 	EmptyObject* cameraObject = new EmptyObject(nullptr, "Camera");
 	CameraComponent* cameraComponent = dynamic_cast<CameraComponent*>(
 		cameraObject->AddComponent(new CameraComponent(cameraObject))
 		);
 	cameraObject->position = glm::vec3(0, 0, 10);
-	cameraComponent->orthographic = false;
+	cameraComponent->orthographic = true;
 	cameraComponent->mainCamera = true;
 	cameraComponent->orthoSize = 2.0f;
 	AddObject(cameraObject);
+
+	// CubeObject* cube = new CubeObject(nullptr, "Cube");
+	// cube->scale = glm::vec3(1, 1, 1);
+	// cube->position = glm::vec3(2, 2, 0);
+	// AddObject(cube);
 	
 	// SquareObject* square1 = new SquareObject(nullptr, "Square2");
 	// square1->scale = glm::vec3(0.5, 0.5, 0.5);
@@ -41,14 +50,4 @@ TestScene::TestScene() {
 	// square3->scale = glm::vec3(0.5, 0.5, 0.5);
 	// square3->position = glm::vec3(2.0f, 0, 0);
 	// AddObject(square3);
-}
-
-void TestScene::LateUpdate() {
-	ASceneController::LateUpdate();
-
-	Render::GetInstance().DrawCube(
-		glm::vec3(0.0f, 0.0f, 0.0f),
-		glm::vec3(1.0f),
-		Render::GetInstance().gizmosMaterial->shader,
-		glm::vec3(1.0f));
 }
