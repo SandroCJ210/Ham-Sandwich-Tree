@@ -5,11 +5,15 @@
 
 #include "Util/Singleton.h"
 
+class CameraComponent;
 class Shader;
 class GizmosMaterial;
 
 class Render : public Singleton<Render> {
 private:
+
+	CameraComponent* currentCamera;
+	
 	std::vector<Shader*> shaders;
 	unsigned int VAO_quad;
 	unsigned int VBO_quad;
@@ -34,6 +38,9 @@ public:
 	void DrawQuad(glm::vec3 center, glm::vec3 size, Shader* shader, glm::vec3 color = glm::vec3(1.0f));
 	void DrawLineSegment(glm::vec3 start, glm::vec3 end, glm::vec3 color);
 	void DrawQuadLine(glm::vec3 center, glm::vec3 size, glm::vec3 color);
+
+	void SetCurrentCamera(CameraComponent* camera);
+	CameraComponent* GetCurrentCamera();
 };
 
 template class Singleton<Render>;

@@ -7,6 +7,7 @@
 #include "Core/Render/Shader.h"
 #include "Core/Materials/GizmosMaterial.h"
 #include "Core/Global.h"
+#include "Core/Components/Render/CameraComponent.h"
 
 Render::Render() {
 
@@ -84,15 +85,16 @@ void Render::InitQuad() {
 }
 
 void Render::DrawLineSegment(glm::vec3 start, glm::vec3 end, glm::vec3 color) {
-
-	start = TransformWorldToScreen(start);
-	end = TransformWorldToScreen(end);
-
+	if (currentCamera == nullptr) return;
+	
 	gizmosMaterial->SetColor(color);
 
 	gizmosMaterial->shader->Use();
 	gizmosMaterial->SetColorUniform();
-	gizmosMaterial->shader->SetMatrix4("_transform", glm::mat4(1.0f));
+	
+	gizmosMaterial->shader->SetMatrix4("_model", glm::mat4(1.0f));
+	gizmosMaterial->shader->SetMatrix4("_view", currentCamera->GetViewMatrix());
+	gizmosMaterial->shader->SetMatrix4("_projection", currentCamera->GetProjectionMatrix());
 
 	float vertices[] = {
 		(float)start.x, (float)start.y, (float)start.z,
@@ -112,17 +114,20 @@ void Render::DrawLineSegment(glm::vec3 start, glm::vec3 end, glm::vec3 color) {
 }
 
 void Render::DrawQuad(glm::vec3 center, glm::vec3 scale, Shader* shader, glm::vec3 color) {
-	
-	glm::vec3 scaleScreen = TransformWorldToScreen(scale);
-	glm::vec3 centerScreen = TransformWorldToScreen(center);
-	
-	glm::mat4 trans = glm::mat4(1.0f);
-	trans = glm::translate(trans, centerScreen);
-	trans = glm::scale(trans, scaleScreen);
+	if (currentCamera == nullptr) return;
+	// glm::vec3 scaleScreen = TransformWorldToScreen(scale);
+	// glm::vec3 centerScreen = TransformWorldToScreen(center);
 
+	//Model matrix generation
+	glm::mat4 model = glm::mat4(1.0f);
+	model = glm::translate(model, center);
+	model = glm::scale(model, scale);
+	
 	shader->Use();
 	shader->SetVector3("_color", color);
-	shader->SetMatrix4("_transform", trans);
+	shader->SetMatrix4("_model", model);
+	shader->SetMatrix4("_view", currentCamera->GetViewMatrix());
+	shader->SetMatrix4("_projection", currentCamera->GetProjectionMatrix());
 
 	glBindVertexArray(VAO_quad);
 	
@@ -145,4 +150,8 @@ void Render::DrawQuadLine(glm::vec3 center, glm::vec3 scale, glm::vec3 color) {
 	DrawLineSegment(points[2], points[3], color);
 	DrawLineSegment(points[3], points[0], color);
 
+}
+
+void Render::SetCurrentCamera(CameraComponent* camera) {
+	currentCamera = camera;
 }
