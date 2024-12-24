@@ -15,6 +15,7 @@ Render::Render() {
 
 	InitQuad();
 	InitLine();
+	InitCube();
 }
 
 Render::~Render() {
@@ -84,6 +85,58 @@ void Render::InitQuad() {
 
 }
 
+void Render::InitCube() {
+
+	unsigned int indices[] = {
+		//front face
+		0, 1, 3,
+		1, 2, 3,
+		//right face
+		1, 5, 2,
+		5, 6, 2,
+		//back face
+		5, 4, 6,
+		4, 7, 6,
+		//left face
+		4, 0, 7,
+		0, 3, 7,
+		//bottom face
+		4, 5, 0,
+		5, 1, 0,
+		//top face
+		3, 2, 7,
+		2, 6, 7
+	};
+	
+	float vertices[] = {
+		-0.5f,	-0.5f,	-0.5f,
+		0.5f,	-0.5f,	-0.5f,
+		0.5f,	0.5f,	-0.5f,
+		-0.5f,	0.5f,	-0.5f,
+		
+		-0.5f,	-0.5f,	0.5f,
+		0.5f,	-0.5f,	0.5f,
+		0.5f,	0.5f,	0.5f,
+		-0.5f,	0.5f,	0.5f
+		
+	};
+
+	glGenVertexArrays(1, &VAO_cube);
+
+	glBindVertexArray(VAO_cube);
+
+	glGenBuffers(1, &VBO_cube);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO_cube);
+	glBufferData(GL_ARRAY_BUFFER, 24 * sizeof(float), vertices, GL_DYNAMIC_DRAW);
+
+	glGenBuffers(1, &EBO_cube);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO_cube);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 36 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
+
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+}
+
 void Render::DrawLineSegment(glm::vec3 start, glm::vec3 end, glm::vec3 color) {
 	if (currentCamera == nullptr) return;
 	
@@ -113,6 +166,22 @@ void Render::DrawLineSegment(glm::vec3 start, glm::vec3 end, glm::vec3 color) {
 	glBindVertexArray(0);
 }
 
+void Render::DrawQuadLine(glm::vec3 center, glm::vec3 scale, glm::vec3 color) {
+
+	glm::vec3 points[] = {
+		glm::vec3(center.x - scale.x / 2, center.y - scale.y / 2, 0), //bottom left
+		glm::vec3(center.x + scale.x / 2, center.y - scale.y / 2, 0), //bottom right
+		glm::vec3(center.x + scale.x / 2, center.y + scale.y / 2, 0), //top right
+		glm::vec3(center.x - scale.x / 2, center.y + scale.y / 2, 0), //top left
+	};
+
+	DrawLineSegment(points[0], points[1], color);
+	DrawLineSegment(points[1], points[2], color);
+	DrawLineSegment(points[2], points[3], color);
+	DrawLineSegment(points[3], points[0], color);
+
+}
+
 void Render::DrawQuad(glm::vec3 center, glm::vec3 scale, Shader* shader, glm::vec3 color) {
 	if (currentCamera == nullptr) return;
 	// glm::vec3 scaleScreen = TransformWorldToScreen(scale);
@@ -136,21 +205,26 @@ void Render::DrawQuad(glm::vec3 center, glm::vec3 scale, Shader* shader, glm::ve
 	glBindVertexArray(0);
 }
 
-void Render::DrawQuadLine(glm::vec3 center, glm::vec3 scale, glm::vec3 color) {
+void Render::DrawCube(glm::vec3 center, glm::vec3 size, Shader* shader, glm::vec3 color) {
+	if (currentCamera == nullptr) return;
 
-	glm::vec3 points[] = {
-		glm::vec3(center.x - scale.x / 2, center.y - scale.y / 2, 0), //bottom left
-		glm::vec3(center.x + scale.x / 2, center.y - scale.y / 2, 0), //bottom right
-		glm::vec3(center.x + scale.x / 2, center.y + scale.y / 2, 0), //top right
-		glm::vec3(center.x - scale.x / 2, center.y + scale.y / 2, 0), //top left
-	};
+	glm::mat4 model = glm::mat4(1.0f);
+	model = glm::translate(model, center);
+	model = glm::scale(model, size);
 
-	DrawLineSegment(points[0], points[1], color);
-	DrawLineSegment(points[1], points[2], color);
-	DrawLineSegment(points[2], points[3], color);
-	DrawLineSegment(points[3], points[0], color);
+	shader->Use();
+	shader->SetVector3("_color", color);
+	shader->SetMatrix4("_model", model);
+	shader->SetMatrix4("_view", currentCamera->GetViewMatrix());
+	shader->SetMatrix4("_projection", currentCamera->GetProjectionMatrix());
 
+	glBindVertexArray(VAO_cube);
+
+	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+
+	glBindVertexArray(0);
 }
+
 
 void Render::SetCurrentCamera(CameraComponent* camera) {
 	currentCamera = camera;

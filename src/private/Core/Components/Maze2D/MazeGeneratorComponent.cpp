@@ -6,7 +6,7 @@
 #include <glm/glm.hpp>
 
 #include "Core/Objects/SquareObject.h"
-#include "Core/Components//Render/RenderComponent.h"
+#include "Core/Components//Render/RenderQuadComponent.h"
 #include "Core/Materials/BaseMaterial.h"
 #include "Util/Utility.h"
 

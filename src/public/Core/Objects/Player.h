@@ -2,7 +2,7 @@
 #include "Core/Objects/AObject.h"
 
 class Maze;
-class RenderComponent;
+class RenderQuadComponent;
 class InputComponent;
 class MovementComponent;
 class RigidbodyComponent;
@@ -17,7 +17,7 @@ public:
 	
 private:
 
-	RenderComponent* renderComponent;
+	RenderQuadComponent* renderComponent;
 	RigidbodyComponent* rigidbodyComponent;
 	InputComponent* inputComponent;
 	MovementComponent* movementComponent;

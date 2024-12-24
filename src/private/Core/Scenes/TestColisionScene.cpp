@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "Core/Global.h"
-#include "Core/Components/Render/RenderComponent.h"
+#include "Core/Components/Render/RenderQuadComponent.h"
 #include "Core/Components/Input/FollowMouseComponent.h"
 #include "Core/Components/Input/InputComponent.h"
 #include "Core/Components/Maze2D/MovementComponent.h"

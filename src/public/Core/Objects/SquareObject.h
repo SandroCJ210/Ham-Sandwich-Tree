@@ -1,7 +1,7 @@
 #pragma once
 #include "AObject.h"
 
-class RenderComponent;
+class RenderQuadComponent;
 class SquareColliderComponent;
 
 class SquareObject : public AObject {
@@ -9,10 +9,10 @@ public:
 	SquareObject(AObject* parent, std::string name);
 
 private:
-	RenderComponent* renderComponent;
+	RenderQuadComponent* renderComponent;
 	SquareColliderComponent* colliderComponent;
 
 public:
-	RenderComponent* GetRenderComponent() const { return renderComponent; }
+	RenderQuadComponent* GetRenderComponent() const { return renderComponent; }
 	SquareColliderComponent* GetColliderComponent() const { return colliderComponent; }
 };

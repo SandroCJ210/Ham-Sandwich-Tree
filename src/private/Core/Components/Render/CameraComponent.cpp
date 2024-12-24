@@ -19,7 +19,7 @@ void CameraComponent::Awake() {
 
 glm::mat4 CameraComponent::GetViewMatrix() {
 	view = glm::mat4(1.0f);
-	view = glm::translate(view, this->parent->GetWorldPosition());
+	view = glm::translate(view, -1.0f * this->parent->GetWorldPosition());
 	return view;
 }
 
@@ -31,9 +31,7 @@ glm::mat4 CameraComponent::GetProjectionMatrix() {
 			near,										far);								//z size
 	}
 	else {
-		//TODO: Implement perspective
-		projection = glm::mat4(1.0f);
-		// projection = glm::perspective(glm::radians(FOV), 800.0f / 600.0f, near, far);
+		projection = glm::perspective(glm::radians(FOV), Global::SCREEN_FORMAT, near, far);
 	}
 	return projection;
 }

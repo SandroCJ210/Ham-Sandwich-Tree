@@ -3,15 +3,15 @@
 
 class AMaterial;
 
-class RenderComponent : public IComponent {
+class RenderQuadComponent : public IComponent {
 
 public:
 	bool enableRender = true;
 	AMaterial* material;
 
 public:
-	RenderComponent(AObject* parent);
-	~RenderComponent() override;
+	RenderQuadComponent(AObject* parent);
+	~RenderQuadComponent() override;
 	void LateUpdate() override;
 
 private:

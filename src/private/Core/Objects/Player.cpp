@@ -1,6 +1,6 @@
 #include "Core/Objects/Player.h"
 
-#include "Core/Components/Render/RenderComponent.h"
+#include "Core/Components/Render/RenderQuadComponent.h"
 #include "Core/Components/Input/InputComponent.h"
 #include "Core/Components/Maze2D/MazeGeneratorComponent.h"
 #include "Core/Components/Maze2D/MovementComponent.h"
@@ -12,8 +12,8 @@
 
 Player::Player(AObject* parent, std::string name) : AObject(parent, name) {
 
-	renderComponent = dynamic_cast<RenderComponent*>(
-		AddComponent(new RenderComponent( this ))
+	renderComponent = dynamic_cast<RenderQuadComponent*>(
+		AddComponent(new RenderQuadComponent( this ))
 	);
 	rigidbodyComponent = dynamic_cast<RigidbodyComponent*>(
 		AddComponent(new RigidbodyComponent( this ))

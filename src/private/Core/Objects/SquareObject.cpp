@@ -1,11 +1,11 @@
 #include "Core/Objects/SquareObject.h"
-#include "Core/Components/Render/RenderComponent.h"
+#include "Core/Components/Render/RenderQuadComponent.h"
 #include "Core/Components/Physics/SquareColliderComponent.h"
 #include "Core/Objects/AObject.h"
 
 SquareObject::SquareObject(AObject* parent, std::string name) : AObject(parent, name){
-	renderComponent = dynamic_cast<RenderComponent*>(
-		AddComponent(new RenderComponent(this))
+	renderComponent = dynamic_cast<RenderQuadComponent*>(
+		AddComponent(new RenderQuadComponent(this))
 	);
 	colliderComponent = dynamic_cast<SquareColliderComponent*>(
 		AddComponent(new SquareColliderComponent(
