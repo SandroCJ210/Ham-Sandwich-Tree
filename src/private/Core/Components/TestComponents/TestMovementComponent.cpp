@@ -33,7 +33,7 @@ void TestMovementComponent::Update(double deltaTime) {
 	if (Window::GetInstance()
 			.GetActualScene()
 			->GetPhysicsEngine()
-			->PointIntersectsSquareCollider(player->GetGlobalPosition(), collider)
+			->PointIntersectsSquareCollider(player->GetWorldPosition(), collider)
 		) {
 		std::cout << "Collision with " << parent->name <<std::endl;
 	}

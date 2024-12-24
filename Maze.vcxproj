@@ -960,12 +960,12 @@
     <ClInclude Include="src\public\Core\Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Shaders\ColorRenderization\ColorRenderization.frag" />
-    <Content Include="Assets\Shaders\ColorRenderization\ColorRenderization.vert" />
+    <Content Include="Assets\Shaders\ColorShader\ColorFrag.glsl" />
+    <Content Include="Assets\Shaders\ColorShader\ColorVert.glsl" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Shaders\ColorRenderization\ColorRenderization.frag" />
-    <None Include="Assets\Shaders\ColorRenderization\ColorRenderization.vert" />
+    <None Include="Assets\Shaders\ColorShader\ColorRenderization.frag" />
+    <None Include="Assets\Shaders\ColorShader\ColorRenderization.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

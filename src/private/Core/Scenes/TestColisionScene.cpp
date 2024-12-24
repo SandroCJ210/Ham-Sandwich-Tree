@@ -39,7 +39,7 @@ TestColisionScene::TestColisionScene() {
 	SquareObject* sumSquare = new SquareObject(nullptr, "sumSquare");
 	sumSquare->GetRenderComponent()->enableRender = false;
 	sumSquare->GetColliderComponent()->isTrigger = true;
-	sumSquare->position = glm::vec3(staticSquare->GetGlobalPosition());
+	sumSquare->position = glm::vec3(staticSquare->GetWorldPosition());
 	sumSquare->scale = staticSquare->scale + testSquare->scale ;
 	AddObject(sumSquare);
 

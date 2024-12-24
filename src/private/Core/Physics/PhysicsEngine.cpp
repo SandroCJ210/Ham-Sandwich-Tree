@@ -63,12 +63,12 @@ std::vector<ColliderComponent*> PhysicsEngine::GetNearColliders(RigidbodyCompone
 	std::vector<ColliderComponent*> nearColliders = std::vector<ColliderComponent*>();
 
 	glm::vec3 maxDistance = rigidbody->velocity != glm::vec3(0) ?
-		rigidbody->velocity : rigidbody->parent->GetGlobalScale();
+		rigidbody->velocity : rigidbody->parent->GetWorldScale();
 	
 	for (ColliderComponent* collider : colliders) {
 		if (rigidbody->parent == collider->parent) continue;
 
-		glm::vec3 distance = rigidbody->parent->GetGlobalPosition() - collider->parent->GetGlobalPosition();
+		glm::vec3 distance = rigidbody->parent->GetWorldPosition() - collider->parent->GetWorldPosition();
 		
 		if (glm::length(distance) <= glm::length(maxDistance)) {
 			nearColliders.push_back(collider);

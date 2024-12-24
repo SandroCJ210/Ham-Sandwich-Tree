@@ -38,7 +38,7 @@ void RigidbodyComponent::PhysicsUpdate(float fixedDeltaTime, std::vector<Collide
 	}
 	
 	if (velocity != glm::vec3(0))
-		parent->SetGlobalPosition(parent->GetGlobalPosition() + velocity * fixedDeltaTime);
+		parent->SetWorldPosition(parent->GetWorldPosition() + velocity * fixedDeltaTime);
 }
 
 void RigidbodyComponent::DetectCollision(
@@ -70,7 +70,7 @@ void RigidbodyComponent::DetectCollision(
 		);
 		
 		if (hit.hit) {
-			parent->SetGlobalPosition(glm::vec3(hit.position, 0));
+			parent->SetWorldPosition(glm::vec3(hit.position, 0));
 			velocity.x = 0;
 		}
 	}
@@ -85,7 +85,7 @@ void RigidbodyComponent::DetectCollision(
 		);
 		
 		if (hit.hit) {
-			parent->SetGlobalPosition(glm::vec3(hit.position, 0));
+			parent->SetWorldPosition(glm::vec3(hit.position, 0));
 			velocity.y = 0;
 		}
 	}
@@ -95,7 +95,7 @@ void RigidbodyComponent::DetectCollision(
 			
 			glm::vec2 penetration = physics->SquareColliderPenetration(externalSquareCollider, rbSquareCollider);
 			
-			parent->SetGlobalPosition(parent->GetGlobalPosition() + glm::vec3(penetration, 0) * 1.01f);
+			parent->SetWorldPosition(parent->GetWorldPosition() + glm::vec3(penetration, 0) * 1.01f);
 		}
 	}
 }

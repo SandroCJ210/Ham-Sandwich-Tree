@@ -123,7 +123,7 @@ AObject* AObject::FindObjectByName(std::string name) {
 	return nullptr;
 }
 
-void AObject::SetGlobalPosition(glm::vec3 position) {
+void AObject::SetWorldPosition(glm::vec3 position) {
 	if (parent != nullptr) {
 		this->position = glm::vec3(
 			(position.x - parent->globalPosition.x) / parent->globalScale.x,
@@ -137,10 +137,10 @@ void AObject::SetGlobalPosition(glm::vec3 position) {
 	this->globalPosition = position;
 }
 
-void AObject::SetGlobalRotation(glm::vec3 rotation) {
+void AObject::SetWorldRotation(glm::vec3 rotation) {
 }
 
-void AObject::SetGlobalScale(glm::vec3 scale) {
+void AObject::SetWorldScale(glm::vec3 scale) {
 	if (parent != nullptr) {
 		this->scale = glm::vec3(
 			scale.x / parent->globalScale.x,

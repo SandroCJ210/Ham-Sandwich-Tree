@@ -23,11 +23,11 @@ SquareColliderComponent::~SquareColliderComponent() {
 }
 
 void SquareColliderComponent::FixedUpdate() {
-	worldCenter = parent->GetGlobalPosition() + glm::vec3(center, 0) ;
+	worldCenter = parent->GetWorldPosition() + glm::vec3(center, 0) ;
 
 	worldHalfSize = glm::vec2(
-		halfSize.x * parent->GetGlobalScale().x,
-		halfSize.y * parent->GetGlobalScale().y
+		halfSize.x * parent->GetWorldScale().x,
+		halfSize.y * parent->GetWorldScale().y
 	);
 }
 

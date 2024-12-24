@@ -22,8 +22,8 @@ void RenderComponent::LateUpdate() {
 void RenderComponent::Draw() {
 	if (!enableRender) return;
 
-	glm::vec3 center = this->parent->GetGlobalPosition();
-	glm::vec3 scale = this->parent->GetGlobalScale();
+	glm::vec3 center = this->parent->GetWorldPosition();
+	glm::vec3 scale = this->parent->GetWorldScale();
 
 	BaseMaterial* baseMaterial = dynamic_cast<BaseMaterial*>(material);
 

@@ -3,7 +3,6 @@
 #include <string>
 #include <glm/glm.hpp>
 #include "Core/Components/IComponent.h"
-#include "Core/Render/Color.h"
 
 class AObject {
 public:
@@ -53,14 +52,13 @@ public:
 	void AddChild(AObject* child);
 
 	// Getters and setters
-	void SetGlobalPosition(glm::vec3 position);
-	void SetGlobalRotation(glm::vec3 rotation);
-	void SetGlobalScale(glm::vec3 scale);
+	void SetWorldPosition(glm::vec3 position);
+	void SetWorldRotation(glm::vec3 rotation);
+	void SetWorldScale(glm::vec3 scale);
 	
-	glm::vec3 GetGlobalPosition() const { return globalPosition; }
-	glm::vec3 GetGlobalRotation() const { return globalRotation; }
-	glm::vec3 GetGlobalScale() const { return globalScale; }
-	glm::vec4 GetHomoPosition() const { return glm::vec4(position.x, position.y, position.z, 1); }
+	glm::vec3 GetWorldPosition() const { return globalPosition; }
+	glm::vec3 GetWorldRotation() const { return globalRotation; }
+	glm::vec3 GetWorldScale() const { return globalScale; }
 
 	// Static functions
 
