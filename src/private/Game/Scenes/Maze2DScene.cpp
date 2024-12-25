@@ -1,10 +1,10 @@
-#include "Core/Scenes/Maze2DScene.h"
+#include "Game/Scenes/Maze2DScene.h"
 
 #include "Core/Components/Render/CameraComponent.h"
 #include "Core/Objects/EmptyObject.h"
 #include "Core/Objects/SquareObject.h"
-#include "Core/Objects/Maze.h"
-#include "Core/Objects/Player.h"
+#include "Game/Objects/Maze.h"
+#include "Game/Objects/Player.h"
 
 Maze2DScene::Maze2DScene() {
 

@@ -1,6 +1,6 @@
 #include "Core/Components/Input/InputComponent.h"
 
-#include "Core/Components/Maze2D/MovementComponent.h"
+#include "Game/Components/MovementComponent.h"
 #include "Core/Objects/AObject.h"
 
 InputComponent::InputComponent(AObject* parent) : IComponent(parent) {

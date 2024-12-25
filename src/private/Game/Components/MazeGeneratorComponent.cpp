@@ -1,4 +1,4 @@
-#include "Core/Components/Maze2D/MazeGeneratorComponent.h"
+#include "Game/Components/MazeGeneratorComponent.h"
 
 #include <iostream>
 #include <random>

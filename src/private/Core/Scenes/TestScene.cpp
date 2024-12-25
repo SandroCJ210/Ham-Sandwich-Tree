@@ -4,7 +4,7 @@
 #include "Core/Components/Render/CameraComponent.h"
 #include "Core/Components/Render/RenderQuadComponent.h"
 #include "Core/Objects/SquareObject.h"
-#include "Core/Objects/Player.h"
+#include "Game/Objects/Player.h"
 #include "Core/Materials/TextureMaterial.h"
 #include "Core/Materials/ColorMaterial.h"
 #include "Core/Objects/CubeObject.h"

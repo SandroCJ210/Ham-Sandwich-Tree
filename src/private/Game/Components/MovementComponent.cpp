@@ -1,4 +1,4 @@
-#include "Core/Components/Maze2D/MovementComponent.h"
+#include "Game/Components/MovementComponent.h"
 
 #include <iostream>
 

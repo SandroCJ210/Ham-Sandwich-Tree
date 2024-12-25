@@ -5,10 +5,10 @@
 #include <iostream>
 #include <thread>
 
-#include "Core/Scenes/Maze2DScene.h"
+#include "Game/Scenes/Maze2DScene.h"
 #include "Core/Scenes/TestScene.h"
 #include "Core/Global.h"
-#include "Core/Objects/Maze.h"
+#include "Game/Objects/Maze.h"
 #include "Util/Logger.h"
 
 Window::Window():Singleton(){

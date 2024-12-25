@@ -6,7 +6,7 @@
 #include "Core/Components/Render/RenderQuadComponent.h"
 #include "Core/Components/Input/FollowMouseComponent.h"
 #include "Core/Components/Input/InputComponent.h"
-#include "Core/Components/Maze2D/MovementComponent.h"
+#include "Game/Components/MovementComponent.h"
 #include "Core/Components/Physics/RigidbodyComponent.h"
 #include "Core/Components/Physics/SquareColliderComponent.h"
 #include "Core/Objects/SquareObject.h"
