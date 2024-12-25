@@ -834,8 +834,8 @@
     </ClCompile>
     <ClCompile Include="src\private\Core\Global.cpp" />
     <ClCompile Include="src\private\Core\Materials\AMaterial.cpp" />
-    <ClCompile Include="src\private\Core\Materials\BaseMaterial.cpp" />
-    <ClCompile Include="src\private\Core\Materials\GizmosMaterial.cpp" />
+    <ClCompile Include="src\private\Core\Materials\TextureMaterial.cpp" />
+    <ClCompile Include="src\private\Core\Materials\ColorMaterial.cpp" />
     <ClCompile Include="src\private\Core\Objects\CubeObject.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1237,8 +1237,8 @@
     <ClInclude Include="src\public\Core\Components\TestComponents\TestMovementComponent.h" />
     <ClInclude Include="src\public\Core\Global.h" />
     <ClInclude Include="src\public\Core\Materials\AMaterial.h" />
-    <ClInclude Include="src\public\Core\Materials\BaseMaterial.h" />
-    <ClInclude Include="src\public\Core\Materials\GizmosMaterial.h" />
+    <ClInclude Include="src\public\Core\Materials\TextureMaterial.h" />
+    <ClInclude Include="src\public\Core\Materials\ColorMaterial.h" />
     <ClInclude Include="src\public\Core\Objects\CubeObject.h" />
     <ClInclude Include="src\public\Core\Objects\EmptyObject.h" />
     <ClInclude Include="src\public\Core\Render\Color.h" />
@@ -1260,8 +1260,8 @@
     <ClInclude Include="src\public\Core\Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Shaders\BaseShader\BaseFrag.glsl" />
-    <Content Include="Assets\Shaders\BaseShader\BaseVert.glsl" />
+    <Content Include="Assets\Shaders\TextureShader\TextureFrag.glsl" />
+    <Content Include="Assets\Shaders\TextureShader\TextureVert.glsl" />
     <Content Include="Assets\Shaders\ColorShader\ColorFrag.glsl" />
     <Content Include="Assets\Shaders\ColorShader\ColorVert.glsl" />
     <Content Include="Assets\Textures\HL.jpg" />

@@ -1,14 +1,13 @@
 #include "Core/Components/Render/RenderQuadComponent.h"
 
-#include "Core/Materials/BaseMaterial.h"
+#include "Core/Materials/ColorMaterial.h"
+#include "Core/Materials/TextureMaterial.h"
 #include "Core/Render/Shader.h"
 #include "Core/Objects/AObject.h"
 #include "Core/Render/Render.h"
 
 RenderQuadComponent::RenderQuadComponent(AObject* parent) : IComponent(parent){
-	material = new BaseMaterial();
-	
-	BaseMaterial* baseMaterial = dynamic_cast<BaseMaterial*>(material);
+	material = new ColorMaterial();
 }
 
 RenderQuadComponent::~RenderQuadComponent() {
@@ -25,7 +24,7 @@ void RenderQuadComponent::Draw() {
 	glm::vec3 center = this->parent->GetWorldPosition();
 	glm::vec3 scale = this->parent->GetWorldScale();
 
-	BaseMaterial* baseMaterial = dynamic_cast<BaseMaterial*>(material);
+	ColorMaterial* _material = dynamic_cast<ColorMaterial*>(material);
 
-	Render::GetInstance().DrawQuad(center, scale, material->shader, baseMaterial->color);
+	Render::GetInstance().DrawQuad(center, scale, material->shader, _material->color);
 }

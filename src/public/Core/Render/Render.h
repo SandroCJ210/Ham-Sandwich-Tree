@@ -1,4 +1,5 @@
 #pragma once
+#include <map>
 #include <vector>
 #include <string>
 #include <glm/glm.hpp>
@@ -7,7 +8,7 @@
 
 class CameraComponent;
 class Shader;
-class GizmosMaterial;
+class ColorMaterial;
 
 class Render : public Singleton<Render> {
 private:
@@ -15,6 +16,8 @@ private:
 	CameraComponent* currentCamera;
 	
 	std::vector<Shader*> shaders;
+
+	std::map<std::string, unsigned int> textures;
 
 	unsigned int VAO_cube;
 	unsigned int VBO_cube;
@@ -28,7 +31,7 @@ private:
 	unsigned int VBO_line;
 
 public:
-	GizmosMaterial* gizmosMaterial;
+	ColorMaterial* gizmosMaterial;
 
 public:
 	Render();
@@ -50,7 +53,7 @@ public:
 	void DrawCube(glm::vec3 center, glm::vec3 size, Shader* shader, glm::vec3 color);
 	
 	void SetCurrentCamera(CameraComponent* camera);
-	CameraComponent* GetCurrentCamera();
+	CameraComponent* GetCurrentCamera() const { return currentCamera; }
 };
 
 template class Singleton<Render>;

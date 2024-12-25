@@ -41,7 +41,7 @@ void Window::Start() {
 
 	glEnable(GL_DEPTH_TEST);
 	
-	actualScene = new TestScene();
+	actualScene = new Maze2DScene();
 	actualScene->Awake();
 	actualScene->Start();
 }

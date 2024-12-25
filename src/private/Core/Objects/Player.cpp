@@ -7,7 +7,7 @@
 #include "Core/Components/Physics/RigidbodyComponent.h"
 #include "Core/Components/Physics/SquareColliderComponent.h"
 #include "Core/Objects/Maze.h"
-#include "Core/Materials/BaseMaterial.h"
+#include "Core/Materials/TextureMaterial.h"
 
 
 Player::Player(AObject* parent, std::string name) : AObject(parent, name) {
@@ -28,7 +28,7 @@ Player::Player(AObject* parent, std::string name) : AObject(parent, name) {
 		AddComponent(new MovementComponent(this))
 	);
 	
-	BaseMaterial* baseMaterial = dynamic_cast<BaseMaterial*>(renderComponent->material);
+	TextureMaterial* baseMaterial = dynamic_cast<TextureMaterial*>(renderComponent->material);
 	baseMaterial->color = glm::vec3(63, 72, 204) / 255.0f;
 	
 }

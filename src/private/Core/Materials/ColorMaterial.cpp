@@ -1,24 +1,24 @@
-#include "Core/Materials/GizmosMaterial.h"
+#include "Core/Materials/ColorMaterial.h"
 #include "Core/Render/Shader.h"
 #include <string>
 
 #include "Core/Render/Render.h"
 
-GizmosMaterial::GizmosMaterial() {
+ColorMaterial::ColorMaterial() {
 	std::string vertexPath =	"Assets/Shaders/ColorShader/ColorVert.glsl";
 	std::string fragmentPath =	"Assets/Shaders/ColorShader/ColorFrag.glsl";
 	this->shader = new Shader(vertexPath, fragmentPath);
 }
 
-GizmosMaterial::~GizmosMaterial() {
+ColorMaterial::~ColorMaterial() {
 	delete this->shader;
 }
 
-void GizmosMaterial::SetColor(float r, float g, float b) {
+void ColorMaterial::SetColor(float r, float g, float b) {
 	this->color = glm::vec3(r, g, b);
 }
 
-void GizmosMaterial::SetColor(glm::vec3 color) {
+void ColorMaterial::SetColor(glm::vec3 color) {
 	this->color = color;
 }
 

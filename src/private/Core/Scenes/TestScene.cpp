@@ -5,8 +5,8 @@
 #include "Core/Components/Render/RenderQuadComponent.h"
 #include "Core/Objects/SquareObject.h"
 #include "Core/Objects/Player.h"
-#include "Core/Materials/BaseMaterial.h"
-#include "Core/Materials/GizmosMaterial.h"
+#include "Core/Materials/TextureMaterial.h"
+#include "Core/Materials/ColorMaterial.h"
 #include "Core/Objects/CubeObject.h"
 #include "Core/Objects/EmptyObject.h"
 #include "Core/Render/Render.h"
@@ -21,7 +21,7 @@ TestScene::TestScene() {
 	SquareObject* square2 = new SquareObject(nullptr, "Square2");
 	square2->scale = glm::vec3(1, 1, 1);
 	square2->position = glm::vec3(0, 0, 0);
-	dynamic_cast<BaseMaterial*>(square2->GetRenderComponent()->material)
+	dynamic_cast<TextureMaterial*>(square2->GetRenderComponent()->material)
 		->SetTexture("Assets/Textures/HL.jpg");
 	
 	AddObject(square2);

@@ -7,7 +7,7 @@
 
 #include "Core/Objects/SquareObject.h"
 #include "Core/Components//Render/RenderQuadComponent.h"
-#include "Core/Materials/BaseMaterial.h"
+#include "Core/Materials/TextureMaterial.h"
 #include "Util/Utility.h"
 
 #include "Core/Global.h"
@@ -186,6 +186,6 @@ void MazeGeneratorComponent::InstantiateWall(std::string id, glm::vec3 objectPos
 	wall->position = objectPosition;
 	wall->scale = objectScale * (1.0f + 0.25f);
 	
-	BaseMaterial* baseMaterial = dynamic_cast<BaseMaterial*>(wall->GetRenderComponent()->material);
+	TextureMaterial* baseMaterial = dynamic_cast<TextureMaterial*>(wall->GetRenderComponent()->material);
 	baseMaterial->SetColor(glm::vec3(255, 127, 39) / 255.0f);
 }

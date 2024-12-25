@@ -8,7 +8,7 @@
 #include <stb_image.h>
 
 #include "Core/Render/Shader.h"
-#include "Core/Materials/GizmosMaterial.h"
+#include "Core/Materials/ColorMaterial.h"
 #include "Core/Global.h"
 #include "Core/Components/Render/CameraComponent.h"
 #include "Util/Logger.h"
@@ -16,7 +16,7 @@
 
 Render::Render() {
 
-	gizmosMaterial = new GizmosMaterial();
+	gizmosMaterial = new ColorMaterial();
 
 	InitQuad();
 	InitLine();
@@ -41,6 +41,11 @@ Shader* Render::CreateShader(const std::string vertexPath, const std::string fra
 }
 
 unsigned int Render::GenerateTexture(const std::string texturePath) {
+
+	if (textures.find(texturePath) != textures.end()) {
+		return textures[texturePath];
+	}
+	
 	unsigned int generatedTexture;
 
 	glGenTextures(1, &generatedTexture);
@@ -62,9 +67,11 @@ unsigned int Render::GenerateTexture(const std::string texturePath) {
 	}
 	else {
 		Logger::Error("Failed to load texture");
+		return 0;
 	}
 	stbi_image_free(data);
-	
+
+	textures[texturePath] = generatedTexture;
 	return generatedTexture;
 }
 
@@ -224,6 +231,7 @@ void Render::DrawQuad(glm::vec3 center, glm::vec3 scale, Shader* shader, glm::ve
 	//Model matrix generation
 	glm::mat4 model = glm::mat4(1.0f);
 	model = glm::translate(model, center);
+	model = glm::translate(model, glm::vec3(0, 0, 0));
 	model = glm::scale(model, scale);
 	
 	shader->Use();
