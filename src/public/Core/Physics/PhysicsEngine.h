@@ -17,19 +17,19 @@ public:
 	};
 	
 private:
-	std::vector<RigidbodyComponent*> rigidbodies;
-	std::vector<ColliderComponent*> colliders;
+	static std::vector<RigidbodyComponent*> rigidbodies;
+	static std::vector<ColliderComponent*> colliders;
 
 public:
-	PhysicsEngine();
-	~PhysicsEngine();
-	void Start(std::vector<AObject*> objects);
-	void Update();
+	//PhysicsEngine();
+	//~PhysicsEngine();
+	static void Start(std::vector<AObject*> objects);
+	static void Update();
 
 private:
-	void AddObjectRigidbodyAndCollider(AObject* object);
-	void AddRigidbody(RigidbodyComponent* rigidBody);
-	void AddCollider(ColliderComponent* collider);
+	static void AddObjectRigidbodyAndCollider(AObject* object);
+	static void AddRigidbody(RigidbodyComponent* rigidBody);
+	static void AddCollider(ColliderComponent* collider);
 
 	std::vector<ColliderComponent*> GetNearColliders(RigidbodyComponent* rigidbody);
 

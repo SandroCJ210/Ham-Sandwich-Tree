@@ -114,7 +114,7 @@ void Render::InitQuad() {
 
 	glGenBuffers(1, &VBO_quad);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO_quad);
-	glBufferData(GL_ARRAY_BUFFER, 20 * sizeof(float), vertices, GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 20 * sizeof(float), vertices, GL_STATIC_DRAW);
 
 	glGenBuffers(1, &EBO_quad);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO_quad);
@@ -152,15 +152,15 @@ void Render::InitCube() {
 	};
 	
 	float vertices[] = {
-		-0.5f,	-0.5f,	-0.5f,
-		0.5f,	-0.5f,	-0.5f,
-		0.5f,	0.5f,	-0.5f,
-		-0.5f,	0.5f,	-0.5f,
+		-0.5f,	-0.5f,	-0.5f,	0.0f,	1.0f,
+		0.5f,	-0.5f,	-0.5f,	1.0f,	1.0f,
+		0.5f,	0.5f,	-0.5f,	1.0f,	2.0f,
+		-0.5f,	0.5f,	-0.5f,	0.0f,	2.0f,
 		
-		-0.5f,	-0.5f,	0.5f,
-		0.5f,	-0.5f,	0.5f,
-		0.5f,	0.5f,	0.5f,
-		-0.5f,	0.5f,	0.5f
+		-0.5f,	-0.5f,	0.5f,	0.0f,	0.0f,
+		0.5f,	-0.5f,	0.5f,	1.0f,	0.0f,
+		0.5f,	0.5f,	0.5f,	1.0f,	1.0f,
+		-0.5f,	0.5f,	0.5f,	0.0f,	1.0f,
 		
 	};
 
@@ -170,14 +170,17 @@ void Render::InitCube() {
 
 	glGenBuffers(1, &VBO_cube);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO_cube);
-	glBufferData(GL_ARRAY_BUFFER, 24 * sizeof(float), vertices, GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 40 * sizeof(float), vertices, GL_STATIC_DRAW);
 
 	glGenBuffers(1, &EBO_cube);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO_cube);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 36 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
+	
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
 }
 
 void Render::DrawLineSegment(glm::vec3 start, glm::vec3 end, glm::vec3 color) {

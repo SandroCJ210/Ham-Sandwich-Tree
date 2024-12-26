@@ -3,8 +3,8 @@
 #include "Core/Render/Shader.h"
 
 TextureMaterial::TextureMaterial() {
-	std::string vertexPath =	"Assets/Shaders/TextireShader/TextureVert.glsl";
-	std::string fragmentPath =	"Assets/Shaders/TextireShader/Texturefrag.glsl";
+	std::string vertexPath =	"Assets/Shaders/TextureShader/TextureVert.glsl";
+	std::string fragmentPath =	"Assets/Shaders/TextureShader/Texturefrag.glsl";
 	this->shader = Render::GetInstance().CreateShader(vertexPath, fragmentPath);
 }
 

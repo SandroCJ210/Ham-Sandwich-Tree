@@ -5,12 +5,11 @@
 #include <vector>
 #include <glm/glm.hpp>
 
-#include "Core/Objects/SquareObject.h"
-#include "Core/Components//Render/RenderQuadComponent.h"
 #include "Core/Materials/TextureMaterial.h"
 #include "Util/Utility.h"
-
 #include "Core/Global.h"
+#include "Core/Components/Render/RenderCubeComponent.h"
+#include "Core/Objects/CubeObject.h"
 
 MazeGeneratorComponent::MazeGeneratorComponent(AObject* parent) : IComponent(parent) {
 
@@ -120,7 +119,7 @@ void MazeGeneratorComponent::GenerateMaze() {
 }
 
 void MazeGeneratorComponent::GenerateObjects() {
-	float objectScale = 2.0f / size;
+	float objectScale = 2.0f / (float)size;
 	//indicates row
 	for (int i = 0; i < size; i++) {
 		//indicates column
@@ -182,10 +181,11 @@ void MazeGeneratorComponent::PrintMaze() {
 void MazeGeneratorComponent::InstantiateWall(std::string id, glm::vec3 objectPosition, glm::vec3 objectScale) {
 	std::string name = "Wall" + id;
 	
-	SquareObject* wall = new SquareObject(parent, name);
+	CubeObject* wall = new CubeObject(parent, name);
 	wall->position = objectPosition;
-	wall->scale = objectScale * (1.0f + 0.25f);
+	wall->scale = objectScale * 0.8f;
 	
-	TextureMaterial* baseMaterial = dynamic_cast<TextureMaterial*>(wall->GetRenderComponent()->material);
-	baseMaterial->SetColor(glm::vec3(255, 127, 39) / 255.0f);
+	TextureMaterial* _material = dynamic_cast<TextureMaterial*>(wall->GetRenderComponent()->material);
+	// _material->SetColor(glm::vec3(255, 127, 39) / 255.0f);
+	_material->SetTexture("Assets/Textures/HL.jpg");
 }

@@ -5,7 +5,7 @@
 #include <iostream>
 #include <thread>
 
-#include "Game/Scenes/Maze2DScene.h"
+#include "Game/Scenes/Maze3DScene.h"
 #include "Core/Scenes/TestScene.h"
 #include "Core/Global.h"
 #include "Game/Objects/Maze.h"
@@ -41,7 +41,7 @@ void Window::Start() {
 
 	glEnable(GL_DEPTH_TEST);
 	
-	actualScene = new Maze2DScene();
+	actualScene = new Maze3DScene();
 	actualScene->Awake();
 	actualScene->Start();
 }

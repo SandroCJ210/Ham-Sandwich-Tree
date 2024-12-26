@@ -1,12 +1,11 @@
 #pragma once
 #include "Core/Objects/AObject.h"
 
-class Maze;
-class RenderQuadComponent;
+class CameraComponent;
+// class RenderQuadComponent;
 class InputComponent;
 class MovementComponent;
 class RigidbodyComponent;
-class SquareColliderComponent;
 
 class Player : public AObject {
 public:
@@ -17,10 +16,12 @@ public:
 	
 private:
 
-	RenderQuadComponent* renderComponent;
+	CameraComponent* playerCamera;
+	
+	// RenderQuadComponent* renderComponent;
 	RigidbodyComponent* rigidbodyComponent;
 	InputComponent* inputComponent;
 	MovementComponent* movementComponent;
-	SquareColliderComponent* colliderComponent;
+	// SquareColliderComponent* colliderComponent;
 	
 };

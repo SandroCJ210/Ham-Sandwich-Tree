@@ -7,7 +7,6 @@
 #include "Core/Components/Physics/ColliderComponent.h"
 #include "Core/Components/Physics/SquareColliderComponent.h"
 #include "Core/Objects/AObject.h"
-#include "Core/Render/Color.h"
 
 PhysicsEngine::PhysicsEngine() {
 	rigidbodies = std::vector<RigidbodyComponent*>();
@@ -163,7 +162,7 @@ PhysicsEngine::Hit PhysicsEngine::RaycastSquareCollider(
 	glm::vec2 min, max;
 	CalcMinAndMax(min, max, colliderPosition, colliderHalfSize);
 
-	float lastEntry = -INFINITY;
+	float lastEntry = 0.0f;
 	float firstExit = INFINITY;
 	
 	for (int i = 0; i < 2; i++) {
@@ -180,7 +179,6 @@ PhysicsEngine::Hit PhysicsEngine::RaycastSquareCollider(
 	}
 
 	if (firstExit > lastEntry && firstExit > 0 && lastEntry < 1) {
-		lastEntry = std::max(lastEntry, 0.0f);
 		hit.hit = true;
 		hit.time = lastEntry;
 		hit.position = position + magnitude * lastEntry;

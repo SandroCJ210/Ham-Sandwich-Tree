@@ -386,6 +386,7 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="src\private\Core\Components\Physics\Rigidbody2DComponent.cpp" />
     <ClCompile Include="src\private\Core\Components\Physics\RigidbodyComponent.cpp" />
     <ClCompile Include="src\private\Core\Components\Physics\SquareColliderComponent.cpp" />
     <ClCompile Include="src\private\Core\Components\Render\CameraComponent.cpp">
@@ -762,6 +763,7 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="src\private\Core\Physics\PhysicsEngine2D.cpp" />
     <ClCompile Include="src\private\Core\Render\Color.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1213,7 +1215,7 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="src\private\Game\Scenes\Maze2DScene.cpp">
+    <ClCompile Include="src\private\Game\Scenes\Maze3DScene.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
@@ -1368,6 +1370,7 @@
     <ClCompile Include="src\private\Core\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\private\Core\Components\Physics\Rigidbody2DComponent.h" />
     <ClInclude Include="src\public\Core\Components\IComponent.h" />
     <ClInclude Include="src\public\Core\Components\Input\FollowMouseComponent.h" />
     <ClInclude Include="src\public\Core\Components\Input\InputComponent.h" />
@@ -1383,6 +1386,7 @@
     <ClInclude Include="src\public\Core\Materials\ColorMaterial.h" />
     <ClInclude Include="src\public\Core\Objects\CubeObject.h" />
     <ClInclude Include="src\public\Core\Objects\EmptyObject.h" />
+    <ClInclude Include="src\public\Core\Physics\PhysicsEngine2D.h" />
     <ClInclude Include="src\public\Core\Render\Color.h" />
     <ClInclude Include="src\public\Core\Render\Shader.h" />
     <ClInclude Include="src\public\Core\Objects\AObject.h" />
@@ -1396,7 +1400,7 @@
     <ClInclude Include="src\public\Game\Components\MovementComponent.h" />
     <ClInclude Include="src\public\Game\Objects\Maze.h" />
     <ClInclude Include="src\public\Game\Objects\Player.h" />
-    <ClInclude Include="src\public\Game\Scenes\Maze2DScene.h" />
+    <ClInclude Include="src\public\Game\Scenes\Maze3DScene.h" />
     <ClInclude Include="src\public\Util\Graph.h" />
     <ClInclude Include="src\public\Util\Logger.h" />
     <ClInclude Include="src\public\Util\Singleton.h" />
@@ -1409,6 +1413,10 @@
     <Content Include="Assets\Shaders\ColorShader\ColorFrag.glsl" />
     <Content Include="Assets\Shaders\ColorShader\ColorVert.glsl" />
     <Content Include="Assets\Textures\HL.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\private\Core\Components\Physics\2D\" />
+    <Folder Include="src\private\Core\Components\Physics\3D\" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
