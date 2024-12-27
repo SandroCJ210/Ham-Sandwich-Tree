@@ -1,6 +1,6 @@
 #include "Core/Objects/SquareObject.h"
 #include "Core/Components/Render/RenderQuadComponent.h"
-#include "Core/Components/Physics/SquareColliderComponent.h"
+#include "Core/Components/Physics/2D/SquareColliderComponent.h"
 #include "Core/Objects/AObject.h"
 
 SquareObject::SquareObject(AObject* parent, std::string name) : AObject(parent, name){

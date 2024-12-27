@@ -1,6 +1,6 @@
 #include "Core/Scenes/TestScene.h"
 
-#include "Core/Components/Physics/SquareColliderComponent.h"
+#include "Core/Components/Physics/2D/SquareColliderComponent.h"
 #include "Core/Components/Render/CameraComponent.h"
 #include "Core/Components/Render/RenderQuadComponent.h"
 #include "Core/Objects/SquareObject.h"

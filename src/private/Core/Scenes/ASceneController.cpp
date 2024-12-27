@@ -4,15 +4,14 @@
 #include <GLFW/glfw3.h>
 
 #include "Core/Global.h"
-#include "Core/Physics/PhysicsEngine.h"
+#include "Core/Physics/PhysicsEngine2D.h"
+#include "Core/Physics/PhysicsEngine3D.h"
 
 
 ASceneController::ASceneController(){
-	physicsEngine = new PhysicsEngine();
 }
 
 ASceneController::~ASceneController(){
-	delete physicsEngine;
 }
 
 void ASceneController::AddObject(AObject* object){
@@ -26,6 +25,8 @@ void ASceneController::Awake(){
 		if (!element->isEnabled) continue;
 		element->Awake();
 	}
+	PhysicsEngine3D::Awake(objects);
+	PhysicsEngine2D::Awake(objects);
 }
 
 void ASceneController::Start(){
@@ -33,7 +34,6 @@ void ASceneController::Start(){
 		if (!element->isEnabled) continue;
 		element->Start();
 	}
-	physicsEngine->Start(objects);
 
 }
 
@@ -62,7 +62,8 @@ void ASceneController::FixedUpdate() {
 		if (!element->isEnabled) continue;
 		element->FixedUpdate();
 	}
-	physicsEngine->Update();
+	PhysicsEngine3D::Update();
+	PhysicsEngine2D::Update();
 }
 
 void ASceneController::Update(double deltaTime){

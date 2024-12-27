@@ -1,8 +1,6 @@
 #include "Game/Components/MovementComponent.h"
 
-#include <iostream>
-
-#include "Core/Components/Physics/RigidBodyComponent.h"
+#include "Core/Components/Physics/3D/Rigidbody3DComponent.h"
 #include "Core/Objects/AObject.h"
 #include "Util/Logger.h"
 
@@ -15,7 +13,7 @@ MovementComponent::~MovementComponent() {
 }
 
 void MovementComponent::Start() {
-	rb = parent->GetComponent<RigidbodyComponent>();
+	rb = parent->GetComponent<Rigidbody3DComponent>();
 	if (rb == nullptr) {
 		Logger::Error("MovementComponent::Start -> RigidbodyComponent not found");
 	}

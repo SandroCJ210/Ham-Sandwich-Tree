@@ -1,11 +1,12 @@
-#include "Core/Components/Physics/SquareColliderComponent.h"
+#include "Core/Components/Physics/2D/SquareColliderComponent.h"
 
 #include "Core/Global.h"
 #include "Core/Objects/AObject.h"
 #include "Core/Render/Color.h"
 #include "Core/Render/Render.h"
 
-SquareColliderComponent::SquareColliderComponent(AObject* parent) : ColliderComponent(parent) {
+SquareColliderComponent::SquareColliderComponent(AObject* parent)
+	: ACollider2DComponent(parent) {
 	center = glm::vec2(0.0);
 	halfSize = glm::vec2(0.5);
 }
@@ -13,7 +14,8 @@ SquareColliderComponent::SquareColliderComponent(AObject* parent) : ColliderComp
 SquareColliderComponent::SquareColliderComponent(
 	AObject* parent,
 	glm::vec2 center,
-	glm::vec2 halfSize) : SquareColliderComponent(parent) {
+	glm::vec2 halfSize)
+	: SquareColliderComponent(parent) {
 
 	this->center = center;
 	this->halfSize = halfSize;
@@ -31,14 +33,11 @@ void SquareColliderComponent::FixedUpdate() {
 	);
 }
 
-void SquareColliderComponent::Update(double deltatime) {
-}
-
 void SquareColliderComponent::LateUpdate() {
 	if (Global::DEBUG) {
 		Render::GetInstance().DrawQuadLine(
 			glm::vec3(worldCenter, 0.0),
-			glm::vec3(worldHalfSize, 0) * 2.0f,
+			glm::vec3(worldHalfSize, 0) * 2.001f,
 			Color::GREEN);
 	}
 }

@@ -7,8 +7,8 @@
 #include "Core/Components/Input/FollowMouseComponent.h"
 #include "Core/Components/Input/InputComponent.h"
 #include "Game/Components/MovementComponent.h"
-#include "Core/Components/Physics/RigidbodyComponent.h"
-#include "Core/Components/Physics/SquareColliderComponent.h"
+#include "Core/Components/Physics/2D/SquareColliderComponent.h"
+#include "Core/Components/Physics/2D/Rigidbody2DComponent.h"
 #include "Core/Objects/SquareObject.h"
 #include "Core/Render/Color.h"
 #include "Core/Render/Render.h"
@@ -18,7 +18,7 @@ TestColisionScene::TestColisionScene() {
 	SquareObject* testSquare = new SquareObject(nullptr, "squareMouse");
 	testSquare->GetRenderComponent()->enableRender = true;
 	// testSquare->AddComponent(new FollowMouseComponent(testSquare));
-	testSquare->AddComponent(new RigidbodyComponent(testSquare));
+	testSquare->AddComponent(new Rigidbody2DComponent(testSquare));
 	testSquare->AddComponent(new InputComponent(testSquare));
 	MovementComponent* movement =  dynamic_cast<MovementComponent*>(
 		testSquare->AddComponent(new MovementComponent(testSquare))
@@ -60,9 +60,9 @@ void TestColisionScene::Update(double deltaTime) {
 	// std::cout<<deltaTime<<'\n';
 
 	SquareObject* testSquare = dynamic_cast<SquareObject*>(objects[0]);
-	RigidbodyComponent* rbTestSquare = nullptr;
+	Rigidbody2DComponent* rbTestSquare = nullptr;
 	for (IComponent* component : testSquare->components) {
-		rbTestSquare = dynamic_cast<RigidbodyComponent*>(component);
+		rbTestSquare = dynamic_cast<Rigidbody2DComponent*>(component);
 		if (rbTestSquare != nullptr) {
 			break;
 		}

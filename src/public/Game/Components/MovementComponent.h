@@ -4,14 +4,14 @@
 #include "Core/Components/IComponent.h"
 
 
-class RigidbodyComponent;
+class Rigidbody3DComponent;
 
 class MovementComponent : public IComponent {
 private:
 	glm::vec2 direction;
 	float speed;
 
-	RigidbodyComponent* rb;
+	Rigidbody3DComponent* rb;
 	
 public:
 	MovementComponent(AObject* parent);
@@ -20,8 +20,8 @@ public:
 	void Start() override;
 	void Update(double deltaTime) override;
 
-	glm::vec2 GetDirection() const { return direction; };
-	double GetSpeed() const { return speed; };
+	glm::vec2 GetDirection() const { return direction; }
+	double GetSpeed() const { return speed; }
 
 	void SetSpeed(float speed);
 	void SetDirection(glm::vec2 direction);

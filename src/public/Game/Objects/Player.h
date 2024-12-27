@@ -5,7 +5,7 @@ class CameraComponent;
 // class RenderQuadComponent;
 class InputComponent;
 class MovementComponent;
-class RigidbodyComponent;
+class Rigidbody3DComponent;
 
 class Player : public AObject {
 public:
@@ -19,7 +19,7 @@ private:
 	CameraComponent* playerCamera;
 	
 	// RenderQuadComponent* renderComponent;
-	RigidbodyComponent* rigidbodyComponent;
+	Rigidbody3DComponent* rigidbodyComponent;
 	InputComponent* inputComponent;
 	MovementComponent* movementComponent;
 	// SquareColliderComponent* colliderComponent;

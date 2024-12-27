@@ -4,11 +4,9 @@
 #include "Core/Components/Input/InputComponent.h"
 #include "Game/Components/MazeGeneratorComponent.h"
 #include "Game/Components/MovementComponent.h"
-#include "Core/Components/Physics/RigidbodyComponent.h"
-#include "Core/Components/Physics/SquareColliderComponent.h"
+#include "Core/Components/Physics/3D/Rigidbody3DComponent.h"
 #include "Core/Components/Render/CameraComponent.h"
 #include "Game/Objects/Maze.h"
-#include "Core/Materials/TextureMaterial.h"
 
 
 Player::Player(AObject* parent, std::string name) : AObject(parent, name) {
@@ -23,8 +21,8 @@ Player::Player(AObject* parent, std::string name) : AObject(parent, name) {
 	// renderComponent = dynamic_cast<RenderQuadComponent*>(
 	// 	AddComponent(new RenderQuadComponent( this ))
 	// );
-	rigidbodyComponent = dynamic_cast<RigidbodyComponent*>(
-		AddComponent(new RigidbodyComponent( this ))
+	rigidbodyComponent = dynamic_cast<Rigidbody3DComponent*>(
+		AddComponent(new Rigidbody3DComponent( this ))
 	);
 	// colliderComponent = dynamic_cast<SquareColliderComponent*>(
 	// 	AddComponent(new SquareColliderComponent( this, glm::vec2(0, 0), glm::vec2(0.5, 0.5) ))
