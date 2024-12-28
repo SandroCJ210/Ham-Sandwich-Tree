@@ -228,14 +228,18 @@ void Render::DrawQuadLine(glm::vec3 center, glm::vec3 scale, glm::vec3 color) {
 
 }
 
-void Render::DrawQuad(glm::vec3 center, glm::vec3 scale, Shader* shader, glm::vec3 color) {
+void Render::DrawQuad(glm::mat4 model, Shader* shader, glm::vec3 color) {
 	if (currentCamera == nullptr) return;
 
 	//Model matrix generation
-	glm::mat4 model = glm::mat4(1.0f);
-	model = glm::translate(model, center);
-	model = glm::translate(model, glm::vec3(0, 0, 0));
-	model = glm::scale(model, scale);
+	// glm::mat4 model = glm::mat4(1.0f);
+	// model = glm::translate(model, center);
+	// model = glm::translate(model, glm::vec3(0, 0, 0));
+	// model = glm::scale(model, scale);
+	//
+	// glm::vec3 vectorRotation = glm::vec3(rotation.x, rotation.y, rotation.z);
+	// float angle = 2 * glm::acos(rotation.w);
+	// model = glm::rotate(model, )
 	
 	shader->Use();
 	shader->SetVector3("_color", color);
@@ -250,12 +254,12 @@ void Render::DrawQuad(glm::vec3 center, glm::vec3 scale, Shader* shader, glm::ve
 	glBindVertexArray(0);
 }
 
-void Render::DrawCube(glm::vec3 center, glm::vec3 size, Shader* shader, glm::vec3 color) {
+void Render::DrawCube(glm::mat4 model, Shader* shader, glm::vec3 color) {
 	if (currentCamera == nullptr) return;
 
-	glm::mat4 model = glm::mat4(1.0f);
-	model = glm::translate(model, center);
-	model = glm::scale(model, size);
+	// glm::mat4 model = glm::mat4(1.0f);
+	// model = glm::translate(model, center);
+	// model = glm::scale(model, size);
 
 	shader->Use();
 	shader->SetVector3("_color", color);

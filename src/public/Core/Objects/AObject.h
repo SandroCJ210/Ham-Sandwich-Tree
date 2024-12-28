@@ -2,6 +2,8 @@
 #include <vector>
 #include <string>
 #include <glm/glm.hpp>
+#include <glm/gtc/quaternion.hpp>
+
 #include "Core/Components/IComponent.h"
 
 class AObject {
@@ -12,15 +14,17 @@ public:
 	bool isEnabled = true;
 	
 	glm::vec3 position = {0, 0, 0};
-	glm::vec3 rotation = {0, 0, 0};
+	glm::quat rotationQuat = {0, 0, 0, 1};
 	glm::vec3 scale = { 1, 1, 1 };
 
 protected:
-	glm::vec3 globalPosition = { 0, 0, 0 };
-	glm::vec3 globalRotation = { 0, 0, 0 };
-	glm::vec3 globalScale = { 1, 1, 1 };
+	
+	glm::vec3 worldPosition = { 0, 0, 0 };
+	glm::quat worldRotation = { 0, 0, 0, 1};
+	glm::vec3 worldScale = { 1, 1, 1 };
 
 public:
+	
 	std::vector<IComponent*> components;
 
 	AObject* parent = nullptr;
@@ -50,15 +54,23 @@ public:
 	}
 
 	void AddChild(AObject* child);
+	
+	void Rotate(glm::quat rotation);
+	void RotateEuler(glm::vec3 rotation);
 
+	glm::vec3 Forward();
+	glm::vec3 Right();
+	glm::vec3 Up();
+	
 	// Getters and setters
+	void SetRotation(glm::quat rotation);
 	void SetWorldPosition(glm::vec3 position);
-	void SetWorldRotation(glm::vec3 rotation);
+	void SetWorldRotation(glm::quat rotation);
 	void SetWorldScale(glm::vec3 scale);
 	
-	glm::vec3 GetWorldPosition() const { return globalPosition; }
-	glm::vec3 GetWorldRotation() const { return globalRotation; }
-	glm::vec3 GetWorldScale() const { return globalScale; }
+	glm::vec3 GetWorldPosition()	const { return worldPosition; }
+	glm::quat GetWorldRotation()	const { return worldRotation; }
+	glm::vec3 GetWorldScale()		const { return worldScale; }
 
 	// Static functions
 

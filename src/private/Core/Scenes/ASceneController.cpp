@@ -1,11 +1,11 @@
 #include "Core/Scenes/ASceneController.h"
 
-#include <iostream>
 #include <GLFW/glfw3.h>
 
 #include "Core/Global.h"
 #include "Core/Physics/PhysicsEngine2D.h"
 #include "Core/Physics/PhysicsEngine3D.h"
+#include "Util/Logger.h"
 
 
 ASceneController::ASceneController(){
@@ -44,7 +44,7 @@ void ASceneController::SceneUpdate(){
 	physicsTimeOffset += deltaTime;
 
 	// double fps = 1.0 / deltaTime;
-	// std::cout<<"FPS: "<<fps<<std::endl;
+	// Logger::Log("FPS: " + std::to_string(fps));
 	
 	while (physicsTimeOffset >= Global::FIXED_DELTA_TIME){
 		FixedUpdate();

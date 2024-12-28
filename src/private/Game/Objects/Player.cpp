@@ -47,7 +47,7 @@ void Player::Awake() {
 	// float objectQuantity = (float)mazeGenerator->GetSize();
 	
 	// scale = glm::vec3(1.0f / objectQuantity);
-	position = glm::vec3(0.0f, 0.0f, 1.0f);
+	position = glm::vec3(0.0f, 1.5f, -5.0f);
 	// position = glm::vec3(
 	// 	-1 + scale.x + scale.x * 2,
 	// 	1 - scale.x - scale.x * 2,

@@ -8,3 +8,10 @@ bool Utility::FindInVector(std::vector<int> vec, int value) {
 	}
 	return false;
 }
+
+float Utility::AngleBetweenVectors(glm::vec3 a, glm::vec3 b) {
+	float dot = glm::dot(a, b);
+	float len = glm::length(a) * glm::length(b);
+	float result = dot / len;
+	return result;
+}

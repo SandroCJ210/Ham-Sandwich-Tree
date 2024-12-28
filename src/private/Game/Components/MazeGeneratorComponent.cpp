@@ -13,22 +13,22 @@
 
 MazeGeneratorComponent::MazeGeneratorComponent(AObject* parent) : IComponent(parent) {
 
-	size = 3; //Default size of Maze
+	size = 5; //Default size of Maze
 	seed = 1111; //Default seed
 	startID = -1;
 	endID = -1;
 
-	do{
-		int _size = 0;
-		std::cout << "Enter the size of the maze: ";
-		std::cin >> _size;
-
-		if (_size < 3 || _size % 2 == 0) {
-			std::cout << "Invalid size. Size must be an odd number greater than 4." << std::endl;
-		}
-		SetSize(_size);
-	} 
-	while (size < 3 || size % 2 == 0);
+	// do{
+	// 	int _size = 0;
+	// 	std::cout << "Enter the size of the maze: ";
+	// 	std::cin >> _size;
+	//
+	// 	if (_size < 3 || _size % 2 == 0) {
+	// 		std::cout << "Invalid size. Size must be an odd number greater than 4." << std::endl;
+	// 	}
+	// 	SetSize(_size);
+	// } 
+	// while (size < 3 || size % 2 == 0);
 }
 
 MazeGeneratorComponent::~MazeGeneratorComponent() {
@@ -119,7 +119,7 @@ void MazeGeneratorComponent::GenerateMaze() {
 }
 
 void MazeGeneratorComponent::GenerateObjects() {
-	float objectScale = 2.0f / (float)size;
+	float objectScale = 1.0f;
 	//indicates row
 	for (int i = 0; i < size; i++) {
 		//indicates column
@@ -129,9 +129,9 @@ void MazeGeneratorComponent::GenerateObjects() {
 				InstantiateWall(
 					std::to_string(i) + std::to_string(j),
 					glm::vec3(
-						-1 + (objectScale / 2) + objectScale * j, 
-						1 - (objectScale / 2) - objectScale * i,
-						0.0f), 
+						-1 * (size)/2 + objectScale * j, 
+						0.f,
+						+1 * (size)/2 - objectScale * i), 
 					glm::vec3(objectScale));
 				continue;
 			}
@@ -147,13 +147,12 @@ void MazeGeneratorComponent::GenerateObjects() {
 			InstantiateWall(
 				std::to_string(i) + std::to_string(j),
 				glm::vec3(
-					-1 + (objectScale / 2) + objectScale * j,
-					1 - (objectScale / 2) - objectScale * i,
-					0.0f),
+					-1 * (size)/2.0f + (objectScale / 2) + objectScale * j,
+					0.f,
+					+1 * (size)/2.0f - (objectScale / 2) - objectScale * i),
 				glm::vec3(objectScale));
 		}
 	}
-
 }
 
 void MazeGeneratorComponent::PrintMaze() {

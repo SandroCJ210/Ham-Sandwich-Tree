@@ -1,9 +1,11 @@
-#include <string>
-#include "Core/Scenes/ASceneController.h"
-#include "Core/Window.h"
 #include "Core/Objects/AObject.h"
 
+#include <string>
 #include <iostream>
+#include <glm/gtc/matrix_transform.hpp>
+
+#include "Core/Scenes/ASceneController.h"
+#include "Core/Window.h"
 
 AObject::AObject(AObject* _parent, std::string name) {
 	this->parent = _parent;
@@ -38,23 +40,22 @@ void AObject::Start() {
 }
 
 void AObject::FixedUpdate() {
+	
 	if (parent != nullptr) {
-		globalScale = glm::vec3(
-			scale.x * parent->globalScale.x,
-			scale.y * parent->globalScale.y,
-			scale.z * parent->globalScale.z
-		);
+		glm::mat4 trans = glm::mat4(1);
+		
+		glm::scale(trans, parent->worldScale);
+		worldScale = trans * glm::vec4(scale, 1);
 
-		globalPosition = parent->globalPosition + glm::vec3(
-			position.x * parent->globalScale.x,
-			position.y * parent->globalScale.y,
-			position.z * parent->globalScale.z
-		);
-
+		glm::translate(trans, parent->worldPosition);
+		worldPosition = trans * glm::vec4(position, 1);
+		
+		worldRotation = parent->worldRotation * rotationQuat;
 	}
 	else {
-		this->globalScale = scale;
-		this->globalPosition = position;
+		this->worldScale = scale;
+		this->worldPosition = position;
+		this->worldRotation = rotationQuat;
 	}
 
 	for (auto element : components) {
@@ -111,6 +112,71 @@ void AObject::AddChild(AObject* child) {
 	children.push_back(child);
 }
 
+void AObject::Rotate(glm::quat rotation) {
+	rotation = glm::normalize(rotation);
+	this->rotationQuat = rotation * this->rotationQuat;
+}
+
+void AObject::RotateEuler(glm::vec3 rotation) {
+	Rotate(glm::quat(rotation));
+}
+
+glm::vec3 AObject::Forward() {
+	glm::vec3 forward = glm::vec3(0, 0, 1);
+	
+	return forward;
+}
+
+glm::vec3 AObject::Right() {
+	glm::vec3 right = glm::vec3(1, 0, 0);
+	
+	return right;
+}
+
+glm::vec3 AObject::Up() {
+	glm::vec3 up = glm::vec3(0, 1, 0);
+	
+	return up;
+}
+
+void AObject::SetRotation(glm::quat rotation) {
+	rotation = glm::normalize(rotation);
+	this->rotationQuat = rotation;
+}
+
+void AObject::SetWorldPosition(glm::vec3 position) {
+	if (parent != nullptr) {
+		this->position = glm::vec3(
+			(position.x - parent->worldPosition.x) / parent->worldScale.x,
+			(position.y - parent->worldPosition.y) / parent->worldScale.y,
+			(position.z - parent->worldPosition.z) / parent->worldScale.z
+		);
+	}
+	else {
+		this->position = position;
+	}
+	this->worldPosition = position;
+}
+
+void AObject::SetWorldRotation(glm::quat rotation) {
+	// rotation = glm::normalize(rotation);
+	// this->rotationQuat = rotation;
+}
+
+void AObject::SetWorldScale(glm::vec3 scale) {
+	if (parent != nullptr) {
+		this->scale = glm::vec3(
+			scale.x / parent->worldScale.x,
+			scale.y / parent->worldScale.y,
+			scale.z / parent->worldScale.z
+		);
+	}
+	else {
+		this->scale = scale;
+	}
+	this->scale = scale;
+}
+
 AObject* AObject::FindObjectByName(std::string name) {
 	
 	ASceneController* scene = Window::GetInstance().GetActualScene();
@@ -121,37 +187,6 @@ AObject* AObject::FindObjectByName(std::string name) {
 		}
 	}
 	return nullptr;
-}
-
-void AObject::SetWorldPosition(glm::vec3 position) {
-	if (parent != nullptr) {
-		this->position = glm::vec3(
-			(position.x - parent->globalPosition.x) / parent->globalScale.x,
-			(position.y - parent->globalPosition.y) / parent->globalScale.y,
-			(position.z - parent->globalPosition.z) / parent->globalScale.z
-		);
-	}
-	else {
-		this->position = position;
-	}
-	this->globalPosition = position;
-}
-
-void AObject::SetWorldRotation(glm::vec3 rotation) {
-}
-
-void AObject::SetWorldScale(glm::vec3 scale) {
-	if (parent != nullptr) {
-		this->scale = glm::vec3(
-			scale.x / parent->globalScale.x,
-			scale.y / parent->globalScale.y,
-			scale.z / parent->globalScale.z
-		);
-	}
-	else {
-		this->scale = scale;
-	}
-	this->scale = scale;
 }
 
 
