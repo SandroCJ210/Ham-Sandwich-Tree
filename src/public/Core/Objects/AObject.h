@@ -14,13 +14,13 @@ public:
 	bool isEnabled = true;
 	
 	glm::vec3 position = {0, 0, 0};
-	glm::quat rotationQuat = {0, 0, 0, 1};
+	glm::quat rotationQuat = { 1, 0, 0, 0} ;
 	glm::vec3 scale = { 1, 1, 1 };
 
 protected:
 	
 	glm::vec3 worldPosition = { 0, 0, 0 };
-	glm::quat worldRotation = { 0, 0, 0, 1};
+	glm::quat worldRotation = { 1, 0, 0, 0 };
 	glm::vec3 worldScale = { 1, 1, 1 };
 
 public:
@@ -69,7 +69,7 @@ public:
 	void SetWorldScale(glm::vec3 scale);
 	
 	glm::vec3 GetWorldPosition()	const { return worldPosition; }
-	glm::quat GetWorldRotation()	const { return worldRotation; }
+	glm::quat GetWorldRotation()	const { return glm::normalize(worldRotation); }
 	glm::vec3 GetWorldScale()		const { return worldScale; }
 
 	// Static functions

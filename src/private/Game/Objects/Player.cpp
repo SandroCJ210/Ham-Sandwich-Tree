@@ -2,6 +2,7 @@
 
 #include "Core/Components/Render/RenderQuadComponent.h"
 #include "Core/Components/Input/InputComponent.h"
+#include "Core/Components/Physics/3D/BoxColliderComponent.h"
 #include "Game/Components/MazeGeneratorComponent.h"
 #include "Game/Components/MovementComponent.h"
 #include "Core/Components/Physics/3D/Rigidbody3DComponent.h"
@@ -18,15 +19,16 @@ Player::Player(AObject* parent, std::string name) : AObject(parent, name) {
 	playerCamera->mainCamera = true;
 	playerCamera->FOV = 60.0f;
 	
-	// renderComponent = dynamic_cast<RenderQuadComponent*>(
-	// 	AddComponent(new RenderQuadComponent( this ))
-	// );
 	rigidbodyComponent = dynamic_cast<Rigidbody3DComponent*>(
 		AddComponent(new Rigidbody3DComponent( this ))
 	);
-	// colliderComponent = dynamic_cast<SquareColliderComponent*>(
-	// 	AddComponent(new SquareColliderComponent( this, glm::vec2(0, 0), glm::vec2(0.5, 0.5) ))
-	// );
+	colliderComponent = dynamic_cast<BoxColliderComponent*>(
+		AddComponent(new BoxColliderComponent(
+			this,
+			glm::vec3(0.0f, 0.f, 0.0f),
+			glm::vec3(0.2f)
+			))
+	);
 	inputComponent = dynamic_cast<InputComponent*>(
 		AddComponent(new InputComponent(this))
 	);
@@ -40,30 +42,20 @@ Player::Player(AObject* parent, std::string name) : AObject(parent, name) {
 }
 
 void Player::Awake() {
-	// MazeGeneratorComponent* mazeGenerator =
-	// 	AObject::FindObjectByName("Maze")
-	// 	->GetComponent<MazeGeneratorComponent>();
 	
-	// float objectQuantity = (float)mazeGenerator->GetSize();
-	
-	// scale = glm::vec3(1.0f / objectQuantity);
 	position = glm::vec3(0.0f, 1.5f, -5.0f);
-	// position = glm::vec3(
-	// 	-1 + scale.x + scale.x * 2,
-	// 	1 - scale.x - scale.x * 2,
-	// 	0.0f
-	// );
+	 RotateEuler(glm::vec3(0.0f, 180.0f, 0.0f));
 
-	movementComponent->SetSpeed(1.0f);
+	movementComponent->SetSpeed(2.0f);
+	movementComponent->SetRotationSpeed(5.0f);
 
 	AObject::Awake();
 }
 
 Player::~Player() {
 	delete playerCamera;
-	// delete renderComponent;
-	// delete inputComponent;
-	// delete movementComponent;
-	// delete rigidbodyComponent;
-	// delete colliderComponent;
+	delete rigidbodyComponent;
+	delete colliderComponent;
+	delete inputComponent;
+	delete movementComponent;
 }

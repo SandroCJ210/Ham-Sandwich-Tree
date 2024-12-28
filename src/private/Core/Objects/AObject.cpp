@@ -4,6 +4,7 @@
 #include <iostream>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include "Core/Global.h"
 #include "Core/Scenes/ASceneController.h"
 #include "Core/Window.h"
 
@@ -118,23 +119,51 @@ void AObject::Rotate(glm::quat rotation) {
 }
 
 void AObject::RotateEuler(glm::vec3 rotation) {
+	rotation = glm::radians(rotation);
 	Rotate(glm::quat(rotation));
 }
 
 glm::vec3 AObject::Forward() {
-	glm::vec3 forward = glm::vec3(0, 0, 1);
+	glm::vec4 forward = glm::vec4(Global::FORWARD, 1);
+
+	glm::mat4 trans = glm::mat4(1.0f);
+	glm::quat rotation = GetWorldRotation();
+	glm::vec3 vectorRotation = glm::vec3(rotation.x, rotation.y, rotation.z);
+	float angle = -2 * glm::acos(rotation.w);
+	if (vectorRotation != glm::vec3(0))
+		trans = glm::rotate(trans, angle, vectorRotation);
+
+	forward = trans * forward;
 	
 	return forward;
 }
 
 glm::vec3 AObject::Right() {
-	glm::vec3 right = glm::vec3(1, 0, 0);
+	glm::vec4 right = glm::vec4(Global::RIGHT, 1);
+
+	glm::mat4 trans = glm::mat4(1.0f);
+	glm::quat rotation = GetWorldRotation();
+	glm::vec3 vectorRotation = glm::vec3(rotation.x, rotation.y, rotation.z);
+	float angle = -2 * glm::acos(rotation.w);
+	if (vectorRotation != glm::vec3(0))
+		trans = glm::rotate(trans, angle, vectorRotation);
+
+	right = trans * right;
 	
 	return right;
 }
 
 glm::vec3 AObject::Up() {
-	glm::vec3 up = glm::vec3(0, 1, 0);
+	glm::vec4 up = glm::vec4(Global::UP, 1);
+
+	glm::mat4 trans = glm::mat4(1.0f);
+	glm::quat rotation = GetWorldRotation();
+	glm::vec3 vectorRotation = glm::vec3(rotation.x, rotation.y, rotation.z);
+	float angle = -2 * glm::acos(rotation.w);
+	if (vectorRotation != glm::vec3(0))
+		trans = glm::rotate(trans, angle, vectorRotation);
+
+	up = trans * up;
 	
 	return up;
 }

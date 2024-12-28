@@ -1,6 +1,7 @@
 #pragma once
 #include "AObject.h"
 
+class BoxColliderComponent;
 class RenderCubeComponent;
 
 class CubeObject : public AObject {
@@ -9,10 +10,9 @@ public:
 
 private:
 	RenderCubeComponent* renderComponent;
-	// SquareColliderComponent* colliderComponent;
+	BoxColliderComponent* colliderComponent;
 
 public:
 	RenderCubeComponent* GetRenderComponent() const { return renderComponent; }
-	// SquareColliderComponent* GetColliderComponent() const { return colliderComponent; }
-	
+	BoxColliderComponent* GetBoxColliderComponent() const { return colliderComponent; }
 };

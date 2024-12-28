@@ -1,5 +1,6 @@
 #include "Core/Scenes/ASceneController.h"
 
+#include <thread>
 #include <GLFW/glfw3.h>
 
 #include "Core/Global.h"

@@ -5,6 +5,7 @@
 #include "Core/Global.h"
 #include "Core/Objects/AObject.h"
 #include "Core/Render/Render.h"
+#include "Util/Logger.h"
 
 CameraComponent::CameraComponent(AObject* parent) : IComponent(parent) {
 }
@@ -19,7 +20,19 @@ void CameraComponent::Awake() {
 
 glm::mat4 CameraComponent::GetViewMatrix() {
 	view = glm::mat4(1.0f);
+	
+	//base rotation
+	 // view = glm::rotate(view, glm::radians(180.0f), glm::vec3(0, 1, 0));
+	
+	glm::quat rotation = parent->GetWorldRotation();
+	glm::vec3 vectorRotation = glm::vec3(rotation.x, rotation.y, rotation.z);
+	float angle = 2 * glm::acos(rotation.w);
+	// Logger::Log("Angle: " + std::to_string(angle));
+	if (vectorRotation != glm::vec3(0))
+		view = glm::rotate(view, angle, vectorRotation);
+	
 	view = glm::translate(view, -1.0f * this->parent->GetWorldPosition());
+	
 	return view;
 }
 

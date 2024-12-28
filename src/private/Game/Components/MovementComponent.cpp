@@ -1,12 +1,16 @@
 #include "Game/Components/MovementComponent.h"
 
+#include "Core/Global.h"
 #include "Core/Components/Physics/3D/Rigidbody3DComponent.h"
 #include "Core/Objects/AObject.h"
 #include "Util/Logger.h"
 
 MovementComponent::MovementComponent(AObject* parent) : IComponent(parent) {
-	direction = glm::vec2(0, 0);
+	direction = glm::vec2(0);
+	rotation = glm::vec2(0);
+	
 	speed = 0;
+	rotationSpeed = 0;
 }
 
 MovementComponent::~MovementComponent() {
@@ -20,15 +24,32 @@ void MovementComponent::Start() {
 }
 
 void MovementComponent::Update(double deltaTime) {
-	glm::vec2 normalizeDirection =  direction != glm::vec2(0)? glm::normalize(direction) : direction;
-	glm::vec3 velocity = glm::vec3(normalizeDirection, 0) * speed;
+	glm::vec3 normalizeDirection = parent->Forward() * direction.y + parent->Right() * direction.x;
+	normalizeDirection = normalizeDirection != glm::vec3(0.0f)? glm::normalize(normalizeDirection) : normalizeDirection;
+	glm::vec3 velocity = normalizeDirection * speed;
 	rb->velocity = velocity;
+
+	//For now the rigidbody will not manage the rotation
+	parent->RotateEuler(glm::vec3(-rotation.y, rotation.x, 0) * rotationSpeed * Global::FIXED_DELTA_TIME);
 }
+
+void MovementComponent::FixedUpdate() {
+	
+}
+
 
 void MovementComponent::SetSpeed(float speed) {
 	this->speed = speed;
 }
 
+void MovementComponent::SetRotationSpeed(float rotationSpeed) {
+	this->rotationSpeed = rotationSpeed;
+}
+
 void MovementComponent::SetDirection(glm::vec2 direction) {
 	this->direction = direction;
+}
+
+void MovementComponent::SetRotation(glm::vec2 rotation) {
+	this->rotation = rotation;
 }
