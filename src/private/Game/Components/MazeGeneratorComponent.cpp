@@ -11,6 +11,7 @@
 #include "Util/Utility.h"
 
 #include "Core/Global.h"
+#include "Core/Materials/ColorMaterial.h"
 
 MazeGeneratorComponent::MazeGeneratorComponent(AObject* parent) : IComponent(parent) {
 
@@ -186,6 +187,6 @@ void MazeGeneratorComponent::InstantiateWall(std::string id, glm::vec3 objectPos
 	wall->position = objectPosition;
 	wall->scale = objectScale * (1.0f + 0.25f);
 	
-	TextureMaterial* baseMaterial = dynamic_cast<TextureMaterial*>(wall->GetRenderComponent()->material);
+	ColorMaterial* baseMaterial = dynamic_cast<ColorMaterial*>(wall->GetRenderComponent()->material);
 	baseMaterial->SetColor(glm::vec3(255, 127, 39) / 255.0f);
 }
