@@ -318,10 +318,10 @@
       <Optimization>Disabled</Optimization>
       <SupportJustMyCode>true</SupportJustMyCode>
       <AssemblerOutput>NoListing</AssemblerOutput>
-      <AssemblerListingLocation>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</AssemblerListingLocation>
+      <AssemblerListingLocation>$(ProjectDir)bin\intermediates\x64\Debug\</AssemblerListingLocation>
       <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
       <BrowseInformation>false</BrowseInformation>
-      <BrowseInformationFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</BrowseInformationFile>
+      <BrowseInformationFile>$(ProjectDir)bin\intermediates\x64\Debug\</BrowseInformationFile>
       <CompileAs>Default</CompileAs>
       <ConformanceMode>true</ConformanceMode>
       <DiagnosticsFormat>Column</DiagnosticsFormat>
@@ -344,37 +344,37 @@
       <LanguageStandard>Default</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
       <MinimalRebuild>false</MinimalRebuild>
-      <ModuleDependenciesFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</ModuleDependenciesFile>
-      <ModuleOutputFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</ModuleOutputFile>
+      <ModuleDependenciesFile>$(ProjectDir)bin\intermediates\x64\Debug\</ModuleDependenciesFile>
+      <ModuleOutputFile>$(ProjectDir)bin\intermediates\x64\Debug\</ModuleOutputFile>
       <OmitDefaultLibName>false</OmitDefaultLibName>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <ObjectFileName>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</ObjectFileName>
+      <ObjectFileName>$(ProjectDir)bin\intermediates\x64\Debug\</ObjectFileName>
       <CallingConvention>Cdecl</CallingConvention>
-      <ProgramDataBaseFileName>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\vc143.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(ProjectDir)bin\intermediates\x64\Debug\vc143.pdb</ProgramDataBaseFileName>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\Maze.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderOutputFile>$(ProjectDir)bin\intermediates\x64\Debug\Maze.pch</PrecompiledHeaderOutputFile>
       <PreprocessToFile>false</PreprocessToFile>
       <PreprocessKeepComments>false</PreprocessKeepComments>
       <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
       <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
       <ShowIncludes>false</ShowIncludes>
-      <SourceDependenciesFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</SourceDependenciesFile>
+      <SourceDependenciesFile>$(ProjectDir)bin\intermediates\x64\Debug\</SourceDependenciesFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <SmallerTypeCheck>false</SmallerTypeCheck>
       <SpectreMitigation>false</SpectreMitigation>
       <StructMemberAlignment>Default</StructMemberAlignment>
-      <TrackerLogDirectory>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\Maze.tlog\</TrackerLogDirectory>
+      <TrackerLogDirectory>$(ProjectDir)bin\intermediates\x64\Debug\Maze.tlog\</TrackerLogDirectory>
       <TranslateIncludes>false</TranslateIncludes>
       <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
       <TreatWarningAsError>false</TreatWarningAsError>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <UseFullPaths>true</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <XMLDocumentationFileName>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</XMLDocumentationFileName>
+      <XMLDocumentationFileName>$(ProjectDir)bin\intermediates\x64\Debug\</XMLDocumentationFileName>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <IntelJCCErratum>false</IntelJCCErratum>
       <BuildStlModules>false</BuildStlModules>
@@ -382,7 +382,7 @@
       <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
       <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
-      <PreprocessorDefinitions>ASSETS="C:\Users\Max\Documents\CppProjects\Maze\.";_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ASSETS="$(ProjectDir).";_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
@@ -466,10 +466,10 @@
       <Optimization>Disabled</Optimization>
       <SupportJustMyCode>true</SupportJustMyCode>
       <AssemblerOutput>NoListing</AssemblerOutput>
-      <AssemblerListingLocation>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</AssemblerListingLocation>
+      <AssemblerListingLocation>$(ProjectDir)bin\intermediates\x64\Debug\</AssemblerListingLocation>
       <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
       <BrowseInformation>false</BrowseInformation>
-      <BrowseInformationFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</BrowseInformationFile>
+      <BrowseInformationFile>$(ProjectDir)bin\intermediates\x64\Debug\</BrowseInformationFile>
       <CompileAs>Default</CompileAs>
       <ConformanceMode>true</ConformanceMode>
       <DiagnosticsFormat>Column</DiagnosticsFormat>
@@ -492,37 +492,37 @@
       <LanguageStandard>Default</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
       <MinimalRebuild>false</MinimalRebuild>
-      <ModuleDependenciesFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</ModuleDependenciesFile>
-      <ModuleOutputFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</ModuleOutputFile>
+      <ModuleDependenciesFile>$(ProjectDir)bin\intermediates\x64\Debug\</ModuleDependenciesFile>
+      <ModuleOutputFile>$(ProjectDir)bin\intermediates\x64\Debug\</ModuleOutputFile>
       <OmitDefaultLibName>false</OmitDefaultLibName>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <ObjectFileName>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</ObjectFileName>
+      <ObjectFileName>$(ProjectDir)bin\intermediates\x64\Debug\</ObjectFileName>
       <CallingConvention>Cdecl</CallingConvention>
-      <ProgramDataBaseFileName>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\vc143.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(ProjectDir)bin\intermediates\x64\Debug\vc143.pdb</ProgramDataBaseFileName>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\Maze.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderOutputFile>$(ProjectDir)bin\intermediates\x64\Debug\Maze.pch</PrecompiledHeaderOutputFile>
       <PreprocessToFile>false</PreprocessToFile>
       <PreprocessKeepComments>false</PreprocessKeepComments>
       <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
       <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
       <ShowIncludes>false</ShowIncludes>
-      <SourceDependenciesFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</SourceDependenciesFile>
+      <SourceDependenciesFile>$(ProjectDir)bin\intermediates\x64\Debug\</SourceDependenciesFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <SmallerTypeCheck>false</SmallerTypeCheck>
       <SpectreMitigation>false</SpectreMitigation>
       <StructMemberAlignment>Default</StructMemberAlignment>
-      <TrackerLogDirectory>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\Maze.tlog\</TrackerLogDirectory>
+      <TrackerLogDirectory>$(ProjectDir)bin\intermediates\x64\Debug\Maze.tlog\</TrackerLogDirectory>
       <TranslateIncludes>false</TranslateIncludes>
       <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
       <TreatWarningAsError>false</TreatWarningAsError>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <UseFullPaths>true</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <XMLDocumentationFileName>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</XMLDocumentationFileName>
+      <XMLDocumentationFileName>$(ProjectDir)bin\intermediates\x64\Debug\</XMLDocumentationFileName>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <IntelJCCErratum>false</IntelJCCErratum>
       <BuildStlModules>false</BuildStlModules>
@@ -530,7 +530,7 @@
       <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
       <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
-      <PreprocessorDefinitions>ASSETS="C:\Users\Max\Documents\CppProjects\Maze\.";_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ASSETS="$(ProjectDir).";_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
@@ -540,10 +540,10 @@
       <Optimization>Disabled</Optimization>
       <SupportJustMyCode>true</SupportJustMyCode>
       <AssemblerOutput>NoListing</AssemblerOutput>
-      <AssemblerListingLocation>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</AssemblerListingLocation>
+      <AssemblerListingLocation>$(ProjectDir)bin\intermediates\x64\Debug\</AssemblerListingLocation>
       <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
       <BrowseInformation>false</BrowseInformation>
-      <BrowseInformationFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</BrowseInformationFile>
+      <BrowseInformationFile>$(ProjectDir)bin\intermediates\x64\Debug\</BrowseInformationFile>
       <CompileAs>Default</CompileAs>
       <ConformanceMode>true</ConformanceMode>
       <DiagnosticsFormat>Column</DiagnosticsFormat>
@@ -566,37 +566,37 @@
       <LanguageStandard>Default</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
       <MinimalRebuild>false</MinimalRebuild>
-      <ModuleDependenciesFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</ModuleDependenciesFile>
-      <ModuleOutputFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</ModuleOutputFile>
+      <ModuleDependenciesFile>$(ProjectDir)bin\intermediates\x64\Debug\</ModuleDependenciesFile>
+      <ModuleOutputFile>$(ProjectDir)bin\intermediates\x64\Debug\</ModuleOutputFile>
       <OmitDefaultLibName>false</OmitDefaultLibName>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <ObjectFileName>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</ObjectFileName>
+      <ObjectFileName>$(ProjectDir)bin\intermediates\x64\Debug\</ObjectFileName>
       <CallingConvention>Cdecl</CallingConvention>
-      <ProgramDataBaseFileName>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\vc143.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(ProjectDir)bin\intermediates\x64\Debug\vc143.pdb</ProgramDataBaseFileName>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\Maze.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderOutputFile>$(ProjectDir)bin\intermediates\x64\Debug\Maze.pch</PrecompiledHeaderOutputFile>
       <PreprocessToFile>false</PreprocessToFile>
       <PreprocessKeepComments>false</PreprocessKeepComments>
       <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
       <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
       <ShowIncludes>false</ShowIncludes>
-      <SourceDependenciesFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</SourceDependenciesFile>
+      <SourceDependenciesFile>$(ProjectDir)bin\intermediates\x64\Debug\</SourceDependenciesFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <SmallerTypeCheck>false</SmallerTypeCheck>
       <SpectreMitigation>false</SpectreMitigation>
       <StructMemberAlignment>Default</StructMemberAlignment>
-      <TrackerLogDirectory>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\Maze.tlog\</TrackerLogDirectory>
+      <TrackerLogDirectory>$(ProjectDir)bin\intermediates\x64\Debug\Maze.tlog\</TrackerLogDirectory>
       <TranslateIncludes>false</TranslateIncludes>
       <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
       <TreatWarningAsError>false</TreatWarningAsError>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <UseFullPaths>true</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <XMLDocumentationFileName>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</XMLDocumentationFileName>
+      <XMLDocumentationFileName>$(ProjectDir)bin\intermediates\x64\Debug\</XMLDocumentationFileName>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <IntelJCCErratum>false</IntelJCCErratum>
       <BuildStlModules>false</BuildStlModules>
@@ -604,7 +604,7 @@
       <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
       <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
-      <PreprocessorDefinitions>ASSETS="C:\Users\Max\Documents\CppProjects\Maze\.";_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ASSETS="$(ProjectDir).";_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
@@ -615,10 +615,10 @@
       <Optimization>Disabled</Optimization>
       <SupportJustMyCode>true</SupportJustMyCode>
       <AssemblerOutput>NoListing</AssemblerOutput>
-      <AssemblerListingLocation>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</AssemblerListingLocation>
+      <AssemblerListingLocation>$(ProjectDir)bin\intermediates\x64\Debug\</AssemblerListingLocation>
       <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
       <BrowseInformation>false</BrowseInformation>
-      <BrowseInformationFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</BrowseInformationFile>
+      <BrowseInformationFile>$(ProjectDir)bin\intermediates\x64\Debug\</BrowseInformationFile>
       <CompileAs>Default</CompileAs>
       <ConformanceMode>true</ConformanceMode>
       <DiagnosticsFormat>Column</DiagnosticsFormat>
@@ -641,37 +641,37 @@
       <LanguageStandard>Default</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
       <MinimalRebuild>false</MinimalRebuild>
-      <ModuleDependenciesFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</ModuleDependenciesFile>
-      <ModuleOutputFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</ModuleOutputFile>
+      <ModuleDependenciesFile>$(ProjectDir)bin\intermediates\x64\Debug\</ModuleDependenciesFile>
+      <ModuleOutputFile>$(ProjectDir)bin\intermediates\x64\Debug\</ModuleOutputFile>
       <OmitDefaultLibName>false</OmitDefaultLibName>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <ObjectFileName>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</ObjectFileName>
+      <ObjectFileName>$(ProjectDir)bin\intermediates\x64\Debug\</ObjectFileName>
       <CallingConvention>Cdecl</CallingConvention>
-      <ProgramDataBaseFileName>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\vc143.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(ProjectDir)bin\intermediates\x64\Debug\vc143.pdb</ProgramDataBaseFileName>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\Maze.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderOutputFile>$(ProjectDir)bin\intermediates\x64\Debug\Maze.pch</PrecompiledHeaderOutputFile>
       <PreprocessToFile>false</PreprocessToFile>
       <PreprocessKeepComments>false</PreprocessKeepComments>
       <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
       <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
       <ShowIncludes>false</ShowIncludes>
-      <SourceDependenciesFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</SourceDependenciesFile>
+      <SourceDependenciesFile>$(ProjectDir)bin\intermediates\x64\Debug\</SourceDependenciesFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <SmallerTypeCheck>false</SmallerTypeCheck>
       <SpectreMitigation>false</SpectreMitigation>
       <StructMemberAlignment>Default</StructMemberAlignment>
-      <TrackerLogDirectory>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\Maze.tlog\</TrackerLogDirectory>
+      <TrackerLogDirectory>$(ProjectDir)bin\intermediates\x64\Debug\Maze.tlog\</TrackerLogDirectory>
       <TranslateIncludes>false</TranslateIncludes>
       <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
       <TreatWarningAsError>false</TreatWarningAsError>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <UseFullPaths>true</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <XMLDocumentationFileName>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</XMLDocumentationFileName>
+      <XMLDocumentationFileName>$(ProjectDir)bin\intermediates\x64\Debug\</XMLDocumentationFileName>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <IntelJCCErratum>false</IntelJCCErratum>
       <BuildStlModules>false</BuildStlModules>
@@ -679,7 +679,7 @@
       <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
       <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
-      <PreprocessorDefinitions>ASSETS="C:\Users\Max\Documents\CppProjects\Maze\.";_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ASSETS="$(ProjectDir).";_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
@@ -689,10 +689,10 @@
       <Optimization>Disabled</Optimization>
       <SupportJustMyCode>true</SupportJustMyCode>
       <AssemblerOutput>NoListing</AssemblerOutput>
-      <AssemblerListingLocation>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</AssemblerListingLocation>
+      <AssemblerListingLocation>$(ProjectDir)bin\intermediates\x64\Debug\</AssemblerListingLocation>
       <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
       <BrowseInformation>false</BrowseInformation>
-      <BrowseInformationFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</BrowseInformationFile>
+      <BrowseInformationFile>$(ProjectDir)bin\intermediates\x64\Debug\</BrowseInformationFile>
       <CompileAs>Default</CompileAs>
       <ConformanceMode>true</ConformanceMode>
       <DiagnosticsFormat>Column</DiagnosticsFormat>
@@ -715,37 +715,37 @@
       <LanguageStandard>Default</LanguageStandard>
       <LanguageStandard_C>Default</LanguageStandard_C>
       <MinimalRebuild>false</MinimalRebuild>
-      <ModuleDependenciesFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</ModuleDependenciesFile>
-      <ModuleOutputFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</ModuleOutputFile>
+      <ModuleDependenciesFile>$(ProjectDir)bin\intermediates\x64\Debug\</ModuleDependenciesFile>
+      <ModuleOutputFile>$(ProjectDir)bin\intermediates\x64\Debug\</ModuleOutputFile>
       <OmitDefaultLibName>false</OmitDefaultLibName>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <ObjectFileName>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</ObjectFileName>
+      <ObjectFileName>$(ProjectDir)bin\intermediates\x64\Debug\</ObjectFileName>
       <CallingConvention>Cdecl</CallingConvention>
-      <ProgramDataBaseFileName>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\vc143.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(ProjectDir)bin\intermediates\x64\Debug\vc143.pdb</ProgramDataBaseFileName>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\Maze.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderOutputFile>$(ProjectDir)bin\intermediates\x64\Debug\Maze.pch</PrecompiledHeaderOutputFile>
       <PreprocessToFile>false</PreprocessToFile>
       <PreprocessKeepComments>false</PreprocessKeepComments>
       <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
       <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
       <ShowIncludes>false</ShowIncludes>
-      <SourceDependenciesFile>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</SourceDependenciesFile>
+      <SourceDependenciesFile>$(ProjectDir)bin\intermediates\x64\Debug\</SourceDependenciesFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <SmallerTypeCheck>false</SmallerTypeCheck>
       <SpectreMitigation>false</SpectreMitigation>
       <StructMemberAlignment>Default</StructMemberAlignment>
-      <TrackerLogDirectory>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\Maze.tlog\</TrackerLogDirectory>
+      <TrackerLogDirectory>$(ProjectDir)bin\intermediates\x64\Debug\Maze.tlog\</TrackerLogDirectory>
       <TranslateIncludes>false</TranslateIncludes>
       <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
       <TreatWarningAsError>false</TreatWarningAsError>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <UseFullPaths>true</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <XMLDocumentationFileName>C:\Users\Max\Documents\CppProjects\Maze\bin\intermediates\x64\Debug\</XMLDocumentationFileName>
+      <XMLDocumentationFileName>$(ProjectDir)bin\intermediates\x64\Debug\</XMLDocumentationFileName>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <IntelJCCErratum>false</IntelJCCErratum>
       <BuildStlModules>false</BuildStlModules>
@@ -753,7 +753,7 @@
       <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
       <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
-      <PreprocessorDefinitions>ASSETS="C:\Users\Max\Documents\CppProjects\Maze\.";_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>ASSETS="$(ProjectDir).";_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
