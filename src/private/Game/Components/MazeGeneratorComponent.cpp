@@ -18,17 +18,17 @@ MazeGeneratorComponent::MazeGeneratorComponent(AObject* parent) : IComponent(par
 	startID = -1;
 	endID = -1;
 
-	// do{
-	// 	int _size = 0;
-	// 	std::cout << "Enter the size of the maze: ";
-	// 	std::cin >> _size;
-	//
-	// 	if (_size < 3 || _size % 2 == 0) {
-	// 		std::cout << "Invalid size. Size must be an odd number greater than 4." << std::endl;
-	// 	}
-	// 	SetSize(_size);
-	// } 
-	// while (size < 3 || size % 2 == 0);
+	do{
+		int _size = 0;
+		std::cout << "Enter the size of the maze: ";
+		std::cin >> _size;
+	
+		if (_size < 3 || _size % 2 == 0) {
+			std::cout << "Invalid size. Size must be an odd number greater than 4." << std::endl;
+		}
+		SetSize(_size);
+	} 
+	while (size < 3 || size % 2 == 0);
 }
 
 MazeGeneratorComponent::~MazeGeneratorComponent() {

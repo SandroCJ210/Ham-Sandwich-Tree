@@ -9,7 +9,7 @@ public:
 	static const float SCREEN_FORMAT;
 	static const  float METER;
 	
-	static const bool DEBUG = true;
+	static const bool DEBUG = false;
 	static const float DEBUG_FRAMERATE;
 
 	static const glm::vec3 FORWARD;
