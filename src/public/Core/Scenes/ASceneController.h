@@ -1,6 +1,5 @@
 #pragma once
 #include <vector>
-#include "Core/Physics/PhysicsEngine3D.h"
 #include "Core/Objects/AObject.h"
 
 class ASceneController {
