@@ -10,6 +10,10 @@ class CameraComponent;
 class Shader;
 class ColorMaterial;
 
+/**
+ * This class represents the render of the engine
+ * Encapsulates all of the rendering methods
+ */
 class Render : public Singleton<Render> {
 private:
 
@@ -31,6 +35,9 @@ private:
 	unsigned int VBO_line;
 
 public:
+	/**
+	 * @brief This is a special material used for the gizmos
+	 */
 	ColorMaterial* gizmosMaterial;
 
 public:
@@ -42,17 +49,61 @@ private:
 	void InitLine();
 	void InitCube();
 
-	glm::vec3 TransformWorldToScreen(glm::vec3 worldScale);
-
 public:
-	Shader* CreateShader(const std::string vertexPath, const std::string fragmentPath);
-	unsigned int GenerateTexture(const std::string texturePath);
-	void DrawQuad(glm::mat4 model, Shader* shader, glm::vec3 color = glm::vec3(1.0f));
-	void DrawLineSegment(glm::vec3 start, glm::vec3 end, glm::vec3 color);
-	void DrawQuadLine(glm::vec3 center, glm::vec3 size, glm::vec3 color);
-	void DrawCube(glm::mat4 model, Shader* shader, glm::vec3 color);
 	
+	/**
+	 * @brief This method creates a shader program
+	 * @param vertexPath The path of the vertex shader
+	 * @param fragmentPath The path of the fragment shader
+	 * @return An object of the Shader class representing the shader program
+	 */
+	Shader* CreateShader(const std::string vertexPath, const std::string fragmentPath);
+
+	/**
+	 * @brief Generates a texture from a file
+	 * @param texturePath The path of the texture
+	 * @return Returns the ID of the generated texture
+	 */
+	unsigned int GenerateTexture(const std::string texturePath);
+
+	/**
+	 * @brief This method draws a quad in the world
+	 * @param model The model matrix
+	 * @param shader The shader to use
+	 * @param color The color of the quad
+	 */
+	void DrawQuad(glm::mat4 model, Shader* shader, glm::vec3 color = glm::vec3(1.0f));
+
+	/**
+	 * @brief This method draws a line segment in the world using the gizmos material
+	 * @param start The start point of the line
+	 * @param end The end point of the line
+	 * @param color The color of the line
+	 */
+	void DrawLineSegment(glm::vec3 start, glm::vec3 end, glm::vec3 color);
+
+	/**
+	 * @brief This method draws a quad line in the world
+	 * @param center The center of the quad
+	 * @param size The size of the quad
+	 * @param color The color of the lines
+	 */
+	void DrawQuadLine(glm::vec2 center, glm::vec2 size, glm::vec3 color);
+
+	/**
+	 * @brief This method draws a cube in the world
+	 * @param model The model matrix
+	 * @param shader The shader to use
+	 * @param color The color of the cube
+	 */
+	void DrawCube(glm::mat4 model, Shader* shader, glm::vec3 color);
+
+	/**
+	 * @brief This method sets the current camera
+	 * @param camera The camera to set as the current camera
+	 */
 	void SetCurrentCamera(CameraComponent* camera);
+	
 	CameraComponent* GetCurrentCamera() const { return currentCamera; }
 };
 

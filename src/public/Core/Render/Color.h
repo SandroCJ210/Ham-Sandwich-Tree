@@ -2,6 +2,9 @@
 
 #include <glm/glm.hpp>
 
+/**
+ * This class represents typical colors
+ */
 class Color {
 public:
 	static const glm::vec3 WHITE;

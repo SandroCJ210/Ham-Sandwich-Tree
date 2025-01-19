@@ -75,12 +75,6 @@ unsigned int Render::GenerateTexture(const std::string texturePath) {
 	return generatedTexture;
 }
 
-glm::vec3 Render::TransformWorldToScreen(glm::vec3 worldScale) {
-	return glm::vec3(
-		(Global::METER / Global::SCREEN_FORMAT) * worldScale.x,
-		Global::METER * worldScale.y, 0);
-}
-
 void Render::InitLine() {
 	glGenVertexArrays(1, &VAO_line);
 
@@ -212,7 +206,7 @@ void Render::DrawLineSegment(glm::vec3 start, glm::vec3 end, glm::vec3 color) {
 	glBindVertexArray(0);
 }
 
-void Render::DrawQuadLine(glm::vec3 center, glm::vec3 scale, glm::vec3 color) {
+void Render::DrawQuadLine(glm::vec2 center, glm::vec2 scale, glm::vec3 color) {
 
 	glm::vec3 points[] = {
 		glm::vec3(center.x - scale.x / 2, center.y - scale.y / 2, 0), //bottom left
