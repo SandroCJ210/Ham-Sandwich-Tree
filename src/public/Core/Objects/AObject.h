@@ -13,18 +13,42 @@ public:
 public:
 	bool isEnabled = true;
 	
+	/**
+	 * Local position
+	 */
 	glm::vec3 position = {0, 0, 0};
+
+	/**
+	 * Local rotation
+	 */
 	glm::quat rotationQuat = { 1, 0, 0, 0};
+
+	/**
+	 * Local scale
+	 */
 	glm::vec3 scale = { 1, 1, 1 };
 
 protected:
-	
+	/**
+	 * World position
+	 */
 	glm::vec3 worldPosition = { 0, 0, 0 };
+
+	/**
+	 * World rotation
+	 */
 	glm::quat worldRotation = { 1, 0, 0, 0 };
+
+	/**
+	 * World scale
+	 */
 	glm::vec3 worldScale = { 1, 1, 1 };
 
 public:
 	
+	/**
+	 * The components of the object.
+	 */
 	std::vector<IComponent*> components;
 
 	AObject* parent = nullptr;
@@ -42,6 +66,11 @@ public:
 
 	IComponent* AddComponent(IComponent* component);
 
+	/**
+	 * @brief Gets a component of the object.
+	 * @tparam T The type of the component.
+	 * @return The component of the object.
+	 */
 	template<typename T> 
 	typename std::enable_if<std::is_base_of<IComponent, T>::value, T*>::type
 	GetComponent() {
@@ -54,8 +83,17 @@ public:
 	}
 
 	void AddChild(AObject* child);
-	
+
+	/**
+	 * @brief Rotates the object in the local space.
+	 * @param rotation The quaternion to apply.
+	 */
 	void Rotate(glm::quat rotation);
+
+	/**
+	 * @brief Rotates the object in the local space.
+	 * @param rotation The euler angles to apply.
+	 */
 	void RotateEuler(glm::vec3 rotation);
 
 	glm::vec3 Forward();
@@ -74,5 +112,10 @@ public:
 
 	// Static functions
 
+	/**
+	 * @brief Finds an object in the scene by its name.
+	 * @param name The name of the object.
+	 * @return The object with the name.
+	 */
 	static AObject* FindObjectByName(std::string name);
 };
