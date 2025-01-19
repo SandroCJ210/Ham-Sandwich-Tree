@@ -245,6 +245,13 @@
     <ClInclude Include="src\public\Util\Utility.h" />
     <ClInclude Include="src\public\Core\Window.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Shaders\ColorShader\ColorFrag.glsl" />
+    <Content Include="Assets\Shaders\ColorShader\ColorVert.glsl" />
+    <Content Include="Assets\Shaders\TextureShader\TextureFrag.glsl" />
+    <Content Include="Assets\Shaders\TextureShader\TextureVert.glsl" />
+    <Content Include="Assets\Textures\HL.jpg" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -8,8 +8,8 @@
 #include <stb_image.h>
 
 #include "Core/Render/Shader.h"
+#include "Core/Materials/AMaterial.h"
 #include "Core/Materials/ColorMaterial.h"
-#include "Core/Global.h"
 #include "Core/Components/Render/CameraComponent.h"
 #include "Util/Logger.h"
 
@@ -72,6 +72,9 @@ unsigned int Render::GenerateTexture(const std::string texturePath) {
 	stbi_image_free(data);
 
 	textures[texturePath] = generatedTexture;
+
+	glBindTexture(GL_TEXTURE_2D, 0);
+	
 	return generatedTexture;
 }
 
@@ -182,9 +185,8 @@ void Render::DrawLineSegment(glm::vec3 start, glm::vec3 end, glm::vec3 color) {
 	
 	gizmosMaterial->SetColor(color);
 
-	gizmosMaterial->shader->Use();
-
-	gizmosMaterial->shader->SetVector3("_color", color);
+	gizmosMaterial->Use();
+	
 	gizmosMaterial->shader->SetMatrix4("_model", glm::mat4(1.0f));
 	gizmosMaterial->shader->SetMatrix4("_view", currentCamera->GetViewMatrix());
 	gizmosMaterial->shader->SetMatrix4("_projection", currentCamera->GetProjectionMatrix());
@@ -222,24 +224,13 @@ void Render::DrawQuadLine(glm::vec2 center, glm::vec2 scale, glm::vec3 color) {
 
 }
 
-void Render::DrawQuad(glm::mat4 model, Shader* shader, glm::vec3 color) {
+void Render::DrawQuad(glm::mat4 model, AMaterial* material) {
 	if (currentCamera == nullptr) return;
-
-	//Model matrix generation
-	// glm::mat4 model = glm::mat4(1.0f);
-	// model = glm::translate(model, center);
-	// model = glm::translate(model, glm::vec3(0, 0, 0));
-	// model = glm::scale(model, scale);
-	//
-	// glm::vec3 vectorRotation = glm::vec3(rotation.x, rotation.y, rotation.z);
-	// float angle = 2 * glm::acos(rotation.w);
-	// model = glm::rotate(model, )
 	
-	shader->Use();
-	shader->SetVector3("_color", color);
-	shader->SetMatrix4("_model", model);
-	shader->SetMatrix4("_view", currentCamera->GetViewMatrix());
-	shader->SetMatrix4("_projection", currentCamera->GetProjectionMatrix());
+	material->Use();
+	material->shader->SetMatrix4("_model", model);
+	material->shader->SetMatrix4("_view", currentCamera->GetViewMatrix());
+	material->shader->SetMatrix4("_projection", currentCamera->GetProjectionMatrix());
 
 	glBindVertexArray(VAO_quad);
 	
@@ -248,18 +239,18 @@ void Render::DrawQuad(glm::mat4 model, Shader* shader, glm::vec3 color) {
 	glBindVertexArray(0);
 }
 
-void Render::DrawCube(glm::mat4 model, Shader* shader, glm::vec3 color) {
+void Render::DrawCube(glm::mat4 model, AMaterial* material) {
 	if (currentCamera == nullptr) return;
 
 	// glm::mat4 model = glm::mat4(1.0f);
 	// model = glm::translate(model, center);
 	// model = glm::scale(model, size);
 
-	shader->Use();
-	shader->SetVector3("_color", color);
-	shader->SetMatrix4("_model", model);
-	shader->SetMatrix4("_view", currentCamera->GetViewMatrix());
-	shader->SetMatrix4("_projection", currentCamera->GetProjectionMatrix());
+	material->Use();
+	
+	material->shader->SetMatrix4("_model", model);
+	material->shader->SetMatrix4("_view", currentCamera->GetViewMatrix());
+	material->shader->SetMatrix4("_projection", currentCamera->GetProjectionMatrix());
 
 	glBindVertexArray(VAO_cube);
 

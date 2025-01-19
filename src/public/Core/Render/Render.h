@@ -6,6 +6,7 @@
 
 #include "Util/Singleton.h"
 
+class AMaterial;
 class CameraComponent;
 class Shader;
 class ColorMaterial;
@@ -69,10 +70,9 @@ public:
 	/**
 	 * @brief This method draws a quad in the world
 	 * @param model The model matrix
-	 * @param shader The shader to use
-	 * @param color The color of the quad
+	 * @param material The material to use
 	 */
-	void DrawQuad(glm::mat4 model, Shader* shader, glm::vec3 color = glm::vec3(1.0f));
+	void DrawQuad(glm::mat4 model, AMaterial* material);
 
 	/**
 	 * @brief This method draws a line segment in the world using the gizmos material
@@ -93,10 +93,9 @@ public:
 	/**
 	 * @brief This method draws a cube in the world
 	 * @param model The model matrix
-	 * @param shader The shader to use
-	 * @param color The color of the cube
+	 * @param material The material to use
 	 */
-	void DrawCube(glm::mat4 model, Shader* shader, glm::vec3 color);
+	void DrawCube(glm::mat4 model, AMaterial* material);
 
 	/**
 	 * @brief This method sets the current camera

@@ -36,8 +36,8 @@ void SquareColliderComponent::FixedUpdate() {
 void SquareColliderComponent::LateUpdate() {
 	if (Global::DEBUG) {
 		Render::GetInstance().DrawQuadLine(
-			glm::vec2(worldCenter, 0.0),
-			glm::vec2(worldHalfSize, 0) * 2.001f,
+			worldCenter,
+			worldHalfSize * 2.001f,
 			Color::GREEN);
 	}
 }

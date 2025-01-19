@@ -13,6 +13,8 @@ public:
 	TextureMaterial();
 	~TextureMaterial();
 
+	void Use() override;
+
 	void SetColor(float r, float g, float b);
 	void SetColor(glm::vec3 newColor);
 	void SetTexture(std::string texturePath);

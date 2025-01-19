@@ -12,12 +12,19 @@ TextureMaterial::~TextureMaterial() {
 	delete this->shader;
 }
 
-void TextureMaterial::SetColor(glm::vec3 newColor) {
-	this->color = newColor;
+void TextureMaterial::Use() {
+	this->shader->Use();
+	this->shader->SetVector3("_color", this->color);
+	this->shader->SetTexture(texture, 0);
+	
 }
 
 void TextureMaterial::SetColor(float r, float g, float b) {
 	this->color = glm::vec3(r, g, b);
+}
+
+void TextureMaterial::SetColor(glm::vec3 newColor) {
+	this->color = newColor;
 }
 
 void TextureMaterial::SetTexture(std::string texturePath) {

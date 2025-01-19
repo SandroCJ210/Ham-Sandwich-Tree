@@ -8,8 +8,6 @@
 
 RenderCubeComponent::RenderCubeComponent(AObject* parent) : IComponent(parent){
 	material = new TextureMaterial();
-	
-	TextureMaterial* baseMaterial = dynamic_cast<TextureMaterial*>(material);
 }
 
 RenderCubeComponent::~RenderCubeComponent() {
@@ -34,7 +32,5 @@ void RenderCubeComponent::Draw() {
 	model = glm::translate(model, this->parent->GetWorldPosition());
 	model = glm::scale(model, this->parent->GetWorldScale());
 
-	TextureMaterial* baseMaterial = dynamic_cast<TextureMaterial*>(material);
-
-	Render::GetInstance().DrawCube(model, material->shader, baseMaterial->color);
+	Render::GetInstance().DrawCube(model, material);
 }

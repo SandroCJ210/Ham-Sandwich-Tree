@@ -31,7 +31,5 @@ void RenderQuadComponent::Draw() {
 	float angle = 2 * glm::acos(rotation.w);
 	glm::rotate(model, angle, vectorRotation);
 
-	ColorMaterial* _material = dynamic_cast<ColorMaterial*>(material);
-
-	Render::GetInstance().DrawQuad(model, material->shader, _material->color);
+	Render::GetInstance().DrawQuad(model, material);
 }

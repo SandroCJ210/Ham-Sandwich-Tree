@@ -14,6 +14,11 @@ ColorMaterial::~ColorMaterial() {
 	delete this->shader;
 }
 
+void ColorMaterial::Use() {
+	this->shader->Use();
+	this->shader->SetVector3("_color", this->color);
+}
+
 void ColorMaterial::SetColor(float r, float g, float b) {
 	this->color = glm::vec3(r, g, b);
 }

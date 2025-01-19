@@ -7,4 +7,6 @@ public:
     Shader* shader = nullptr;
 	AMaterial() = default;
     virtual ~AMaterial() = default;
+
+	virtual void Use() {}
 };
