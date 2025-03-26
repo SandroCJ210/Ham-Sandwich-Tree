@@ -1,7 +1,8 @@
 #include "Core/Materials/ColorMaterial.h"
-#include "Core/Render/Shader.h"
+
 #include <string>
 
+#include "Core/Render/Shader.h"
 #include "Core/Render/Render.h"
 
 ColorMaterial::ColorMaterial() {

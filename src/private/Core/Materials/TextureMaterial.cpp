@@ -4,7 +4,7 @@
 
 TextureMaterial::TextureMaterial() {
 	std::string vertexPath =	"Assets/Shaders/TextureShader/TextureVert.glsl";
-	std::string fragmentPath =	"Assets/Shaders/TextureShader/Texturefrag.glsl";
+	std::string fragmentPath =	"Assets/Shaders/TextureShader/TextureFrag.glsl";
 	this->shader = Render::GetInstance().CreateShader(vertexPath, fragmentPath);
 }
 

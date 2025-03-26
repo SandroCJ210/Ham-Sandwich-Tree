@@ -21,3 +21,10 @@ The engine is still in development, it's use is limited.
 For now the use of the engine is limited to IDE that support sln files, like Visual Studio.
 
 For develop a game using this engine, create a scene using ASceneController class, and add GameObjects to it.
+
+
+
+cmake -S . -B "build" -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+
+to build:
+cmake --build "build"
