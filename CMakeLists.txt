@@ -138,17 +138,7 @@ target_include_directories(AmaruEngine PUBLIC
         includes
         src/public)
 
-#if (UNIX)
-#	target_link_libraries(AmaruEngine glfw3 GL X11)
-#endif(UNIX)
-
 add_subdirectory(libs/glfw-3.4)
 target_link_libraries(AmaruEngine glfw)
 find_package(OpenGL REQUIRED)
 target_link_libraries(AmaruEngine OpenGL::GL)
-
-#if(MSVC)
-#	target_link_libraries(AmaruEngine glfw)
-#	find_package(OpenGL REQUIRED)
-#	target_link_libraries(AmaruEngine opengl32)
-#endif(MSVC)
