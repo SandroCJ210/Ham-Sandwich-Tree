@@ -10,7 +10,7 @@ set(PRIVATE_DIR ${CMAKE_SOURCE_DIR}/src/private)
 set(PUBLIC_DIR ${CMAKE_SOURCE_DIR}/src/public)
 set(ASSETS_SRC_DIR ${CMAKE_SOURCE_DIR}/Assets)
 
-#execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory ${ASSETS_SRC_DIR} ${BUILD_DIR})
+execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory ${ASSETS_SRC_DIR} ${BUILD_DIR})
 
 # Input components Source
 set(COMPONENTS_INPUT
@@ -139,10 +139,17 @@ target_include_directories(AmaruEngine PUBLIC
 	includes
 	src/public)
 
-if (UNIX)
-	target_link_libraries(AmaruEngine glfw3 GL X11)
-endif(UNIX)
+#if (UNIX)
+#	target_link_libraries(AmaruEngine glfw3 GL X11)
+#endif(UNIX)
 
-if(MSVC)
-	target_link_libraries(AmaruEngine glfw3.lib opengl32.lib)
-endif(MSVC)
+add_subdirectory(libs/glfw-3.4)
+target_link_libraries(AmaruEngine glfw)
+find_package(OpenGL REQUIRED)
+target_link_libraries(AmaruEngine OpenGL::GL)
+
+#if(MSVC)
+#	target_link_libraries(AmaruEngine glfw)
+#	find_package(OpenGL REQUIRED)
+#	target_link_libraries(AmaruEngine opengl32)
+#endif(MSVC)
