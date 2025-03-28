@@ -6,10 +6,10 @@
 
 #include "Util/Singleton.h"
 
+class ColorMaterial;
 class AMaterial;
 class CameraComponent;
 class Shader;
-class LitMaterial;
 
 /**
  * This class represents the render of the engine
@@ -39,7 +39,7 @@ public:
 	/**
 	 * @brief This is a special material used for the gizmos
 	 */
-	LitMaterial* gizmosMaterial;
+	ColorMaterial* gizmosMaterial;
 
 public:
 	Render();

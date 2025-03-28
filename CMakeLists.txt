@@ -48,6 +48,8 @@ set(COMPONENTS
 set(MATERIALS
         ${PRIVATE_DIR}/Core/Materials/AMaterial.cpp
         ${PRIVATE_DIR}/Core/Materials/LitMaterial.cpp
+        ${PRIVATE_DIR}/Core/Materials/UnlitMaterial.cpp
+        ${PRIVATE_DIR}/Core/Materials/ColorMaterial.cpp
 )
 
 #Objects source

@@ -6,7 +6,7 @@
 #include <iostream>
 #include <glm/gtc/matrix_transform.hpp>
 #include <stb_image.h>
-#include <Core/Materials/LitMaterial.h>
+#include <Core/Materials/ColorMaterial.h>
 
 #include "Core/Render/Shader.h"
 #include "Core/Materials/AMaterial.h"
@@ -16,7 +16,7 @@
 
 Render::Render() {
 
-	gizmosMaterial = new LitMaterial();
+	gizmosMaterial = new ColorMaterial();
 
 	InitQuad();
 	InitLine();
