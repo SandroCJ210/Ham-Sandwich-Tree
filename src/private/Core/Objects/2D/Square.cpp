@@ -2,7 +2,8 @@
 #include <Core/Components/Render/RenderQuadComponent.h>
 #include <Core/Components/Physics/2D/SquareColliderComponent.h>
 
-Square::Square(AObject* parent, std::string name) : AObject(parent, name){
+Square::Square(const std::string &_name, AObject* _parent, ASceneController* _scene)
+	: AObject(_name, _parent, _scene){
 	renderComponent = dynamic_cast<RenderQuadComponent*>(
 		AddComponent(new RenderQuadComponent(this))
 	);

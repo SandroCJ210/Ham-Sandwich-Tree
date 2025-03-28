@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/Objects/AObject.h"
+#include <Core/Objects/AObject.h>
 
 class CameraComponent;
 class InputComponent;
@@ -9,7 +9,7 @@ class BoxColliderComponent;
 
 class Player : public AObject {
 public:
-	Player(AObject* parent, std::string name);
+	Player(const std::string &_name, AObject* _parent = nullptr, ASceneController* _scene = nullptr);
 	~Player() override;
 
 	void Awake() override;

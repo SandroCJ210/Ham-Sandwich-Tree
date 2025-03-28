@@ -3,5 +3,5 @@
 
 class EmptyObject : public AObject {
 public:
-	EmptyObject(AObject* parent, std::string name);
+	explicit EmptyObject(const std::string &_name, AObject* _parent = nullptr, ASceneController* _scene = nullptr);
 };

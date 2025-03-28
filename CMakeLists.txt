@@ -47,8 +47,6 @@ set(COMPONENTS
 #Materials source
 set(MATERIALS
         ${PRIVATE_DIR}/Core/Materials/AMaterial.cpp
-        ${PRIVATE_DIR}/Core/Materials/ColorMaterial.cpp
-        ${PRIVATE_DIR}/Core/Materials/TextureMaterial.cpp
         ${PRIVATE_DIR}/Core/Materials/LitMaterial.cpp
 )
 

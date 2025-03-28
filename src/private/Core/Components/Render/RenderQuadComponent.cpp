@@ -3,7 +3,6 @@
 #include <Core/Materials/LitMaterial.h>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "Core/Materials/TextureMaterial.h"
 #include "Core/Render/Shader.h"
 #include "Core/Objects/AObject.h"
 #include "Core/Render/Render.h"

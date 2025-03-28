@@ -10,7 +10,8 @@
 #include "Game/Objects/Maze.h"
 
 
-Player::Player(AObject* parent, std::string name) : AObject(parent, name) {
+Player::Player(const std::string &_name, AObject* _parent, ASceneController* _scene)
+	: AObject(_name, _parent, _scene) {
 
 	playerCamera = dynamic_cast<CameraComponent*>(
 		AddComponent(new CameraComponent(this))

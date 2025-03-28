@@ -3,7 +3,8 @@
 #include <Core/Components/Physics/3D/BoxColliderComponent.h>
 #include <Core/Components/Render/RenderCubeComponent.h>
 
-Cube::Cube(AObject* parent, std::string name) : AObject(parent, name){
+Cube::Cube(const std::string &_name, AObject* _parent, ASceneController* _scene)
+	: AObject(_name, _parent, _scene){
 	renderComponent = dynamic_cast<RenderCubeComponent*>(
 		AddComponent(new RenderCubeComponent(this))
 	);

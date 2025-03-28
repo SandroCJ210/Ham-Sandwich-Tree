@@ -1,4 +1,6 @@
-#include "Core/Objects/EmptyObject.h"
+#include <Core/Objects/EmptyObject.h>
+#include <Core/Scenes/ASceneController.h>
 
-EmptyObject::EmptyObject(AObject* parent, std::string name) : AObject(parent, name) {
+EmptyObject::EmptyObject(const std::string &_name, AObject* _parent, ASceneController* _scene)
+	: AObject(_name, _parent, _scene) {
 }

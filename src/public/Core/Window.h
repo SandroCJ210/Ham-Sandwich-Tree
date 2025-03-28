@@ -1,8 +1,7 @@
 #pragma once
-#include <string>
 
-#include "Util/Singleton.h"
-#include "Core/Scenes/ASceneController.h"
+#include <Util/Singleton.h>
+#include <Core/Scenes/ASceneController.h>
 
 /**
  * @brief This class represents the window of the game
@@ -16,9 +15,9 @@ public:
 	Window();
 	
 	/**
-	 * This method excecute the initialization, loop and end of the game
+	 * This method execute the initialization, loop and end of the game
 	 */
-	void Excecute();
+	void Execute();
 
 	/**
 	 * @brief This method adds an object to the actual scene

@@ -6,7 +6,10 @@
 
 #include "Core/Components/IComponent.h"
 
+class ASceneController;
+
 class AObject {
+	friend class ASceneController;
 public:
 	std::string name;
 
@@ -54,9 +57,10 @@ public:
 	AObject* parent = nullptr;
 	std::vector<AObject*> children;
 	
-	AObject(AObject* _parent, std::string name);
+	AObject(const std::string &_name, AObject* _parent = nullptr, ASceneController* _scene = nullptr);
 	virtual ~AObject();
 
+protected:
 	virtual void Awake();
 	virtual void Start();
 	virtual	void FixedUpdate();
@@ -64,6 +68,7 @@ public:
 	virtual void LateUpdate();
 	virtual void End();
 
+public:
 	IComponent* AddComponent(IComponent* component);
 
 	/**
@@ -71,8 +76,8 @@ public:
 	 * @tparam T The type of the component.
 	 * @return The component of the object.
 	 */
-	template<typename T> 
-	typename std::enable_if<std::is_base_of<IComponent, T>::value, T*>::type
+	template<typename T>
+	std::enable_if_t<std::is_base_of_v<IComponent, T>, T*>
 	GetComponent() {
 		for (IComponent* component : components) {
 			if (T* t = dynamic_cast<T*>(component)) {
@@ -96,9 +101,9 @@ public:
 	 */
 	void RotateEuler(glm::vec3 rotation);
 
-	glm::vec3 Forward();
-	glm::vec3 Right();
-	glm::vec3 Up();
+	[[nodiscard]] glm::vec3 Forward() const;
+	[[nodiscard]] glm::vec3 Right() const;
+	[[nodiscard]] glm::vec3 Up() const;
 	
 	// Getters and setters
 	void SetRotation(glm::quat rotation);
@@ -106,9 +111,9 @@ public:
 	void SetWorldRotation(glm::quat rotation);
 	void SetWorldScale(glm::vec3 scale);
 	
-	glm::vec3 GetWorldPosition()	const { return worldPosition; }
-	glm::quat GetWorldRotation()	const { return glm::normalize(worldRotation); }
-	glm::vec3 GetWorldScale()		const { return worldScale; }
+	[[nodiscard]] glm::vec3 GetWorldPosition()	const { return worldPosition; }
+	[[nodiscard]] glm::quat GetWorldRotation()	const { return glm::normalize(worldRotation); }
+	[[nodiscard]] glm::vec3 GetWorldScale()		const { return worldScale; }
 
 	// Static functions
 
@@ -117,5 +122,5 @@ public:
 	 * @param name The name of the object.
 	 * @return The object with the name.
 	 */
-	static AObject* FindObjectByName(std::string name);
+	static AObject* FindObjectByName(const std::string& name);
 };

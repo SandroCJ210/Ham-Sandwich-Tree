@@ -1,12 +1,12 @@
 #pragma once
-#include <Core/Objects/EmptyObject.h>
+#include <Core/Objects/AObject.h>
 
 class RenderQuadComponent;
 class SquareColliderComponent;
 
-class Square : public EmptyObject {
+class Square : public AObject {
 public:
-	Square(AObject* parent, std::string name, ASceneController* targetScene);
+	Square(const std::string &_name, AObject* _parent = nullptr, ASceneController* _scene = nullptr);
 
 private:
 	RenderQuadComponent* renderComponent;

@@ -3,20 +3,29 @@
 #include <string>
 #include <iostream>
 #include <glm/gtc/matrix_transform.hpp>
+#include <Util/Logger.h>
 
 #include "Core/Global.h"
 #include "Core/Scenes/ASceneController.h"
 #include "Core/Window.h"
 
-AObject::AObject(AObject* _parent, std::string name) {
-	this->parent = _parent;
+AObject::AObject(const std::string &_name, AObject* _parent, ASceneController* _scene) {
+
+	if (!(_parent != nullptr ^ _scene != nullptr)){
+		Logger::Error("The object " + _name + " needs either a parent or a scene specification");
+		return;
+	}
+
 	this->name = name;
-	if (parent == nullptr) return;
-	parent->AddChild(this);
+
+	if (_parent) {
+		this->parent = _parent;
+		parent->AddChild(this);
+	}
+	if (_scene) _scene->AddObject(this);
 }
 
-AObject::~AObject() {
-}
+AObject::~AObject() = default;
 
 void AObject::Awake() {
 	for (auto element : components) {
@@ -71,7 +80,7 @@ void AObject::FixedUpdate() {
 }
 
 
-void AObject::Update(double deltaTime) {
+void AObject::Update(const double deltaTime) {
 
 	for (auto element : components) {
 		if (!element->isEnabled) continue;
@@ -100,6 +109,7 @@ void AObject::End() {
 		delete element;
 	}
 	for (auto element : children) {
+		element->End();
 		delete element;
 	}
 }
@@ -123,7 +133,7 @@ void AObject::RotateEuler(glm::vec3 rotation) {
 	Rotate(glm::quat(rotation));
 }
 
-glm::vec3 AObject::Forward() {
+glm::vec3 AObject::Forward() const {
 	glm::vec4 forward = glm::vec4(Global::FORWARD, 1);
 
 	glm::mat4 trans = glm::mat4(1.0f);
@@ -138,7 +148,7 @@ glm::vec3 AObject::Forward() {
 	return forward;
 }
 
-glm::vec3 AObject::Right() {
+glm::vec3 AObject::Right() const {
 	glm::vec4 right = glm::vec4(Global::RIGHT, 1);
 
 	glm::mat4 trans = glm::mat4(1.0f);
@@ -153,7 +163,7 @@ glm::vec3 AObject::Right() {
 	return right;
 }
 
-glm::vec3 AObject::Up() {
+glm::vec3 AObject::Up() const {
 	glm::vec4 up = glm::vec4(Global::UP, 1);
 
 	glm::mat4 trans = glm::mat4(1.0f);
@@ -173,7 +183,7 @@ void AObject::SetRotation(glm::quat rotation) {
 	this->rotationQuat = rotation;
 }
 
-void AObject::SetWorldPosition(glm::vec3 position) {
+void AObject::SetWorldPosition(const glm::vec3 position) {
 	if (parent != nullptr) {
 		this->position = glm::vec3(
 			(position.x - parent->worldPosition.x) / parent->worldScale.x,
@@ -192,7 +202,7 @@ void AObject::SetWorldRotation(glm::quat rotation) {
 	// this->rotationQuat = rotation;
 }
 
-void AObject::SetWorldScale(glm::vec3 scale) {
+void AObject::SetWorldScale(const glm::vec3 scale) {
 	if (parent != nullptr) {
 		this->scale = glm::vec3(
 			scale.x / parent->worldScale.x,
@@ -206,7 +216,7 @@ void AObject::SetWorldScale(glm::vec3 scale) {
 	this->scale = scale;
 }
 
-AObject* AObject::FindObjectByName(std::string name) {
+AObject* AObject::FindObjectByName(const std::string& name) {
 	
 	ASceneController* scene = Window::GetInstance().GetActualScene();
 

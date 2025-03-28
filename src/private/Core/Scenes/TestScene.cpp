@@ -1,15 +1,15 @@
-#include "Core/Scenes/TestScene.h"
+#include <Core/Scenes/TestScene.h>
 
-#include "Core/Components/Physics/2D/SquareColliderComponent.h"
-#include "Core/Components/Render/CameraComponent.h"
-#include "Core/Components/Render/RenderQuadComponent.h"
-#include "Core/Objects/SquareObject.h"
-#include "Game/Objects/Player.h"
-#include "Core/Materials/TextureMaterial.h"
-#include "Core/Materials/ColorMaterial.h"
-#include "Core/Objects/CubeObject.h"
-#include "Core/Objects/EmptyObject.h"
-#include "Core/Render/Render.h"
+#include <Core/Materials/LitMaterial.h>
+
+#include <Core/Components/Physics/2D/SquareColliderComponent.h>
+#include <Core/Components/Render/CameraComponent.h>
+#include <Core/Components/Render/RenderQuadComponent.h>
+#include <Core/Objects/2D/Square.h>
+#include <Game/Objects/Player.h>
+#include <Core/Objects/3D/Cube.h>
+#include <Core/Objects/EmptyObject.h>
+#include <Core/Render/Render.h>
 
 TestScene::TestScene() {
 	// Player* square = new Player(nullptr, "Square");
@@ -18,16 +18,17 @@ TestScene::TestScene() {
 	
 	// objects.push_back(square);
 
-	SquareObject* square2 = new SquareObject(nullptr, "Square2");
+	auto* square2 = new Square("Square2", nullptr, this);
 	square2->scale = glm::vec3(1, 1, 1);
 	square2->position = glm::vec3(0, 0, 0);
-	dynamic_cast<TextureMaterial*>(square2->GetRenderComponent()->material)
+	dynamic_cast<LitMaterial*>(square2->GetRenderComponent()->material)
+		->SetColor(glm::vec3(1, 0.5, 1))
 		->SetTexture("Assets/Textures/HL.jpg");
 	
 	AddObject(square2);
 
-	EmptyObject* cameraObject = new EmptyObject(nullptr, "Camera");
-	CameraComponent* cameraComponent = dynamic_cast<CameraComponent*>(
+	auto* cameraObject = new EmptyObject("Camera", nullptr, this);
+	auto* cameraComponent = dynamic_cast<CameraComponent*>(
 		cameraObject->AddComponent(new CameraComponent(cameraObject))
 		);
 	cameraObject->position = glm::vec3(0, 0, 10);

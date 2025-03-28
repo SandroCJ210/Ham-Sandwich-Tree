@@ -5,11 +5,11 @@
 #include <vector>
 #include <glm/glm.hpp>
 
-#include "Core/Materials/TextureMaterial.h"
-#include "Util/Utility.h"
-#include "Core/Global.h"
-#include "Core/Components/Render/RenderCubeComponent.h"
-#include "Core/Objects/CubeObject.h"
+#include <Util/Utility.h>
+#include <Core/Global.h>
+#include <Core/Components/Render/RenderCubeComponent.h>
+#include <Core/Materials/LitMaterial.h>
+#include <Core/Objects/3D/Cube.h>
 
 MazeGeneratorComponent::MazeGeneratorComponent(AObject* parent) : IComponent(parent) {
 
@@ -180,11 +180,11 @@ void MazeGeneratorComponent::PrintMaze() {
 void MazeGeneratorComponent::InstantiateWall(std::string id, glm::vec3 objectPosition, glm::vec3 objectScale) {
 	std::string name = "Wall" + id;
 	
-	CubeObject* wall = new CubeObject(parent, name);
+	Cube* wall = new Cube(name, parent);
 	wall->position = objectPosition;
 	wall->scale = objectScale * 0.8f;
 	
-	TextureMaterial* _material = dynamic_cast<TextureMaterial*>(wall->GetRenderComponent()->material);
+	LitMaterial* _material = dynamic_cast<LitMaterial*>(wall->GetRenderComponent()->material);
 	// _material->SetColor(glm::vec3(255, 127, 39) / 255.0f);
 	_material->SetTexture("Assets/Textures/HL.jpg");
 }

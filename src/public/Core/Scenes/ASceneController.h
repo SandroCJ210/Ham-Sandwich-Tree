@@ -1,8 +1,12 @@
 #pragma once
 #include <vector>
+#include <Core/Components/Render/Lights/LightComponent.h>
+
 #include "Core/Objects/AObject.h"
 
 class ASceneController {
+
+	friend class AObject;
 
 private:
 	// bunch of stuff for calculating the delta time and physics time offset
@@ -16,6 +20,12 @@ public:
 	 * @brief The list of objects in the scene
 	 */
 	std::vector<AObject*> objects = std::vector<AObject*>();
+
+
+	/**
+	 * @brief The list of the active light sources
+	 */
+	std::vector<LightComponent*> lights = std::vector<LightComponent*>();
 	
 	ASceneController();
 	virtual ~ASceneController();
@@ -58,6 +68,7 @@ public:
 	 */
 	virtual void End();
 
+protected:
 	/**
 	 * Adds an object to this scene
 	 * @param object The object to add

@@ -7,7 +7,7 @@ class MazeGeneratorComponent;
 
 class Maze : public AObject {
 public:
-	Maze(AObject* parent, std::string name);
+	Maze(const std::string &_name, AObject* _parent = nullptr, ASceneController* _scene = nullptr);
 	~Maze();
 	
 private:

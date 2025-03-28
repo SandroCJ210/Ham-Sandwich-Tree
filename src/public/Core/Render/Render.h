@@ -9,7 +9,7 @@
 class AMaterial;
 class CameraComponent;
 class Shader;
-class ColorMaterial;
+class LitMaterial;
 
 /**
  * This class represents the render of the engine
@@ -39,7 +39,7 @@ public:
 	/**
 	 * @brief This is a special material used for the gizmos
 	 */
-	ColorMaterial* gizmosMaterial;
+	LitMaterial* gizmosMaterial;
 
 public:
 	Render();

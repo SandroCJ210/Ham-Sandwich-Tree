@@ -3,7 +3,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
-#include <thread>
+#include <Core/Scenes/TestPhongLightScene.h>
 
 #include "Game/Scenes/Maze3DScene.h"
 #include "Core/Scenes/TestScene.h"
@@ -41,7 +41,7 @@ void Window::Start() {
 
 	glEnable(GL_DEPTH_TEST);
 	
-	actualScene = new Maze3DScene();
+	actualScene = new TestPhongLightScene();
 	actualScene->Awake();
 	actualScene->Start();
 }
@@ -59,7 +59,7 @@ void Window::End() {
 }
 
 
-void Window::Excecute() {
+void Window::Execute() {
 	Start();
 	Update();
 	End();
@@ -73,8 +73,4 @@ void Window::ProcessFrame(GLFWwindow* window) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
 	actualScene->SceneUpdate();
-}
-
-void Window::AddObjectToScene(AObject* object) {
-	actualScene->AddObject(object);
 }

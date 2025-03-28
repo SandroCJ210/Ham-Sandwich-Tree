@@ -1,6 +1,6 @@
-#include "Util/Singleton.h"
-#include "Core/Window.h"
+#include <Util/Singleton.h>
+#include <Core/Window.h>
 
 int main() {
-	Window::GetInstance().Excecute();
-};
+	Window::GetInstance().Execute();
+}

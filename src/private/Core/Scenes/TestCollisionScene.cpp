@@ -14,7 +14,7 @@
 
 TestColisionScene::TestColisionScene() {
 	
-	auto* testSquare = new Square(nullptr, "squareMouse");
+	auto* testSquare = new Square("squareMouse", nullptr, this);
 	testSquare->GetRenderComponent()->enableRender = true;
 	// testSquare->AddComponent(new FollowMouseComponent(testSquare));
 	testSquare->AddComponent(new Rigidbody2DComponent(testSquare));
@@ -28,14 +28,14 @@ TestColisionScene::TestColisionScene() {
 	// movement->SetDirection(glm::vec2(1, -1));
 	AddObject(testSquare);
 
-	auto* staticSquare = new Square(nullptr, "staticSquare");
+	auto* staticSquare = new Square("staticSquare", nullptr, this);
 	staticSquare->GetRenderComponent()->enableRender = false;
 	// staticSquare->GetColliderComponent()->isTrigger = true;
 	// staticSquare->AddComponent(new FollowMouseComponent(staticSquare));
 	staticSquare->scale = glm::vec3(0.5f);
 	AddObject(staticSquare);
 
-	auto* sumSquare = new Square(nullptr, "sumSquare");
+	auto* sumSquare = new Square("sumSquare", nullptr, this );
 	sumSquare->GetRenderComponent()->enableRender = false;
 	sumSquare->GetColliderComponent()->isTrigger = true;
 	sumSquare->position = glm::vec3(staticSquare->GetWorldPosition());
