@@ -9,7 +9,7 @@ public:
 	AMaterial* material;
 
 public:
-	RenderCubeComponent(AObject* parent);
+	explicit RenderCubeComponent(AObject* parent);
 	~RenderCubeComponent() override;
 	void LateUpdate() override;
 

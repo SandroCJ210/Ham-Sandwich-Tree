@@ -1,13 +1,13 @@
 #include "Core/Components/Render/RenderCubeComponent.h"
 
+#include <Core/Materials/LitMaterial.h>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "Core/Materials/TextureMaterial.h"
 #include "Core/Objects/AObject.h"
 #include "Core/Render/Render.h"
 
 RenderCubeComponent::RenderCubeComponent(AObject* parent) : IComponent(parent){
-	material = new TextureMaterial();
+	material = new LitMaterial();
 }
 
 RenderCubeComponent::~RenderCubeComponent() {

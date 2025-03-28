@@ -1,15 +1,15 @@
 #include "Core/Components/Render/RenderQuadComponent.h"
 
+#include <Core/Materials/LitMaterial.h>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "Core/Materials/ColorMaterial.h"
 #include "Core/Materials/TextureMaterial.h"
 #include "Core/Render/Shader.h"
 #include "Core/Objects/AObject.h"
 #include "Core/Render/Render.h"
 
 RenderQuadComponent::RenderQuadComponent(AObject* parent) : IComponent(parent){
-	material = new ColorMaterial();
+	material = new LitMaterial();
 }
 
 RenderQuadComponent::~RenderQuadComponent() {
@@ -20,7 +20,7 @@ void RenderQuadComponent::LateUpdate() {
 	Draw();
 }
 
-void RenderQuadComponent::Draw() {
+void RenderQuadComponent::Draw() const {
 	if (!enableRender) return;
 
 	glm::mat4 model = glm::mat4(1);

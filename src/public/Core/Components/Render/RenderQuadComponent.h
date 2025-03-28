@@ -10,10 +10,10 @@ public:
 	AMaterial* material;
 
 public:
-	RenderQuadComponent(AObject* parent);
+	explicit RenderQuadComponent(AObject* parent);
 	~RenderQuadComponent() override;
 	void LateUpdate() override;
 
 private:
-	void Draw();
+	void Draw() const;
 };
