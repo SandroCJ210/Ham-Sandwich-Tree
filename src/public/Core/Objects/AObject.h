@@ -54,6 +54,7 @@ public:
 	 */
 	std::vector<IComponent*> components;
 
+	ASceneController* scene = nullptr;
 	AObject* parent = nullptr;
 	std::vector<AObject*> children;
 	

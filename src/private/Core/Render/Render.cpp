@@ -6,6 +6,7 @@
 #include <iostream>
 #include <glm/gtc/matrix_transform.hpp>
 #include <stb_image.h>
+#include <Core/Window.h>
 #include <Core/Materials/ColorMaterial.h>
 
 #include "Core/Render/Shader.h"
@@ -240,17 +241,17 @@ void Render::DrawQuad(glm::mat4 model, AMaterial* material) {
 }
 
 void Render::DrawCube(glm::mat4 model, AMaterial* material) {
-	if (currentCamera == nullptr) return;
-
-	// glm::mat4 model = glm::mat4(1.0f);
-	// model = glm::translate(model, center);
-	// model = glm::scale(model, size);
+	if (!currentCamera) return;
+	if (!Window::GetInstance().GetActualScene()->lightSource) return;
 
 	material->Use();
 	
 	material->shader->SetMatrix4("_model", model);
 	material->shader->SetMatrix4("_view", currentCamera->GetViewMatrix());
 	material->shader->SetMatrix4("_projection", currentCamera->GetProjectionMatrix());
+
+	material->shader->SetVector3("_lightColor",
+		Window::GetInstance().GetActualScene()->lightSource->GetColor());
 
 	glBindVertexArray(VAO_cube);
 

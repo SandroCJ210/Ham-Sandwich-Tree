@@ -23,9 +23,10 @@ public:
 
 
 	/**
-	 * @brief The list of the active light sources
+	 * @brief Active light source
 	 */
-	std::vector<LightComponent*> lights = std::vector<LightComponent*>();
+	//TODO: Implement multiple source lights
+	LightComponent* lightSource = nullptr;
 	
 	ASceneController();
 	virtual ~ASceneController();

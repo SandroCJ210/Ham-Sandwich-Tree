@@ -17,9 +17,10 @@ private:
 	float intensity;
 
 public:
-	LightComponent();
+	LightComponent(AObject* _parent);
 	~LightComponent() override = default;
 	void SetColor(glm::vec3 color);
+	void SetColor(float r, float g, float b);
 	void SetIntensity(float intensity);
 	void SetRange(float range);
 

@@ -22,7 +22,10 @@ AObject::AObject(const std::string &_name, AObject* _parent, ASceneController* _
 		this->parent = _parent;
 		parent->AddChild(this);
 	}
-	if (_scene) _scene->AddObject(this);
+	if (_scene) {
+		this->scene = _scene;
+		scene->AddObject(this);
+	}
 }
 
 AObject::~AObject() = default;
