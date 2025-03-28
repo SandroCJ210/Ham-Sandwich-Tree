@@ -3,9 +3,9 @@
 #include <Core/Render/Shader.h>
 
 ColorMaterial::ColorMaterial() {
-	std::string vertexPath =	"Assets/Shaders/LitShader/Color.vert";
-	std::string fragmentPath =	"Assets/Shaders/LitShader/Color.frag";
-	this->shader = Render::GetInstance().CreateShader(vertexPath, fragmentPath);
+	std::string vertexPath =	"Assets/Shaders/ColorShader/Color.vert";
+	std::string fragmentPath =	"Assets/Shaders/ColorShader/Color.frag";
+	this->shader = new Shader(vertexPath, fragmentPath);
 }
 
 void ColorMaterial::Use() {
