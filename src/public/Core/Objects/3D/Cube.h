@@ -1,12 +1,12 @@
 #pragma once
-#include "AObject.h"
+#include <Core/Objects/AObject.h>
 
 class BoxColliderComponent;
 class RenderCubeComponent;
 
-class CubeObject : public AObject {
+class Cube : public AObject {
 public:
-	CubeObject(AObject* parent, std::string name);
+	Cube(AObject* parent, std::string name);
 
 private:
 	RenderCubeComponent* renderComponent;

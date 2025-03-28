@@ -1,21 +1,20 @@
-#include "Core/Scenes/TestColisionScene.h"
+#include <Core/Scenes/TestCollisionScene.h>
 
-#include <iostream>
-
-#include "Core/Global.h"
-#include "Core/Components/Render/RenderQuadComponent.h"
-#include "Core/Components/Input/FollowMouseComponent.h"
-#include "Core/Components/Input/InputComponent.h"
-#include "Game/Components/MovementComponent.h"
-#include "Core/Components/Physics/2D/SquareColliderComponent.h"
-#include "Core/Components/Physics/2D/Rigidbody2DComponent.h"
-#include "Core/Objects/SquareObject.h"
-#include "Core/Render/Color.h"
-#include "Core/Render/Render.h"
+#include <Core/Global.h>
+#include <Core/Components/Render/RenderQuadComponent.h>
+#include <Core/Components/Input/FollowMouseComponent.h>
+#include <Core/Components/Input/InputComponent.h>
+#include <Game/Components/MovementComponent.h>
+#include <Core/Components/Physics/2D/SquareColliderComponent.h>
+#include <Core/Components/Physics/2D/Rigidbody2DComponent.h>
+#include <Core/Objects/2D/Square.h>
+#include <Core/Objects/3D/Cube.h>
+#include <Core/Render/Color.h>
+#include <Core/Render/Render.h>
 
 TestColisionScene::TestColisionScene() {
 	
-	SquareObject* testSquare = new SquareObject(nullptr, "squareMouse");
+	auto* testSquare = new Square(nullptr, "squareMouse");
 	testSquare->GetRenderComponent()->enableRender = true;
 	// testSquare->AddComponent(new FollowMouseComponent(testSquare));
 	testSquare->AddComponent(new Rigidbody2DComponent(testSquare));
@@ -29,14 +28,14 @@ TestColisionScene::TestColisionScene() {
 	// movement->SetDirection(glm::vec2(1, -1));
 	AddObject(testSquare);
 
-	SquareObject* staticSquare = new SquareObject(nullptr, "staticSquare");
+	auto* staticSquare = new Square(nullptr, "staticSquare");
 	staticSquare->GetRenderComponent()->enableRender = false;
 	// staticSquare->GetColliderComponent()->isTrigger = true;
 	// staticSquare->AddComponent(new FollowMouseComponent(staticSquare));
 	staticSquare->scale = glm::vec3(0.5f);
 	AddObject(staticSquare);
 
-	SquareObject* sumSquare = new SquareObject(nullptr, "sumSquare");
+	auto* sumSquare = new Square(nullptr, "sumSquare");
 	sumSquare->GetRenderComponent()->enableRender = false;
 	sumSquare->GetColliderComponent()->isTrigger = true;
 	sumSquare->position = glm::vec3(staticSquare->GetWorldPosition());
@@ -59,7 +58,7 @@ TestColisionScene::TestColisionScene() {
 void TestColisionScene::Update(double deltaTime) {
 	// std::cout<<deltaTime<<'\n';
 
-	SquareObject* testSquare = dynamic_cast<SquareObject*>(objects[0]);
+	auto* testSquare = dynamic_cast<Square*>(objects[0]);
 	Rigidbody2DComponent* rbTestSquare = nullptr;
 	for (IComponent* component : testSquare->components) {
 		rbTestSquare = dynamic_cast<Rigidbody2DComponent*>(component);

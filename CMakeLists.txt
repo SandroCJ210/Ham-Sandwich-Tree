@@ -34,6 +34,7 @@ set(COMPONENTS_RENDER
         ${PRIVATE_DIR}/Core/Components/Render/CameraComponent.cpp
         ${PRIVATE_DIR}/Core/Components/Render/RenderCubeComponent.cpp
         ${PRIVATE_DIR}/Core/Components/Render/RenderQuadComponent.cpp
+        ${PRIVATE_DIR}/Core/Components/Render/Lights/LightComponent.cpp
 )
 
 # COmponents source
@@ -48,14 +49,16 @@ set(MATERIALS
         ${PRIVATE_DIR}/Core/Materials/AMaterial.cpp
         ${PRIVATE_DIR}/Core/Materials/ColorMaterial.cpp
         ${PRIVATE_DIR}/Core/Materials/TextureMaterial.cpp
+        ${PRIVATE_DIR}/Core/Materials/LitMaterial.cpp
 )
 
 #Objects source
 set(OBJECTS
         ${PRIVATE_DIR}/Core/Objects/AObject.cpp
-        ${PRIVATE_DIR}/Core/Objects/CubeObject.cpp
         ${PRIVATE_DIR}/Core/Objects/EmptyObject.cpp
-        ${PRIVATE_DIR}/Core/Objects/SquareObject.cpp
+        ${PRIVATE_DIR}/Core/Objects/3D/Cube.cpp
+        ${PRIVATE_DIR}/Core/Objects/2D/Square.cpp
+        ${PRIVATE_DIR}/Core/Objects/Light/PointLight.cpp
 )
 
 #Physics engine source
@@ -74,8 +77,9 @@ set(RENDER
 #Scene mannager source
 set(SCENES
         ${PRIVATE_DIR}/Core/Scenes/ASceneController.cpp
-        ${PRIVATE_DIR}/Core/Scenes/TestColisionScene.cpp
+        ${PRIVATE_DIR}/Core/Scenes/TestCollisionScene.cpp
         ${PRIVATE_DIR}/Core/Scenes/TestScene.cpp
+        ${PRIVATE_DIR}/Core/Scenes/TestPhongLightScene.cpp
 )
 
 #Core source
