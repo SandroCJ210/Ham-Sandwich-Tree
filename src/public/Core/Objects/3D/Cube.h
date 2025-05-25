@@ -6,7 +6,9 @@ class RenderCubeComponent;
 
 class Cube : public AObject {
 public:
-	Cube(const std::string &_name, AObject* _parent = nullptr, ASceneController* _scene = nullptr);
+	Cube(const std::string &_name,
+		AObject* _parent = nullptr,
+		ASceneController* _scene = nullptr);
 
 private:
 	RenderCubeComponent* renderComponent;

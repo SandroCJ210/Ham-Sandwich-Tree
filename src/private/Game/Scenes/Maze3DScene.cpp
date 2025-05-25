@@ -17,9 +17,9 @@ Maze3DScene::Maze3DScene() {
 	// player->position = glm::vec3(0, 0, 3);
 	// AddObject(player);
 
-	Maze* maze = new Maze("Maze", nullptr, this);
+	auto* maze = new Maze("Maze", nullptr, this);
 	AddObject(maze);
 	
-	Player* player = new Player("Maze", nullptr, this);
+	auto* player = new Player("Maze", nullptr, this);
 	AddObject(player);
 }

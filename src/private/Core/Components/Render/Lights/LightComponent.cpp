@@ -1,9 +1,10 @@
 #include <Core/Window.h>
 #include <Core/Components/Render/Lights/LightComponent.h>
+#include <Game/Objects/HamSandwichTree/Point.h>
 #include <Util/Logger.h>
 
 LightComponent::LightComponent(AObject* _parent) : IComponent(_parent){
-	type = Point;
+	type = LightType::Point;
 
 	range = 1.0f;
 	color = glm::vec3(1.0f, 1.0f, 1.0f);

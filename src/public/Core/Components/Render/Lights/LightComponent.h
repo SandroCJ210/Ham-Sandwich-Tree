@@ -3,7 +3,7 @@
 #include <glm/glm.hpp>
 
 
-enum LightType {
+enum class LightType {
 	Point = 0,
 };
 
