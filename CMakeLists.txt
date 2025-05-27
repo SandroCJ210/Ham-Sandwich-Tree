@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 project(AmaruEngine VERSION 0.0.1)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(BUILD_DIR ${CMAKE_SOURCE_DIR}/build/Assets)
-
 set(PRIVATE_DIR ${CMAKE_SOURCE_DIR}/src/private)
 set(PUBLIC_DIR ${CMAKE_SOURCE_DIR}/src/public)
 set(ASSETS_SRC_DIR ${CMAKE_SOURCE_DIR}/Assets)
@@ -57,6 +57,7 @@ set(OBJECTS
 	${PRIVATE_DIR}/Core/Objects/3D/Cube.cpp
 	${PRIVATE_DIR}/Core/Objects/2D/Square.cpp
 	${PRIVATE_DIR}/Core/Objects/Light/PointLight.cpp
+	${PRIVATE_DIR}/Core/Objects/General/CameraObject.cpp
 )
 
 #Physics engine source
@@ -111,11 +112,13 @@ set(GAME_OBJECTS
 	${PRIVATE_DIR}/Game/Objects/Player.cpp
 	${PRIVATE_DIR}/Game/Objects/Maze.cpp
 	${PRIVATE_DIR}/Game/Objects/HamSandwichTree/Point.cpp
+	${PRIVATE_DIR}/Game/Objects/HamSandwichTree/HSTree.cpp
 )
 
 set(GAME_COMPONENTS
 	${PRIVATE_DIR}/Game/Components/MovementComponent.cpp
 	${PRIVATE_DIR}/Game/Components/MazeGeneratorComponent.cpp
+	${PRIVATE_DIR}/Game/Components/HamSandwichTree/HSTreeComponent.cpp
 )
 
 set(GAME

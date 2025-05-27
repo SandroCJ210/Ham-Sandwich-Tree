@@ -26,10 +26,10 @@ void RenderCubeComponent::Draw() {
 	glm::quat rotation = parent->GetWorldRotation();
 	glm::vec3 vectorRotation = glm::vec3(rotation.x, rotation.y, rotation.z);
 	float angle = 2 * glm::acos(rotation.w);
+	model = glm::translate(model, this->parent->GetWorldPosition());
 	if (vectorRotation != glm::vec3(0))
 		model = glm::rotate(model, angle, vectorRotation);
 	
-	model = glm::translate(model, this->parent->GetWorldPosition());
 	model = glm::scale(model, this->parent->GetWorldScale());
 
 	Render::GetInstance().DrawCube(model, material);

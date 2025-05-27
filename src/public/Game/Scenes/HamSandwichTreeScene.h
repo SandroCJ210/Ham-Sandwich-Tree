@@ -6,4 +6,7 @@ public:
 	HamSandwichTreeScene();
 	~HamSandwichTreeScene() override = default;
 
+private:
+	void SetBasicComponents2D();
+	void SetBasicComponents3D();
 };

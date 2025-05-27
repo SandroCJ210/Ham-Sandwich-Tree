@@ -10,6 +10,7 @@
 #include "Core/Global.h"
 #include "Game/Objects/Maze.h"
 #include "Util/Logger.h"
+#include <Game/Scenes/HamSandwichTreeScene.h>
 
 Window::Window():Singleton(){
 	actualScene = nullptr;
@@ -41,7 +42,7 @@ void Window::Start() {
 
 	glEnable(GL_DEPTH_TEST);
 	
-	actualScene = new TestPhongLightScene();
+	actualScene = new HamSandwichTreeScene();
 	actualScene->Awake();
 	actualScene->Start();
 }
