@@ -20,7 +20,7 @@ HamSandwichTreeScene::HamSandwichTreeScene() {
 		SetBasicComponents2D();
 	}
 
-	HSTree* tree = new HSTree(is3D, 300, 10, "tree", nullptr, this);
+	new HSTree(is3D, 50, 10, "tree", nullptr, this);
 
 }
 

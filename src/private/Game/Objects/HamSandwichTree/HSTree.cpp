@@ -5,10 +5,10 @@ HSTree::HSTree(
 	bool is3D, 
 	int quantity,
 	float boundary,
-	const std::string &_name, 
+	const std::string& _name, 
 	AObject* _parent, 
 	ASceneController* _scene)
-	: AObject(name, _parent, _scene) {
+	: AObject(_name, _parent, _scene) {
 
 	hSTreeComponent = dynamic_cast<HSTreeComponent*>( 
 		AddComponent(new HSTreeComponent(is3D, quantity, boundary, this))

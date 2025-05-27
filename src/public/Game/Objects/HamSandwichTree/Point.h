@@ -21,7 +21,7 @@ public :
 
 struct ProjectedPoint {
     float projection;
-    glm::vec3 point;
+    Point* point;
 
     bool operator<(const ProjectedPoint& other) const {
         return projection < other.projection;
