@@ -6,7 +6,7 @@ from typing import List, Tuple
 import numpy as np
 import os
 
-from .HST import HamSandwichTree
+from HST import HamSandwichTree
 
 if not os.path.exists('data'):
     os.makedirs('data', exist_ok=True)

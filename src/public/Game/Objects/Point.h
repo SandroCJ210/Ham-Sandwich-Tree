@@ -19,6 +19,7 @@ public :
 	RenderCubeComponent* GetRenderComponent() const { return  renderComponent; }
 };
 
+// estructura de apoyo para ordenar los puntos por proyeccion
 struct ProjectedPoint {
     float projection;
     Point* point;

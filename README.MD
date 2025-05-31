@@ -1,30 +1,61 @@
-# Amaru Engine
+# Ham Sandwich Problem
 
-## Overview
+## Alumnos:
+- [Oscar Torres Minaya](https://github.com/MrElmo3)
+- [Sandro Carrillo](https://github.com/SandroCJ210)
 
-Amaru Engine is a game engine written in C++ and OpenGL. It is designed to be a simple and easy to use engine for creating 2D games.
-The engine is still in development, it's use is limited.
+## Resumen
+Este es un proyecto para ejemplificar el uso del Ham Sandwich Tree, se encuentra dividido en 2 partes;
+una parte para el análisis del algoritmo dentro de la carpeta **Profiling** 
+y una segunda parte que compete al resto de carpetas para la representación visual usando como base 
+el [Motor Gráfico Amaru](https://github.com/MrElmo3/AmaruEngine)
 
-## Features
+Se escogió el algoritmo principalmente por lo visible que puede llegar a ser al implementarse en un motor gráfico como el selecionado y por su similitud con los K-D trees los cuales son de interés para los involucrados.
 
-- 2D rendering (Only can render quads)
-- 3D rendering (Only can render Cubes)
-- Sprite rendering
-- Texture loading
-- Input handling
-- Basic physics (AABB and raycasting)
-- Basic collision detection
-- Shader loading
-- Resource management for textures and shaders
+## Compilación
 
-## Use
-For now the use of the engine is limited to IDE that support sln files, like Visual Studio.
+### Parte gráfica
 
-For develop a game using this engine, create a scene using ASceneController class, and add GameObjects to it.
+**Linux**
+
+Se ejecuta los siguientes comandos
+
+```zsh
+$ cmake -S . -B "build" -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+$ cmake --build "build"
+```
+
+luego de ello el ejecutable se encontrará dentro de la carpeta /build
+
+**Windows**
+
+En el caso de Windows se necesitará ejecutarse desde *Clion* o en su defecto 
+instalar *Visual Studio Build Tools* y el plugin de *Cmake* para *Visual Studio Code*
+
+Luego desde el respectivo IDE o editor de texto se podrá ejecutar.
+
+### Profiling
+
+Para ejecutar la parte de profiling solo necesita ejecutar el archivo *HSTProfile.py* tanto desde Windows como desde Linux. Dicho archivo se encuentra en la carpeta /Profiling
+
+Los resultados del Profiling se podrán encontrar dentro de la carpeta /data
+
+## Organización del proyecto
+
+- /Profiling -> archivos de python para realizar el Profiling
+- /src -> código de C++ para la parte gráfica
+	- Las siguientes rutas son identicas tanto para la carpeta /private como para la carpeta /public
+	conteniendo respectivamente implementaciones y declaraciones.
+	- /Core -> Lógica fundamental del motor Amaru
+	- /Game -> Código de la escena ejecutada
+		- /Components -> Componentes específicos usados
+		(Aqui se encuentra el código del HSTree dentro de HSTreeComponent.h/cpp)
+		- /Objects -> Objetos que usan los componentes de /Components y se instancian en la escena.
+		- /Scenes -> Escenas utilizadas en la parte gráfica
+	- /Util -> Utilidades usadas dentro del motor
+
+**Notas sobre algunos archivos**
+
+Dentro de los archivos HSTreeComponent.cpp y HamSandwichTreeSceneScene.cpp existen notas sobre datos puntuales que se pueden cambiar para obtener distintos resultados
 
 
-
-cmake -S . -B "build" -DCMAKE_EXPORT_COMPILE_COMMANDS=1
-
-to build:
-cmake --build "build"

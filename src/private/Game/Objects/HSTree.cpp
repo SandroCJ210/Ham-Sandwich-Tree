@@ -1,5 +1,5 @@
-#include <Game/Objects/HamSandwichTree/HSTree.h>
-#include <Game/Components/HamSandwichTree/HSTreeComponent.h>
+#include <Game/Objects/HSTree.h>
+#include <Game/Components/HSTreeComponent.h>
 
 HSTree::HSTree(
 	bool is3D, 

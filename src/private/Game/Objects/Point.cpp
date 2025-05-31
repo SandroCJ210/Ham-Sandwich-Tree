@@ -1,4 +1,4 @@
-#include "Game/Objects/HamSandwichTree/Point.h"
+#include "Game/Objects/Point.h"
 #include <Core/Materials/LitMaterial.h>
 
 Point::Point(

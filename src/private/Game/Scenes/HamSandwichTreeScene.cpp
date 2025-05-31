@@ -1,13 +1,13 @@
 #include "Game/Scenes/HamSandwichTreeScene.h"
 
-#include <Game/Objects/HamSandwichTree/Point.h>
+#include <Game/Objects/Point.h>
 #include <Core/Objects/General/CameraObject.h>
 #include <Core/Components/Render/CameraComponent.h>
 #include <Core/Objects/Light/PointLight.h>
 #include <Core/Components/Input/InputComponent.h>
 #include <Game/Components/MovementComponent.h>
 #include <Core/Components/Physics/3D/Rigidbody3DComponent.h>
-#include <Game/Objects/HamSandwichTree/HSTree.h>
+#include <Game/Objects/HSTree.h>
 
 HamSandwichTreeScene::HamSandwichTreeScene() {
 	bool is3D = false;
@@ -20,6 +20,9 @@ HamSandwichTreeScene::HamSandwichTreeScene() {
 		SetBasicComponents2D();
 	}
 
+	//! NOTA PARA EL PROFESOR
+	//puede revisar la declaración de la clase HSTree para cambiar (si desea) los 3 primeros valores
+	//Se recomienda cambiar la variable is3D desde su declaración más arribla en este mismo método
 	new HSTree(is3D, 50, 10, "tree", nullptr, this);
 
 }

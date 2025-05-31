@@ -6,7 +6,7 @@
 #include <Core/Components/Render/CameraComponent.h>
 #include <Core/Components/Render/RenderQuadComponent.h>
 #include <Core/Objects/2D/Square.h>
-#include <Game/Objects/Player.h>
+// #include <Game/Objects/Player.h>
 #include <Core/Objects/3D/Cube.h>
 #include <Core/Objects/EmptyObject.h>
 #include <Core/Render/Render.h>

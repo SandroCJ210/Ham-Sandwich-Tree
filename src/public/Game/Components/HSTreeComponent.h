@@ -28,10 +28,9 @@ private:
 	void CreateTreeAux(HSTNode* node);
 	HSTNode* CreateNode(HSTNode* parent = nullptr);
 	void SplitPoints(HSTNode* node);
-	void CheckPoints();
-
 };
 
+// nodo del árbol
 class HSTNode {
 public:
 	HSTNode* root;
