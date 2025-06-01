@@ -95,4 +95,20 @@ Es la implementación del árbol en 2D o 3D. Este árbol bisecta recursivamente 
 		* boundary: Esta variable indica un límite espacial sobre el cual se generarán los puntos.
 * Start: En este método se inicia la construcción del árbol, primero se generan puntos aleatorios con los parámetros obtenidos y a partir de esto se construye.
 * CreateTree: Inicializa el nodo raíz del árbol con todos los puntos generados y llama al proceso para construir el árbol completo.
-* CreateTreeAux: 
+* CreateTreeAux: Construcción recursiva del árbol. Detiene la recursión si el nodo tiene menos de 5 puntos.
+	* Parámetros:
+		* node: Nodo actual a subdividir reursivamente.
+* CreateNode: Crea un nuevo nodo del árbol, conectándolo a su padre si se proporciona.
+	* Parámetros:
+		* parent: Nodo padre del nodo a crear.
+	* Retorno: Nodo recién creado.
+* SpawnRandomPoints: Genera puntos aleatorios dentro de los límites dados. Si `is3D` es False, los puntos serán en 2D.
+	* Parámetros: 
+		* quantity: Número total de puntos a generar.
+		* boundary: Límite absoluto en cada eje para las coordenadas de los puntos.
+* SplitPoints: Aplica el algoritmo de corte Ham Sandwich para dividir los puntos del nodo en dos subconjuntos usando una dirección aleatoria.
+	* Parámetros: 
+		* node: Nodo actual cuyos puntos serán bisecados.
+		
+
+
