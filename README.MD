@@ -58,4 +58,41 @@ Los resultados del Profiling se podrán encontrar dentro de la carpeta /data
 
 Dentro de los archivos HSTreeComponent.cpp y HamSandwichTreeSceneScene.cpp existen notas sobre datos puntuales que se pueden cambiar para obtener distintos resultados
 
+## API
 
+### HSTNode 
+
+Representa un nodo del Ham Sandwich Tree
+
+**Atributos**
+
+* root: Es una referencia al nodo raíz del árbol.
+* height: Es la profundidad del nodo dentro del árbol.
+* points: Es una lista de puntos que contiene el nodo.
+* medianProj: Es el valor escalar de la proyección del punto mediano en la dirección del corte.
+* direction: Es el vector de dirección en el que se basa la línea que bisecta los puntos.
+* medianPoint: Es el punto correspondiente a la mediana proyectada.
+* parent: Una referencia al nodo padre (si es que existe).
+* left: Una referencia al hijo izquierdo (si es que existe).
+* right: Una referencia al hijo derecho (si es que existe).
+
+### HamSandwichTree
+
+Es la implementación del árbol en 2D o 3D. Este árbol bisecta recursivamente (en 2D o 3D) puntos.
+
+**Atributos**
+* is3D: Booleano que indica si la implementación es en 3D.
+* quantity: Esta variable indica la cantidad de puntos en el plano.
+* boundary: Esta variable indica un límite espacial sobre el cual se generarán los puntos.
+* points: Son los puntos del plano a usar.
+* root: Es una referencia a la raíz del árbol.
+
+**Funciones**
+* Constructor: Inicializa el árbol con los parámetros dados y ejecuta estar para iniciar la construcción.
+	* Parámetros:
+		* is3D: Booleano que indica si la implementación es en 3D.
+		* quantity: Esta variable indica la cantidad de puntos en el plano.
+		* boundary: Esta variable indica un límite espacial sobre el cual se generarán los puntos.
+* Start: En este método se inicia la construcción del árbol, primero se generan puntos aleatorios con los parámetros obtenidos y a partir de esto se construye.
+* CreateTree: Inicializa el nodo raíz del árbol con todos los puntos generados y llama al proceso para construir el árbol completo.
+* CreateTreeAux: 
